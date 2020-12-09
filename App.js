@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Chicken from './src/Chicken.js'
 import Coop from './src/Coop.js'
@@ -10,8 +10,22 @@ export default function App() {
 
   const checkInput = (text) => {
     if (text.toLowerCase() === "marche") {
-      // chicken.walkRight();
+      walkUp();
     }
+  }
+
+  const walkUp = () => {
+      let counter = 0
+      setInterval(() => {
+        if (counter < 90){
+          setChickenTop(chickenTop => chickenTop - 5)
+          counter = counter + 1
+        } else {
+          clearInterval()
+        }
+        console.log("counter:" + counter)
+        console.log("CT:" + chickenTop)
+    }, 30) 
   }
 
   return (

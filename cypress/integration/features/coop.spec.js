@@ -14,5 +14,6 @@ context('Coop Actions', () => {
     cy.get('#chicken').should('have.css', 'top', '450px')
     cy.get('input')
     .type('marche')
+    cy.get('#chicken').should('have.css', 'top', '0px')
   })
 })
