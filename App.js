@@ -24,9 +24,6 @@ export default function App() {
       <TextInput style={styles.input}
         placeholder="Type Marche"
         placeholderTextColor="black"
-        autoCapitalize="none"
-        className="textInput"
-        // name="marche"
         onChangeText={checkInput}
       />
     </View>
@@ -40,4 +37,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  input: {
+    zIndex: 3
+  }
 });

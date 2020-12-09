@@ -2,12 +2,11 @@
 
 context('Coop Actions', () => {
   beforeEach(() => {
-    // cy.visit('http://localhost:19006')
-    cy.viewport('iphone-8')
+    cy.visit('http://localhost:19006')
   })
 
   it('allows user to type', () => {
-    cy.get('.textInput')
+    cy.get('input')
       .type('walk').should('have.value', 'walk')
   })
 })
