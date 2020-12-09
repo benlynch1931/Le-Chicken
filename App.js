@@ -25,7 +25,8 @@ export default function App() {
         placeholder="Type Marche"
         placeholderTextColor="black"
         autoCapitalize="none"
-        name="marche"
+        className="textInput"
+        // name="marche"
         onChangeText={checkInput}
       />
     </View>
