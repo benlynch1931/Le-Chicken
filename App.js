@@ -5,11 +5,12 @@ import Chicken from './src/Chicken.js'
 import Coop from './src/Coop.js'
 
 export default function App() {
-  const [chickenTop, setChickenTop] = useState(100)
+  const [chickenTop, setChickenTop] = useState(10)
+  const [chickenGraphic, setChickenGraphic] = useState("right")
 
   const checkInput = (text) => {
     if (text.toLowerCase() === "marche") {
-      alert("Correct!")
+      chicken.walkRight();
     }
   }
 
@@ -18,14 +19,15 @@ export default function App() {
       <Text>Le Chicken!</Text>
       <StatusBar style="auto" />
       <Coop></Coop>
-      <Chicken>chickenTop={chickenTop}</Chicken>
-      <TextInput style = {styles.input}
-               placeholder = "Type Marche"
-               placeholderTextColor = "black"
-               autoCapitalize = "none"
-               name = "marche"
-               onChangeText = {checkInput}
-               />
+      <Text>2: {chickenGraphic}</Text>
+      <Chicken chickenTop={chickenTop} chickenGraphic={chickenGraphic} />
+      <TextInput style={styles.input}
+        placeholder="Type Marche"
+        placeholderTextColor="black"
+        autoCapitalize="none"
+        name="marche"
+        onChangeText={checkInput}
+      />
     </View>
   );
 }

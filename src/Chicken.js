@@ -1,25 +1,30 @@
 import React from 'react';
-import { Image, View } from 'react-native';
+import { Image, View, Text } from 'react-native';
 
-const Chicken = ({chickenTop}) => {
-    const chickenWidth = 50
-    const chickenHeight = 50
+const Chicken = ({ chickenTop, chickenGraphic, test }) => {
+  const chickenWidth = 50
+  const chickenHeight = 50
 
-    return(
-        <View>
-            <Image
+  const graphics = {
+    left: require('../assets/chicken-left.png'),
+    right: require('../assets/chicken-right.png')
+  }
+
+  return (
+    <View>
+      <Image
         style={{
-            position: 'absolute',
-            top: chickenTop,
-            width: chickenWidth,
-            height: chickenHeight,
-            right: -20,
-            zIndex: '1'
+          position: 'absolute',
+          top: chickenTop,
+          width: chickenWidth,
+          height: chickenHeight,
+          right: -20
         }}
-        source={require('../assets/chicken-left.png')}
-            />
-        </View>
-    )
+        source={graphics[chickenGraphic]}
+      />
+    </View >
+
+  )
 }
 
 export default Chicken
