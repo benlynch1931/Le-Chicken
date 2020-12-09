@@ -20,6 +20,7 @@ const Chicken = ({ chickenTop, chickenGraphic, test }) => {
           height: chickenHeight,
           right: -20
         }}
+        nativeID='chicken'
         source={graphics[chickenGraphic]}
       />
     </View >

@@ -9,4 +9,10 @@ context('Coop Actions', () => {
     cy.get('input')
       .type('walk').should('have.value', 'walk')
   })
+
+  it("moves the chicken to the top, when user types 'marche'", () => {
+    cy.get('#chicken').should('have.css', 'top', '450px')
+    cy.get('input')
+    .type('marche')
+  })
 })
