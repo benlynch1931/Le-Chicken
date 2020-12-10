@@ -11,9 +11,16 @@ context('Coop Actions', () => {
   })
 
   it("moves the chicken to the top, when user types 'marche'", () => {
-    cy.get('#chicken').should('have.css', 'top', '450px')
+    cy.get('#chicken-right').should('have.css', 'top', '450px')
     cy.get('input')
       .type('marcher')
-    cy.get('#chicken').should('have.css', 'top', '0px')
+    cy.get('#chicken-walkUp').should('have.css', 'top', '0px')
+  })
+
+  it("animates the chicken, when walking up", () => {
+    cy.get('#chicken-right')
+    cy.get('input')
+      .type('marcher')
+    cy.get('#chicken-walkUp')
   })
 })
