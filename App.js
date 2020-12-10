@@ -20,8 +20,9 @@ export default function App() {
       setHint(hint => hint = "Pour ouvrir: Type 'ouvrir'")
     }
     if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
-      walkUp(20);
+      walkUp(20, setSceneSelector)
       clearText();
+    //  setSceneSelector('maze')
     }
   }
 
@@ -29,7 +30,7 @@ export default function App() {
     setTextInput(textInput => textInput = "")
   }
 
-  const walkUp = (walkCount) => {
+  const walkUp = (walkCount, callback=null) => {
     let counter = 0
     setChickenGraphic(chickenGraphic => chickenGraphic = 'walkUp')
     let chickenWalk = setInterval(() => {
@@ -39,10 +40,14 @@ export default function App() {
       } else {
         clearInterval(chickenWalk)
         setChickenGraphic(chickenGraphic => chickenGraphic = 'up')
-        setSceneSelector('maze')
+        if(callback){
+          callback('maze')
+        }
       }
     }, 30)
   }
+
+  //const walkUpPromise = new Promise(() => {walkUp(20)})
 
   const clear = () => {
     console.log("cleared")
