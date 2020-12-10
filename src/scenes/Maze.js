@@ -7,8 +7,8 @@ const Maze = () => {
     <View
       style={{
         top: 50,
-        width: 500,
-        height: 500,
+        width: 375,
+        height: 400,
         backgroundColor: 'rgb(0, 255, 0)'
       }}
       nativeID='maze'

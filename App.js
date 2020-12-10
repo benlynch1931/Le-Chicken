@@ -55,7 +55,7 @@ export default function App() {
     console.log("cleared")
   }
 
-  
+
 
   return (
     <View style={styles.container}>
@@ -94,3 +94,12 @@ const styles = StyleSheet.create({
     position: 'absolute'
   }
 });
+
+
+
+
+
+// wallArray = ["3_1"]
+// for (ROWS)
+//   for(COLUMNS)
+//     if(wallArray.includes?(`${ROWS}_${COLUMNS}`)) {give id}
