@@ -32,4 +32,13 @@ context('Coop Actions', () => {
     cy.get('#chicken-walkUp')
     cy.get('#chicken-up')
   })
+
+  it("chicken moves up when user types ouvrir", () => {
+    cy.get('#chicken-right')
+    cy.get('input')
+      .type('marcher')
+    cy.get('input')
+      .type('ouvrir')
+    cy.get('#chicken-up').should('have.css', 'top', '0px')
+  })
 })
