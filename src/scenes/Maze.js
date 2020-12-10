@@ -6,11 +6,10 @@ const Maze = () => {
   return (
     <View
       style={{
-        position: 'absolute',
         top: 50,
         width: 500,
         height: 500,
-        backgroundColor: 'rgb(0, 0, 255)'
+        backgroundColor: 'rgb(0, 255, 0)'
       }}
       nativeID='maze'
     >

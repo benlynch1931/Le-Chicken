@@ -8,6 +8,6 @@ context('Maze', () => {
     cy.get('input')
       .type('marcher')
     //cy.get('#chicken-up').should('have.css', 'top', '100px')
-    cy.get('#maze').should('have.css', 'backgroundColor', 'rgb(0, 0, 255)')
+    cy.get('#maze').should('have.css', 'backgroundColor', 'rgb(0, 255, 0)')
   })
 })
