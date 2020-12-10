@@ -13,7 +13,10 @@ const Scene = (props) => {
     scene = <Maze />
   }
   return (
-    < View >
+    < View style={{
+      position: 'absolute',
+      alignItems: 'center'
+    }} >
       { scene}
     </View >
   )
