@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Dimensions } from 'react-native';
 import Chicken from './src/Chicken.js'
 import Coop from './src/Coop.js'
 
 export default function App() {
   const [chickenTop, setChickenTop] = useState(450)
   const [chickenGraphic, setChickenGraphic] = useState("right")
-
+  const screenWidth = Dimensions.get("screen").width  
+  const screenHeight = Dimensions.get("screen").height
   const checkInput = (text) => {
     if (text.toLowerCase() === "marcher") {
       walkUp();
@@ -46,11 +47,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    // justifyContent: 'center',
   },
   input: {
     zIndex: 3,
     top: 580,
+    position: 'absolute',
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey',
