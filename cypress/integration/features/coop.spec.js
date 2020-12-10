@@ -13,7 +13,7 @@ context('Coop Actions', () => {
   it("moves the chicken to the top, when user types 'marche'", () => {
     cy.get('#chicken').should('have.css', 'top', '450px')
     cy.get('input')
-    .type('marche')
+      .type('marcher')
     cy.get('#chicken').should('have.css', 'top', '0px')
   })
 })

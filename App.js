@@ -9,23 +9,23 @@ export default function App() {
   const [chickenGraphic, setChickenGraphic] = useState("right")
 
   const checkInput = (text) => {
-    if (text.toLowerCase() === "marche") {
+    if (text.toLowerCase() === "marcher") {
       walkUp();
     }
   }
 
   const walkUp = () => {
-      let counter = 0
-      setInterval(() => {
-        if (counter < 90){
-          setChickenTop(chickenTop => chickenTop - 5)
-          counter = counter + 1
-        } else {
-          clearInterval()
-        }
-        console.log("counter:" + counter)
-        console.log("CT:" + chickenTop)
-    }, 30) 
+    let counter = 0
+    let chickenWalk = setInterval(() => {
+      if (counter < 90) {
+        setChickenTop(chickenTop => chickenTop - 5)
+        counter = counter + 1
+      } else {
+        clearInterval(chickenWalk)
+      }
+      console.log("counter:" + counter)
+      console.log("CT:" + chickenTop)
+    }, 30)
   }
 
   return (
@@ -33,7 +33,7 @@ export default function App() {
       <Coop></Coop>
       <Chicken chickenTop={chickenTop} chickenGraphic={chickenGraphic} />
       <TextInput style={styles.input}
-        placeholder="Type Marche"
+        placeholder="Type Marcher"
         placeholderTextColor="black"
         onChangeText={checkInput}
       />
@@ -49,6 +49,12 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   input: {
-    zIndex: 3
+    zIndex: 3,
+    top: 580,
+    fontSize: 20,
+    borderWidth: 2,
+    borderColor: 'grey',
+    padding: 10,
+    borderRadius: 5
   }
 });
