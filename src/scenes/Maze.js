@@ -6,7 +6,6 @@ const Maze = () => {
   return (
     <View
       style={{
-        position: 'absolute',
         top: 50,
         width: 500,
         height: 500,

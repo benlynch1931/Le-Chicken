@@ -22,7 +22,6 @@ export default function App() {
     if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
       walkUp(20, setSceneSelector)
       clearText();
-    //  setSceneSelector('maze')
     }
   }
 
@@ -47,7 +46,6 @@ export default function App() {
     }, 30)
   }
 
-  //const walkUpPromise = new Promise(() => {walkUp(20)})
 
   const clear = () => {
     console.log("cleared")

@@ -15,7 +15,6 @@ const Scene = (props) => {
   return (
     < View style={{
       position: 'absolute',
-      alignItems: 'center'
     }} >
       { scene}
     </View >
