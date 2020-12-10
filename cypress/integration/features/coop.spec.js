@@ -2,6 +2,7 @@
 
 context('Coop Actions', () => {
   beforeEach(() => {
+    cy.viewport('iphone-x')
     cy.visit('http://localhost:19006')
   })
 
@@ -11,9 +12,24 @@ context('Coop Actions', () => {
   })
 
   it("moves the chicken to the top, when user types 'marche'", () => {
-    cy.get('#chicken').should('have.css', 'top', '450px')
+    cy.get('#chicken-right').should('have.css', 'top', '450px')
     cy.get('input')
       .type('marcher')
-    cy.get('#chicken').should('have.css', 'top', '0px')
+    cy.get('#chicken-up').should('have.css', 'top', '100px')
+  })
+
+  it("animates the chicken, when walking up", () => {
+    cy.get('#chicken-right')
+    cy.get('input')
+      .type('marcher')
+    cy.get('#chicken-walkUp')
+  })
+
+  it("resets chicken to idle when stopped", () => {
+    cy.get('#chicken-right')
+    cy.get('input')
+      .type('marcher')
+    cy.get('#chicken-walkUp')
+    cy.get('#chicken-up')
   })
 })

@@ -7,7 +7,9 @@ const Chicken = ({ chickenGraphic, chickenTop }) => {
 
   const graphics = {
     left: require('../assets/chicken-left.png'),
-    right: require('../assets/chicken-right.png')
+    right: require('../assets/chicken-right.png'),
+    walkUp: require('../assets/chicken-run-back.gif'),
+    up: require('../assets/chicken-stand-back.png')
   }
 
   return (
@@ -20,7 +22,8 @@ const Chicken = ({ chickenGraphic, chickenTop }) => {
           height: chickenHeight,
           right: -20
         }}
-        nativeID='chicken'
+        // nativeID='chicken'
+        nativeID={`chicken-${chickenGraphic}`}
         source={graphics[chickenGraphic]}
       />
     </View >
