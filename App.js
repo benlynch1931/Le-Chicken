@@ -20,7 +20,7 @@ export default function App() {
       setHint(hint => hint = "Pour ouvrir: Type 'ouvrir'")
     }
     if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
-      walkUp(20, setSceneSelector)
+      walkUp(20, setSceneSelector, setChickenTop)
       clearText();
     }
   }
@@ -29,7 +29,7 @@ export default function App() {
     setTextInput(textInput => textInput = "")
   }
 
-  const walkUp = (walkCount, callback=null) => {
+  const walkUp = (walkCount, sceneCallback=null, chickenPosCallback=null) => {
     let counter = 0
     setChickenGraphic(chickenGraphic => chickenGraphic = 'walkUp')
     let chickenWalk = setInterval(() => {
@@ -39,8 +39,12 @@ export default function App() {
       } else {
         clearInterval(chickenWalk)
         setChickenGraphic(chickenGraphic => chickenGraphic = 'up')
-        if(callback){
-          callback('maze')
+        if(sceneCallback){
+          sceneCallback('maze')
+          setHint(hint => hint = "")
+        }
+        if(chickenPosCallback) {
+          chickenPosCallback(chickenTop => chickenTop = 490)
         }
       }
     }, 30)
