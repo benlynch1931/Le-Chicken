@@ -7,19 +7,32 @@ import Coop from './src/Coop.js'
 export default function App() {
   const [chickenTop, setChickenTop] = useState(450)
   const [chickenGraphic, setChickenGraphic] = useState("right")
-  const screenWidth = Dimensions.get("screen").width  
-  const screenHeight = Dimensions.get("screen").height
+  const [textInput, setTextInput] = useState("")
+  const [hint, setHint] = useState("Pour marcher: Type ‘marcher’")
+
+
   const checkInput = (text) => {
-    if (text.toLowerCase() === "marcher") {
-      walkUp();
+    setTextInput(textInput => textInput = text)
+    if (hint === "Pour marcher: Type ‘marcher’" && text.toLowerCase() === "marcher") {
+      walkUp(70);
+      clearText();
+      setHint(hint => hint = "Pour ouvrir: Type 'ouvrir'")
+    }
+    if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
+      walkUp(20);
+      clearText();
     }
   }
 
-  const walkUp = () => {
+  const clearText = () => {
+    setTextInput(textInput => textInput = "")
+  }
+
+  const walkUp = (walkCount) => {
     let counter = 0
     setChickenGraphic(chickenGraphic => chickenGraphic = 'walkUp')
     let chickenWalk = setInterval(() => {
-      if (counter < 70) {
+      if (counter < walkCount) {
         setChickenTop(chickenTop => chickenTop - 5)
         counter = counter + 1
       } else {
@@ -29,14 +42,22 @@ export default function App() {
     }, 30)
   }
 
+  const clear = () => {
+    console.log("cleared")
+  }
+
+  
+
   return (
     <View style={styles.container}>
       <Coop></Coop>
       <Chicken chickenTop={chickenTop} chickenGraphic={chickenGraphic} />
+      <Text style={styles.hintText}>Hint: {hint}</Text>
       <TextInput style={styles.input}
-        placeholder="Type Marcher"
         placeholderTextColor="black"
+
         onChangeText={checkInput}
+        value={textInput}
       />
     </View>
   );
@@ -50,12 +71,17 @@ const styles = StyleSheet.create({
   },
   input: {
     zIndex: 3,
-    top: 580,
+    top: 600,
     position: 'absolute',
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey',
     padding: 10,
     borderRadius: 5
+  },
+  hintText: {
+    zIndex: 3,
+    top: 560,
+    position: 'absolute'
   }
 });
