@@ -8,7 +8,8 @@ const Chicken = ({ chickenGraphic, chickenTop }) => {
   const graphics = {
     left: require('../assets/chicken-left.png'),
     right: require('../assets/chicken-right.png'),
-    walkUp: require('../assets/chicken-run-back.gif')
+    walkUp: require('../assets/chicken-run-back.gif'),
+    up: require('../assets/chicken-stand-back.png')
   }
 
   return (

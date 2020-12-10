@@ -23,9 +23,8 @@ export default function App() {
         counter = counter + 1
       } else {
         clearInterval(chickenWalk)
+        setChickenGraphic(chickenGraphic => chickenGraphic = 'up')
       }
-      console.log("counter:" + counter)
-      console.log("CT:" + chickenTop)
     }, 30)
   }
 

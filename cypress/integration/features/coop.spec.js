@@ -23,4 +23,12 @@ context('Coop Actions', () => {
       .type('marcher')
     cy.get('#chicken-walkUp')
   })
+
+  it("resets chicken to idle when stopped", () => {
+    cy.get('#chicken-right')
+    cy.get('input')
+      .type('marcher')
+    cy.get('#chicken-walkUp')
+    cy.get('#chicken-up')
+  })
 })
