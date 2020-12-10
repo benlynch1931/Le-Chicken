@@ -1,31 +1,40 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Chicken from './src/Chicken.js'
 import Coop from './src/Coop.js'
 
 export default function App() {
-  const [chickenTop, setChickenTop] = useState(10)
+  const [chickenTop, setChickenTop] = useState(450)
   const [chickenGraphic, setChickenGraphic] = useState("right")
 
   const checkInput = (text) => {
-    if (text.toLowerCase() === "marche") {
-      chicken.walkRight();
+    if (text.toLowerCase() === "marcher") {
+      walkUp();
     }
+  }
+
+  const walkUp = () => {
+    let counter = 0
+    let chickenWalk = setInterval(() => {
+      if (counter < 90) {
+        setChickenTop(chickenTop => chickenTop - 5)
+        counter = counter + 1
+      } else {
+        clearInterval(chickenWalk)
+      }
+      console.log("counter:" + counter)
+      console.log("CT:" + chickenTop)
+    }, 30)
   }
 
   return (
     <View style={styles.container}>
-      <Text>Le Chicken!</Text>
-      <StatusBar style="auto" />
       <Coop></Coop>
-      <Text>2: {chickenGraphic}</Text>
       <Chicken chickenTop={chickenTop} chickenGraphic={chickenGraphic} />
       <TextInput style={styles.input}
-        placeholder="Type Marche"
+        placeholder="Type Marcher"
         placeholderTextColor="black"
-        autoCapitalize="none"
-        name="marche"
         onChangeText={checkInput}
       />
     </View>
@@ -37,6 +46,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
+  input: {
+    zIndex: 3,
+    top: 580,
+    fontSize: 20,
+    borderWidth: 2,
+    borderColor: 'grey',
+    padding: 10,
+    borderRadius: 5
+  }
 });
