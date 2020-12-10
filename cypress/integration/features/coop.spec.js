@@ -15,7 +15,7 @@ context('Coop Actions', () => {
     cy.get('#chicken-right').should('have.css', 'top', '450px')
     cy.get('input')
       .type('marcher')
-    cy.get('#chicken-walkUp').should('have.css', 'top', '0px')
+    cy.get('#chicken-up').should('have.css', 'top', '100px')
   })
 
   it("animates the chicken, when walking up", () => {

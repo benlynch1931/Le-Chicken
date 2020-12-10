@@ -19,7 +19,7 @@ export default function App() {
     let counter = 0
     setChickenGraphic(chickenGraphic => chickenGraphic = 'walkUp')
     let chickenWalk = setInterval(() => {
-      if (counter < 90) {
+      if (counter < 70) {
         setChickenTop(chickenTop => chickenTop - 5)
         counter = counter + 1
       } else {
