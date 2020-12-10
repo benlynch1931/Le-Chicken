@@ -10,7 +10,7 @@ const Maze = () => {
         top: 50,
         width: 500,
         height: 500,
-        backgroundColor: 'blue'
+        backgroundColor: 'rgb(0, 0, 255)'
       }}
       nativeID='maze'
     >

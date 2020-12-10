@@ -3,9 +3,9 @@ import { Image, View } from 'react-native';
 import Coop from './scenes/Coop.js';
 import Maze from './scenes/Maze.js';
 
-const Scene = () => {
-  let sceneSelector = 'coop';
+const Scene = (props) => {
   let scene;
+  const sceneSelector = props.sceneSelector
 
   if (sceneSelector === 'coop') {
     scene = <Coop />

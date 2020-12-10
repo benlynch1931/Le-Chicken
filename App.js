@@ -26,18 +26,14 @@ export default function App() {
       } else {
         clearInterval(chickenWalk)
         setChickenGraphic(chickenGraphic => chickenGraphic = 'up')
-        console.log('go maze!')
-        setSceneSelector(sceneSelector => sceneSelector = 'maze')
-        console.log('were done here')
-        setTimeout(() => { console.log(chickenGraphic) }, 1000)
-        setTimeout(() => { console.log(sceneSelector) }, 1000)
+        setSceneSelector('maze')
       }
     }, 30)
   }
 
   return (
     <View style={styles.container}>
-      <Scene></Scene>
+      <Scene sceneSelector={sceneSelector} />
       <Chicken chickenTop={chickenTop} chickenGraphic={chickenGraphic} />
       <TextInput style={styles.input}
         placeholder="Type Marcher"
