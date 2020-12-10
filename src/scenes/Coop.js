@@ -17,4 +17,4 @@ const Coop = () => {
   )
 }
 
-export default Coop
+export default Coop;
