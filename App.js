@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, Dimensions } from 'react-native';
 import Chicken from './src/Chicken.js'
 import Scene from './src/Scene.js'
+import GameContextProvider from './src/contexts/GameContext.js';
 
 export default function App() {
   const [chickenTop, setChickenTop] = useState(450)
@@ -55,15 +56,17 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Scene sceneSelector={sceneSelector} />
-      <Chicken chickenTop={chickenTop} chickenGraphic={chickenGraphic} />
-      <Text style={styles.hintText}>Hint: {hint}</Text>
-      <TextInput style={styles.input}
-        placeholderTextColor="black"
+      <GameContextProvider>
+        <Scene sceneSelector={sceneSelector} />
+        <Chicken chickenTop={chickenTop} chickenGraphic={chickenGraphic} />
+        <Text style={styles.hintText}>Hint: {hint}</Text>
+        <TextInput style={styles.input}
+          placeholderTextColor="black"
 
-        onChangeText={checkInput}
-        value={textInput}
-      />
+          onChangeText={checkInput}
+          value={textInput}
+        />
+      </GameContextProvider>
     </View>
   );
 }
