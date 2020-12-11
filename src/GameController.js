@@ -11,16 +11,18 @@ const GameController = () => {
 
   return (
     <GameContext.Consumer>{(context) => {
-      const { changeInputText, inputText, hint, changeHint } = context;
+      const { changeInputText, inputText, hint, changeHint, changeLevel } = context;
 
       const checkInput = (text) => {
         changeInputText(text)
         if (hint === "Pour marcher: Type ‘marcher’" && text.toLowerCase() === "marcher") {
+          changeLevel(1)
           changeInputText("")
           changeHint("Pour ouvrir: Type 'ouvrir'")
         }
 
         if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
+          changeLevel(2)
           changeInputText("");
         }
       }
@@ -36,8 +38,6 @@ const GameController = () => {
             onChangeText={checkInput}
             value={inputText}
           />
-          <SceneController />
-          <Chicken />
         </View >
       )
     }}

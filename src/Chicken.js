@@ -3,7 +3,7 @@ import { Image, View, Text } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 
 const Chicken = () => {
-  const { chickenPositionY, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, hint, chickenMoving, changeChickenMoving } = useContext(GameContext)
+  const { chickenPositionY, level, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, chickenMoving, changeChickenMoving } = useContext(GameContext)
   const chickenWidth = 50
   const chickenHeight = 50
 
@@ -18,7 +18,6 @@ const Chicken = () => {
   }
 
   const _moveIncrement = (direction) => {
-    console.log("moving")
     increaseChickenPositionY(-5)
   }
 
@@ -30,10 +29,9 @@ const Chicken = () => {
   }
 
   const move = (direction, distance, context) => {
+    console.log("moving")
     handleChickenGraphic(direction, 'walk');
     let chickenWalk = setInterval(() => {
-      console.log("CY:", chickenPositionY)
-      console.log("distancwe:", distance)
       if (distance <= 0) {
         _finishMovement(direction, chickenWalk)
       }
@@ -42,14 +40,16 @@ const Chicken = () => {
     }, 30)
   }
 
-  useEffect((hint) => {
-    console.log("useffect")
-    if (hint ==  "Pour ouvrir: Type 'ouvrir'" && !chickenMoving) {
+  useEffect(() => {
+    if (level ==  1) {
       console.log("inside useffect")
       changeChickenMoving()
       move('up', 70)
     }
-  }, [hint])
+    if (level == 2) {
+      move('up', 20)
+    }
+  }, [level])
 
 
   const graphics = {

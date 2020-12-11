@@ -9,9 +9,13 @@ class GameContextProvider extends Component {
     chickenPositionY: 450,
     inputText: "",
     hint: "Pour marcher: Type ‘marcher’",
-    chickenMoving: false
+    chickenMoving: false,
+    level: 0
   }
 
+  changeLevel = (level) => {
+    this.setState({ level: level })
+  }
   changeInputText = (inputText) => {
     this.setState({ inputText: inputText })
   }
@@ -53,7 +57,8 @@ class GameContextProvider extends Component {
         resetChickenPosition: this.resetChickenPosition,
         changeInputText: this.changeInputText,
         changeHint: this.changeHint,
-        changeChickenMoving: this.changeChickenMoving
+        changeChickenMoving: this.changeChickenMoving,
+        changeLevel: this.changeLevel
       }}>
         {this.props.children}
       </GameContext.Provider>
