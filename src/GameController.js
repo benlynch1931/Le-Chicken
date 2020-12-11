@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TextInput, View, StyleSheet } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
+import SceneController from './SceneController.js';
+import Chicken from './Chicken.js'
 //import move from './utils/Move'
 
 const GameController = () => {
-  const [textInput, setTextInput] = useState("")
-  const [hint, setHint] = useState("Pour marcher: Type ‘marcher’")
 
 
 
   return (
     <GameContext.Consumer>{(context) => {
 
-      const { changeChickenGraphic, increaseChickenPositionY, resetChickenPosition, changeScene } = context;
+      const { changeChickenGraphic, increaseChickenPositionY, resetChickenPosition, changeScene, changeInputText, inputText, hint, changeHint } = context;
 
-      const loadMaze = () => {
-        changeScene('maze')
-        resetChickenPosition()
-      }
 
       const handleChickenGraphic = (direction, state) => {
         if (direction == 'up' && state == 'walk') {
@@ -32,7 +28,7 @@ const GameController = () => {
 
         let chickenWalk = setInterval(() => {
           if (distance <= 0) {
-            _finishMovement(direction, callback, chickenWalk)
+            _finishMovement(direction, chickenWalk)
             return
           }
           _moveIncrement();
@@ -44,27 +40,22 @@ const GameController = () => {
         increaseChickenPositionY(-5)
       }
 
-      const _finishMovement = (direction, callback, chickenWalk) => {
+      const _finishMovement = (direction, chickenWalk) => {
         clearInterval(chickenWalk)
         handleChickenGraphic(direction, 'idle');
-        callback();
       }
 
       const checkInput = (text) => {
-        setTextInput(textInput => textInput = text)
+        changeInputText(text)
         if (hint === "Pour marcher: Type ‘marcher’" && text.toLowerCase() === "marcher") {
           move('up', 70);
-          clearText();
-          setHint(hint => hint = "Pour ouvrir: Type 'ouvrir'")
+          changeInputText("")
+          changeHint("Pour ouvrir: Type 'ouvrir'")
         }
         if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
-          move('up', 20, loadMaze)
-          clearText();
+          move('up', 20)
+          changeInputText("");
         }
-      }
-
-      const clearText = () => {
-        setTextInput(textInput => textInput = "")
       }
 
       return (
@@ -76,8 +67,10 @@ const GameController = () => {
             placeholderTextColor="black"
 
             onChangeText={checkInput}
-            value={textInput}
+            value={inputText}
           />
+          <SceneController />
+          <Chicken />
         </View >
       )
     }}

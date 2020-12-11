@@ -2,18 +2,19 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import Chicken from './src/Chicken.js'
-import Scene from './src/Scene.js'
+//import Scene from './src/SceneController.js'
 import GameController from './src/GameController.js'
 import GameContextProvider from './src/contexts/GameContext.js';
+import SceneController from './src/SceneController.js';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
       <GameContextProvider>
-        <Scene />
-        <Chicken />
         <GameController />
+        <SceneController />
+        <Chicken />
       </GameContextProvider>
     </View>
   );

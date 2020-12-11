@@ -25,7 +25,7 @@ const Chicken = ({ chickenGraphic, chickenTop }) => {
               top: chickenPositionY,
               width: chickenWidth,
               height: chickenHeight,
-              right: -20
+              right: -20,
             }}
             // nativeID='chicken'
             nativeID={`chicken-${chickenGraphic}`}

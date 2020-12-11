@@ -4,13 +4,18 @@ export const GameContext = createContext();
 
 class GameContextProvider extends Component {
   state = {
-    sceneSelector: 'coop',
+    currentScene: 'coop',
     chickenGraphic: 'right',
-    chickenPositionY: 450
+    chickenPositionY: 450,
+    inputText: "",
+    hint: "Pour marcher: Type ‘marcher’"
   }
 
+  changeInputText = (inputText) => {
+    this.setState({ inputText: inputText })
+  }
   changeScene = (sceneName) => {
-    this.setState({ sceneSelector: sceneName })
+    this.setState({ currentScene: sceneName })
   }
   changeChickenGraphic = (chickenGraphic) => {
     this.setState({ chickenGraphic: chickenGraphic })
@@ -26,6 +31,12 @@ class GameContextProvider extends Component {
     this.changeChickenGraphic('right')
   }
 
+  changeHint = (hint) => {
+    this.setState({ hint: hint })
+  }
+
+
+
   render() {
     return (
       <GameContext.Provider value={{
@@ -34,7 +45,9 @@ class GameContextProvider extends Component {
         changeChickenGraphic: this.changeChickenGraphic,
         changeChickenPositionY: this.changeChickenPositionY,
         increaseChickenPositionY: this.increaseChickenPositionY,
-        resetChickenPosition: this.resetChickenPosition
+        resetChickenPosition: this.resetChickenPosition,
+        changeInputText: this.changeInputText,
+        changeHint: this.changeHint
       }}>
         {this.props.children}
       </GameContext.Provider>
