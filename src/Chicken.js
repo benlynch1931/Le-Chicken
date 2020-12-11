@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Image, View, Text } from 'react-native';
+import { GameContext } from './contexts/GameContext.js';
 
 const Chicken = ({ chickenGraphic, chickenTop }) => {
   const chickenWidth = 50
@@ -13,20 +14,27 @@ const Chicken = ({ chickenGraphic, chickenTop }) => {
   }
 
   return (
-    <View>
-      <Image
-        style={{
-          position: 'absolute',
-          top: chickenTop,
-          width: chickenWidth,
-          height: chickenHeight,
-          right: -20
-        }}
-        // nativeID='chicken'
-        nativeID={`chicken-${chickenGraphic}`}
-        source={graphics[chickenGraphic]}
-      />
-    </View >
+
+    <GameContext.Consumer>{(context) => {
+      const { chickenPositionY, chickenGraphic } = context;
+      return (
+        <View>
+          < Image
+            style={{
+              position: 'absolute',
+              top: chickenPositionY,
+              width: chickenWidth,
+              height: chickenHeight,
+              right: -20
+            }}
+            // nativeID='chicken'
+            nativeID={`chicken-${chickenGraphic}`}
+            source={graphics[chickenGraphic]}
+          />
+        </View>
+      )
+    }}
+    </GameContext.Consumer>
 
   )
 }
