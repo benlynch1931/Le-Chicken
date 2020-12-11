@@ -58,7 +58,7 @@ const Chicken = () => {
 
 
   return (
-    <View>
+    <View style={{zIndex: 4}}>
       < Image
         style={{
           position: 'absolute',
@@ -67,6 +67,7 @@ const Chicken = () => {
           height: chickenHeight,
           left: "50%",
           marginLeft: -25
+          
         }}
         nativeID={`chicken-${chickenGraphic}`}
         source={graphics[chickenGraphic]}

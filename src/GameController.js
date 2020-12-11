@@ -28,9 +28,7 @@ const GameController = () => {
       }
 
       return (
-        < View style={{
-          position: 'absolute',
-        }} >
+        < View style={styles.container} >
           <Text style={styles.hintText}>Hint: {hint}</Text>
           <TextInput style={styles.input}
             placeholderTextColor="black"
@@ -49,24 +47,27 @@ const GameController = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    width: '100%',
   },
   input: {
     zIndex: 3,
+    width: 150,
     top: 600,
     position: 'absolute',
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey',
     padding: 10,
-    borderRadius: 5
+    borderRadius: 5,
+    textAlign: "center",
+    alignSelf: "center"
   },
   hintText: {
     zIndex: 3,
     top: 560,
-    position: 'absolute'
+    position: 'absolute',
+    alignSelf: "center"
   }
 });
 

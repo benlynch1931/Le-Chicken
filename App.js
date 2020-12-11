@@ -22,27 +22,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // alignItems: 'center',
-  },
-  input: {
-    zIndex: 3,
-    width: 150,
-    top: 600,
-    left: "50%",
-    marginLeft: -75,
-    position: 'absolute',
-    fontSize: 20,
-    borderWidth: 2,
-    borderColor: 'grey',
-    padding: 10,
-    borderRadius: 5,
-    textAlign: "center"
-
-  },
-  hintText: {
-    zIndex: 3,
-    top: 560,
-    position: 'absolute',
-    alignSelf: "center"
+    alignItems: 'center',
   }
 });
