@@ -7,7 +7,6 @@ import { GameContext } from './contexts/GameContext.js';
 const SceneController = () => {
   const { currentScene, chickenPositionY, changeScene, resetChickenPosition } = useContext(GameContext)
   let scene;
-  // const sceneSelector = props.sceneSelector
 
   useEffect(() => {
      if (chickenPositionY == 0) {
@@ -21,7 +20,6 @@ const SceneController = () => {
   } else if (currentScene === 'maze') {
     scene = <Maze />
   };
-
 
   return (
     < View style={{
