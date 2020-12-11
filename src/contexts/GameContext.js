@@ -33,7 +33,7 @@ class GameContextProvider extends Component {
     this.setState({ chickenPositionY: this.state.chickenPositionY + increase })
   }
   resetChickenPosition = () => {
-    this.changeChickenPositionY(500)
+    this.changeChickenPositionY(hp('60%'))
     this.changeChickenGraphic('up')
   }
 

@@ -17,6 +17,6 @@ context('Maze', () => {
     cy.wait(5000)
     cy.get('input')
       .type('ouvrir')
-    cy.get('#chicken-up').should('have.css', 'top', '480px')
+    cy.get('#chicken-up').should('have.css', 'top', '467px')
   })
 })

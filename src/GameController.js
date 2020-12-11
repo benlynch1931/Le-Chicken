@@ -25,6 +25,7 @@ const GameController = () => {
         if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
           changeLevel(2)
           changeInputText("");
+          changeHint("")
         }
       }
 
