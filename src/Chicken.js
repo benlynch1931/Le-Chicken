@@ -20,7 +20,7 @@ const Chicken = () => {
   }
 
   const _moveIncrement = (direction) => {
-    increaseChickenPositionY(-(hp("0.62%")))
+    increaseChickenPositionY(-(hp("0.5%")))
   }
 
   const _finishMovement = (direction, chickenWalk) => {
@@ -43,10 +43,10 @@ const Chicken = () => {
   useEffect(() => {
     if (level ==  1) {
       changeChickenMoving()
-      move('up', 70)
+      move('up', 90)
     }
     if (level == 2) {
-      move('up', 20)
+      move('up', 27)
     }
   }, [level])
 

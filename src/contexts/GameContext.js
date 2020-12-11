@@ -1,4 +1,5 @@
 import React, { createContext, Component } from 'react';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export const GameContext = createContext();
 
@@ -6,7 +7,7 @@ class GameContextProvider extends Component {
   state = {
     currentScene: 'coop',
     chickenGraphic: 'right',
-    chickenPositionY: 450,
+    chickenPositionY: hp("60%"),
     inputText: "",
     hint: "Pour marcher: Type ‘marcher’",
     chickenMoving: false,

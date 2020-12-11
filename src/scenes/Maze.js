@@ -8,7 +8,7 @@ const Maze = () => {
   return (
     <View
       style={{
-        top: hp("6.16%"),
+        top: hp("6%"),
         width: wp("100%"),
         height: hp("61.58%"),
         backgroundColor: 'rgb(174, 224, 153)'
