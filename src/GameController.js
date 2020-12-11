@@ -12,7 +12,7 @@ const GameController = () => {
 
   return (
     <GameContext.Consumer>{(context) => {
-      const { changeInputText, inputText, hint, changeHint, changeLevel } = context;
+      const { changeInputText, inputText, hint, changeHint, changeLevel, level, changeChickenMoving, changeChickenDirection } = context;
 
       const checkInput = (text) => {
         changeInputText(text)
@@ -26,6 +26,12 @@ const GameController = () => {
           changeLevel(2)
           changeInputText("");
           changeHint("")
+        }
+
+        if (level === 2 && text.toLowerCase() === "haut") {
+          changeChickenDirection('up');
+          changeChickenMoving();
+          changeInputText("");
         }
       }
 

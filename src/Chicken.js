@@ -5,7 +5,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 
 const Chicken = () => {
-  const { chickenPositionY, level, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, chickenMoving, changeChickenMoving } = useContext(GameContext)
+  const { chickenPositionY, level, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, chickenMoving, changeChickenMoving, direction } = useContext(GameContext)
   const chickenWidth = wp("13.33%")
   const chickenHeight = hp("6.16%")
 
@@ -47,6 +47,9 @@ const Chicken = () => {
     }
     if (level == 2) {
       move('up', 27)
+    }
+    if (chickenMoving == true && direction === 'up') {
+      move('up', 10)
     }
   }, [level])
 
