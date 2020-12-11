@@ -1,15 +1,13 @@
 import React from 'react';
 import { Text, TextInput, View, StyleSheet } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const GameController = () => {
 
-
-
   return (
     <GameContext.Consumer>{(context) => {
-      const { changeInputText, inputText, hint, changeHint, changeLevel } = context;
+      const { changeInputText, inputText, hint, changeHint, changeLevel, level, changeChickenMoving, changeChickenDirection } = context;
 
       const checkInput = (text) => {
         changeInputText(text)
@@ -21,6 +19,13 @@ const GameController = () => {
 
         if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
           changeLevel(2)
+          changeInputText("");
+          changeHint("")
+        }
+
+        if (level === 2 && text.toLowerCase() === "haut") {
+          changeChickenDirection('up');
+          changeChickenMoving();
           changeInputText("");
         }
       }
@@ -46,12 +51,12 @@ const GameController = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    width: '100%',
+    width: wp('100%'),
   },
   input: {
     zIndex: 3,
-    width: 150,
-    top: 600,
+    width: wp("40%"),
+    top: hp("75%"),
     position: 'absolute',
     fontSize: 20,
     borderWidth: 2,
@@ -63,7 +68,7 @@ const styles = StyleSheet.create({
   },
   hintText: {
     zIndex: 3,
-    top: 560,
+    top: hp("70%"),
     position: 'absolute',
     alignSelf: "center"
   }
