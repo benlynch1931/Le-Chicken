@@ -10,13 +10,13 @@ context('Maze', () => {
     cy.wait(2000)
     cy.get('input')
       .type('ouvrir')
-    cy.get('#maze').should('have.css', 'backgroundColor', 'rgb(182, 215, 168)')
+    cy.get('#maze').should('have.css', 'backgroundColor', 'rgb(174, 224, 153)')
   })
 
   it('places chicken at starting point', () => {
     cy.wait(2000)
     cy.get('input')
       .type('ouvrir')
-    cy.get('#chicken-up').should('have.css', 'top', '490px')
+    cy.get('#chicken-up').should('have.css', 'top', '500px')
   })
 })

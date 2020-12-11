@@ -1,11 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Image, View, Text } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 const Chicken = () => {
   const { chickenPositionY, level, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, chickenMoving, changeChickenMoving } = useContext(GameContext)
-  const chickenWidth = 50
-  const chickenHeight = 50
+  const chickenWidth = wp("13.33%")
+  const chickenHeight = hp("6.16%")
 
   const handleChickenGraphic = (direction, state) => {
     if (direction == 'up' && state == 'walk') {
@@ -67,14 +69,14 @@ const Chicken = () => {
           height: chickenHeight,
           left: "50%",
           marginLeft: -25
-          
+
         }}
         nativeID={`chicken-${chickenGraphic}`}
         source={graphics[chickenGraphic]}
       />
     </View>
   );
-    
+
 }
 
 export default Chicken

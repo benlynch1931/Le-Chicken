@@ -1,21 +1,22 @@
 import React from 'react';
 import { Image, View } from 'react-native';
-import { Svg, Line } from 'react-native-svg'
+import { Svg, Line } from 'react-native-svg';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const Maze = () => {
 
   return (
     <View
       style={{
-        top: 50,
-        width: 450,
-        height: 500,
+        top: hp("6.16%"),
+        width: wp("100%"),
+        height: hp("61.58%"),
         backgroundColor: 'rgb(174, 224, 153)'
       }}
       nativeID='maze'
     >
     {/* The walls for the maze */}
-    <Svg height="400" width="375" style={{ position: "absolute", top: 15, left: 18.75}}>
+    <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%")}}>
       {/* borders */}
         <Line x1="212.5"   x2="375"   y1="392.5"  y2="392.5"  stroke="#38761D" strokeWidth="15" />
         <Line x1="0"       x2="162.5" y1="392.5"  y2="392.5"  stroke="#38761D" strokeWidth="15" />
