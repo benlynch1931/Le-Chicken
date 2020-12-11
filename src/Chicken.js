@@ -20,7 +20,7 @@ const Chicken = () => {
   }
 
   const _moveIncrement = (direction) => {
-    increaseChickenPositionY(-5)
+    increaseChickenPositionY(-(hp("0.62%")))
   }
 
   const _finishMovement = (direction, chickenWalk) => {
@@ -68,7 +68,7 @@ const Chicken = () => {
           width: chickenWidth,
           height: chickenHeight,
           left: "50%",
-          marginLeft: -25
+          marginLeft: -(0.5*chickenWidth)
 
         }}
         nativeID={`chicken-${chickenGraphic}`}
