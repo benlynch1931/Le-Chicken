@@ -22,27 +22,24 @@ const Chicken = () => {
   }
 
   const _finishMovement = (direction, chickenWalk) => {
-    console.log("in finish movement")
     clearInterval(chickenWalk)
     handleChickenGraphic(direction, 'idle');
     changeChickenMoving()
   }
 
   const move = (direction, distance, context) => {
-    console.log("moving")
     handleChickenGraphic(direction, 'walk');
     let chickenWalk = setInterval(() => {
+      distance--;
       if (distance <= 0) {
         _finishMovement(direction, chickenWalk)
       }
       _moveIncrement('up');
-      distance--;
     }, 30)
   }
 
   useEffect(() => {
     if (level ==  1) {
-      console.log("inside useffect")
       changeChickenMoving()
       move('up', 70)
     }
