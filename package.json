@@ -9,7 +9,10 @@
     "test": "jest"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base)"
+    ]
   },
   "dependencies": {
     "expo": "~39.0.2",
@@ -27,7 +30,10 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
-    "cypress": "^4.0.1"
+    "cypress": "^4.0.1",
+    "jest-expo": "^40.0.1",
+    "react-native-testing-library": "^6.0.0",
+    "react-test-renderer": "^17.0.1"
   },
   "private": true
 }

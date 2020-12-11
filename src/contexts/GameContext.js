@@ -49,8 +49,6 @@ class GameContextProvider extends Component {
     this.setState({chickenMoving: !this.state.chickenMoving})
   }
 
-
-
   render() {
     return (
       <GameContext.Provider value={{
@@ -63,8 +61,8 @@ class GameContextProvider extends Component {
         changeInputText: this.changeInputText,
         changeHint: this.changeHint,
         changeChickenMoving: this.changeChickenMoving,
-        changeLevel: this.changeLevel,
-        changeChickenDirection: this.changeChickenDirection
+        changeChickenDirection: this.changeChickenDirection,
+        changeLevel: this.changeLevel
       }}>
         {this.props.children}
       </GameContext.Provider>

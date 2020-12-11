@@ -26,7 +26,6 @@ const Chicken = () => {
   const _finishMovement = (direction, chickenWalk) => {
     clearInterval(chickenWalk)
     handleChickenGraphic(direction, 'idle');
-    changeChickenMoving()
   }
 
   const move = (direction, distance, context) => {

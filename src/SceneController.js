@@ -8,7 +8,6 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 const SceneController = () => {
   const { currentScene, chickenPositionY, changeScene, resetChickenPosition } = useContext(GameContext)
   let scene;
-  // const sceneSelector = props.sceneSelector
 
   useEffect(() => {
      if (chickenPositionY <= hp("5%")) {
@@ -22,7 +21,6 @@ const SceneController = () => {
   } else if (currentScene === 'maze') {
     scene = <Maze />
   };
-
 
   return (
     < View style={{

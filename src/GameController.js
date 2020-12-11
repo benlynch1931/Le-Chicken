@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Text, TextInput, View, StyleSheet } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
-import SceneController from './SceneController.js';
-import Chicken from './Chicken.js';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-//import move from './utils/Move'
 
 const GameController = () => {
-
-
 
   return (
     <GameContext.Consumer>{(context) => {
