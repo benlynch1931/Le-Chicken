@@ -39,6 +39,6 @@ context('Coop Actions', () => {
       .type('marcher')
     cy.get('input')
       .type('ouvrir')
-    cy.get('#chicken-up').should('have.css', 'top', '0px')
+    cy.get('#chicken-up').should('have.css', 'top', '5px')
   })
 })
