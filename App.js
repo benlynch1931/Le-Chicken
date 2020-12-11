@@ -1,8 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Chicken from './src/Chicken.js'
-//import Scene from './src/SceneController.js'
 import GameController from './src/GameController.js'
 import GameContextProvider from './src/contexts/GameContext.js';
 import SceneController from './src/SceneController.js';

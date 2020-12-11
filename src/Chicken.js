@@ -1,12 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Image, View, Text } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 
 const Chicken = () => {
-  const { chickenPositionY, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, hint } = useContext(GameContext)
+  const { chickenPositionY, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, hint, chickenMoving, changeChickenMoving } = useContext(GameContext)
   const chickenWidth = 50
   const chickenHeight = 50
-
 
   const handleChickenGraphic = (direction, state) => {
     if (direction == 'up' && state == 'walk') {
@@ -27,27 +26,31 @@ const Chicken = () => {
     console.log("in finish movement")
     clearInterval(chickenWalk)
     handleChickenGraphic(direction, 'idle');
+    changeChickenMoving()
   }
 
   const move = (direction, distance, context) => {
-    console.log("CY:", chickenPositionY)
-    console.log("distancwe:", distance)
     handleChickenGraphic(direction, 'walk');
-
     let chickenWalk = setInterval(() => {
-      console.log(distance)
+      console.log("CY:", chickenPositionY)
+      console.log("distancwe:", distance)
       if (distance <= 0) {
         _finishMovement(direction, chickenWalk)
       }
       _moveIncrement('up');
       distance--;
-    }, 3000)
+    }, 30)
   }
 
-  if(hint == "Pour ouvrir: Type 'ouvrir'") {
-    move('up', 70)
-    return
-  }
+  useEffect((hint) => {
+    console.log("useffect")
+    if (hint ==  "Pour ouvrir: Type 'ouvrir'" && !chickenMoving) {
+      console.log("inside useffect")
+      changeChickenMoving()
+      move('up', 70)
+    }
+  }, [hint])
+
 
   const graphics = {
     left: require('../assets/chicken-left.png'),
@@ -72,7 +75,7 @@ const Chicken = () => {
         source={graphics[chickenGraphic]}
       />
     </View>
-  )
+  );
     
 }
 

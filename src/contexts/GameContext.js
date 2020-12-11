@@ -8,7 +8,8 @@ class GameContextProvider extends Component {
     chickenGraphic: 'right',
     chickenPositionY: 450,
     inputText: "",
-    hint: "Pour marcher: Type ‘marcher’"
+    hint: "Pour marcher: Type ‘marcher’",
+    chickenMoving: false
   }
 
   changeInputText = (inputText) => {
@@ -35,6 +36,10 @@ class GameContextProvider extends Component {
     this.setState({ hint: hint })
   }
 
+  changeChickenMoving = () => {
+    this.setState({chickenMoving: !this.chickenMoving})
+  }
+
 
 
   render() {
@@ -47,7 +52,8 @@ class GameContextProvider extends Component {
         increaseChickenPositionY: this.increaseChickenPositionY,
         resetChickenPosition: this.resetChickenPosition,
         changeInputText: this.changeInputText,
-        changeHint: this.changeHint
+        changeHint: this.changeHint,
+        changeChickenMoving: this.changeChickenMoving
       }}>
         {this.props.children}
       </GameContext.Provider>
