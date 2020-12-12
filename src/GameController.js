@@ -34,8 +34,6 @@ const GameController = () => {
         <View style={styles.container}>
           <Text style={styles.hintText}>Hint: {hint}</Text>
           <TextInput style={styles.input}
-            //placeholderTextColor="black"
-
             onChangeText={checkInput}
             value={inputText}
           />
@@ -49,16 +47,8 @@ const GameController = () => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    //width: wp('100%'),
-    //top: hp("70%")
-    //flex: 1
-  },
   input: {
-    //zIndex: 3,
     width: wp("40%"),
-    // top: hp("75%"),
-    // position: 'relative',
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey',
@@ -68,9 +58,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   hintText: {
-    //zIndex: 3,
-    //top: hp("70%"),
-    //position: 'absolute',
     alignSelf: "center",
     padding: hp("2%")
   }

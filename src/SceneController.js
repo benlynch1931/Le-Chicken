@@ -23,9 +23,7 @@ const SceneController = () => {
   };
 
   return (
-    < View style={{
-      //position: 'absolute',
-    }} >
+    < View >
       { scene}
     </View >
   )
