@@ -13,9 +13,7 @@ exports[`displays correct hint at level 0 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "position": "absolute",
-        "top": 934,
-        "zIndex": 3,
+        "padding": 26.5,
       }
     }
   >
@@ -38,9 +36,7 @@ exports[`displays correct hint at level 1 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "position": "absolute",
-        "top": 934,
-        "zIndex": 3,
+        "padding": 26.5,
       }
     }
   >

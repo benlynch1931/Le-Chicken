@@ -12,10 +12,11 @@ context('Coop Actions', () => {
   })
 
   it("moves the chicken to the top, when user types 'marche'", () => {
-    cy.get('#chicken-right').should('have.css', 'top', '450px')
+    cy.get('#chicken-right').should('have.css', 'top', '487px')
     cy.get('input')
       .type('marcher')
-    cy.get('#chicken-up').should('have.css', 'top', '100px')
+    cy.wait(3000)
+    cy.get('#chicken-up').should('have.css', 'top', '127px')
   })
 
   it("animates the chicken, when walking up", () => {
@@ -30,6 +31,7 @@ context('Coop Actions', () => {
     cy.get('input')
       .type('marcher')
     cy.get('#chicken-walkUp')
+    cy.wait(3000)
     cy.get('#chicken-up')
   })
 
@@ -39,6 +41,6 @@ context('Coop Actions', () => {
       .type('marcher')
     cy.get('input')
       .type('ouvrir')
-    cy.get('#chicken-up').should('have.css', 'top', '5px')
+    cy.get('#chicken-up').should('have.css', 'top', '219px')
   })
 })
