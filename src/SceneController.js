@@ -6,15 +6,15 @@ import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const SceneController = () => {
-  const { currentScene, chickenPositionY, changeScene, resetChickenPosition } = useContext(GameContext)
+  const { currentScene, chickenPosition, changeScene, resetChickenPosition } = useContext(GameContext)
   let scene;
 
   useEffect(() => {
-    if (chickenPositionY <= hp("5%")) {
+    if (chickenPosition[1] <= hp("5%")) {
       changeScene('maze')
       resetChickenPosition()
     }
-  }, [chickenPositionY])
+  }, [chickenPosition])
 
   if (currentScene === 'coop') {
     scene = <Coop />

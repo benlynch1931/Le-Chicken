@@ -3,16 +3,17 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 export const GameContext = createContext();
 
+const chickenPositionDefault = [wp("43.34%"), hp("60%")];
 class GameContextProvider extends Component {
   state = {
     currentScene: 'coop',
-    chickenGraphic: 'right',
-    chickenPositionY: hp("60%"),
+    chickenGraphic: 'idleright',
+    chickenPosition: chickenPositionDefault,
     inputText: "",
     hint: "Pour marcher: Type ‘marcher’",
     chickenToMove: 0,
     level: 0,
-    chickenDirection: ""
+    chickenDirection: "up"
   }
 
   changeLevel = (level) => {
@@ -30,14 +31,11 @@ class GameContextProvider extends Component {
   changeChickenGraphic = (chickenGraphic) => {
     this.setState({ chickenGraphic: chickenGraphic })
   }
-  changeChickenPositionY = (chickenPositionY) => {
-    this.setState({ chickenPositionY: chickenPositionY })
-  }
-  increaseChickenPositionY = (increase) => {
-    this.setState({ chickenPositionY: this.state.chickenPositionY + increase })
+  increaseChickenPosition = (x, y) => {
+    this.setState({ chickenPosition: [this.state.chickenPosition[0] + x, this.state.chickenPosition[1] + y] })
   }
   resetChickenPosition = () => {
-    this.changeChickenPositionY(hp('60%'))
+    this.setState({ chickenPosition: chickenPositionDefault })
     this.changeChickenGraphic('up')
   }
 
@@ -55,8 +53,7 @@ class GameContextProvider extends Component {
         ...this.state,
         changeScene: this.changeScene,
         changeChickenGraphic: this.changeChickenGraphic,
-        changeChickenPositionY: this.changeChickenPositionY,
-        increaseChickenPositionY: this.increaseChickenPositionY,
+        increaseChickenPosition: this.increaseChickenPosition,
         resetChickenPosition: this.resetChickenPosition,
         changeInputText: this.changeInputText,
         changeHint: this.changeHint,

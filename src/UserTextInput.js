@@ -18,16 +18,33 @@ const UserTextInput = () => {
 
     if (level === 1 && text.toLowerCase() === "ouvrir") {
       Keyboard.dismiss();
-      changeLevel(2)
+      changeLevel(2);
       changeChickenToMove(27);
       changeInputText("");
     }
 
-    if (level === 2 && text.toLowerCase() === "haut") {
-      Keyboard.dismiss();
-      changeChickenDirection('up');
-      changeChickenToMove(10);
-      changeInputText("");
+    if (level === 2) {
+      if (text.toLowerCase() === "haut") {
+        Keyboard.dismiss();
+        changeChickenDirection('up');
+        changeChickenToMove(10);
+        changeInputText("");
+      } else if (text.toLowerCase() === "droite") {
+        Keyboard.dismiss();
+        changeChickenDirection('right');
+        changeChickenToMove(10);
+        changeInputText("");
+      } else if (text.toLowerCase() === "bas") {
+        Keyboard.dismiss();
+        changeChickenDirection('down');
+        changeChickenToMove(10);
+        changeInputText("");
+      } else if (text.toLowerCase() === "gauche") {
+        Keyboard.dismiss();
+        changeChickenDirection('left');
+        changeChickenToMove(10);
+        changeInputText("");
+      }
     }
   }
 
