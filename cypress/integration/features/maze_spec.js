@@ -17,7 +17,7 @@ context('Maze', () => {
     cy.wait(3000)
     cy.get('input')
       .type('ouvrir')
-    cy.get('#chicken-up').should('have.css', 'top', '467px')
+    cy.get('#chicken-idleup').should('have.css', 'top', '467px')
   })
 
   it("moves the chicken up, when typing 'haut'", () => {
@@ -27,6 +27,6 @@ context('Maze', () => {
     cy.wait(3000)
     cy.get('input')
       .type('haut')
-    cy.get('#chicken-walkUp')
+    cy.get('#chicken-walkup')
   })
 })
