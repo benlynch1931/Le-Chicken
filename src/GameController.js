@@ -1,77 +1,54 @@
-import React from 'react';
-import { Text, TextInput, View, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import UserTextInput from './UserTextInput.js'
+import Hint from './Hint.js'
 
-const GameController = () => {
-
-  return (
-    <GameContext.Consumer>{(context) => {
-      const { changeInputText, inputText, hint, changeHint, changeLevel, level, changeChickenMoving, changeChickenDirection } = context;
-
-      const checkInput = (text) => {
-        changeInputText(text)
-        if (level === 0 && text.toLowerCase() === "marcher") {
-          changeLevel(1)
-          changeInputText("")
-          changeHint("Pour ouvrir: Type 'ouvrir'")
-        }
-
-        if (level === 1 && text.toLowerCase() === "ouvrir") {
-          changeLevel(2)
-          changeInputText("");
-          changeHint("")
-        }
-
-        if (level === 2 && text.toLowerCase() === "haut") {
-          changeChickenDirection('up');
-          changeChickenMoving();
-          changeInputText("");
-        }
-      }
-
-      return (
-        < View style={styles.container} >
-          <Text style={styles.hintText}>Hint: {hint}</Text>
-          <TextInput style={styles.input}
-            placeholderTextColor="black"
-
-            onChangeText={checkInput}
-            value={inputText}
-          />
-        </View >
-      )
-    }}
-
-    </GameContext.Consumer>
-
-  )
-}
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    width: wp('100%'),
-  },
-  input: {
-    zIndex: 3,
-    width: wp("40%"),
-    top: hp("75%"),
-    position: 'absolute',
-    fontSize: 20,
-    borderWidth: 2,
-    borderColor: 'grey',
-    padding: 10,
-    borderRadius: 5,
-    textAlign: "center",
-    alignSelf: "center"
-  },
-  hintText: {
-    zIndex: 3,
-    top: hp("70%"),
-    position: 'absolute',
-    alignSelf: "center"
+export class GameController extends Component {
+  constructor(){
+    super();
   }
-});
 
+  static contextType = GameContext;
+
+  render() {
+    const { changeInputText, inputText, hint, changeHint, changeLevel, level, changeChickenMoving, changeChickenDirection } =  this.context
+
+    const styles = StyleSheet.create({
+      container: {
+        backgroundColor: '#fff',
+        width: wp('100%'),
+      },
+      input: {
+        zIndex: 3,
+        width: wp("40%"),
+        top: hp("75%"),
+        position: 'absolute',
+        fontSize: 20,
+        borderWidth: 2,
+        borderColor: 'grey',
+        padding: 10,
+        borderRadius: 5,
+        textAlign: "center",
+        alignSelf: "center"
+      },
+      hintText: {
+        zIndex: 3,
+        top: hp("70%"),
+        position: 'absolute',
+        alignSelf: "center"
+      }
+    });
+
+    return (
+      < View style={styles.container} >
+        <Hint/>
+        <UserTextInput/>
+      </View >
+    )
+
+  }
+
+}
 export default GameController;
