@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput, View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { Text, TextInput, View, StyleSheet, Keyboard } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -12,18 +12,21 @@ const GameController = () => {
       const checkInput = (text) => {
         changeInputText(text)
         if (hint === "Pour marcher: Type ‘marcher’" && text.toLowerCase() === "marcher") {
+          Keyboard.dismiss()
           changeLevel(1)
           changeInputText("")
           changeHint("Pour ouvrir: Type 'ouvrir'")
         }
 
         if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
+          Keyboard.dismiss()
           changeLevel(2)
           changeInputText("");
           changeHint("")
         }
 
         if (level === 2 && text.toLowerCase() === "haut") {
+          Keyboard.dismiss()
           changeChickenDirection('up');
           changeChickenMoving();
           changeInputText("");
