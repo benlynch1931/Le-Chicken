@@ -5,26 +5,28 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 const UserTextInput = () => {
-  const { changeInputText, inputText, changeLevel, level, changeChickenMoving, changeChickenDirection } = useContext(GameContext)
+  const { changeInputText, inputText, changeLevel, level, changeChickenMoving, changeChickenDirection, chickenDirection } = useContext(GameContext)
 
   const checkInput = (text) => {
     changeInputText(text)
     if (level === 0 && text.toLowerCase() === "marcher") {
       Keyboard.dismiss();
       changeLevel(1)
+      changeChickenMoving(true);
       changeInputText("")
     }
 
     if (level === 1 && text.toLowerCase() === "ouvrir") {
       Keyboard.dismiss();
       changeLevel(2)
+      changeChickenMoving(true);
       changeInputText("");
     }
 
     if (level === 2 && text.toLowerCase() === "haut") {
       Keyboard.dismiss();
       changeChickenDirection('up');
-      changeChickenMoving();
+      changeChickenMoving(true);
       changeInputText("");
     }
   }

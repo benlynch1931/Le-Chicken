@@ -25,7 +25,8 @@ const Chicken = () => {
 
   const _finishMovement = (direction, chickenWalk) => {
     clearInterval(chickenWalk)
-    handleChickenGraphic(direction, 'idle');
+    handleChickenGraphic(direction, 'idle')
+    changeChickenMoving(false)
   }
 
   const move = (direction, distance, context) => {
@@ -40,17 +41,20 @@ const Chicken = () => {
   }
 
   useEffect(() => {
+    if (!chickenMoving) {
+      return;
+    }
     if (level == 1) {
-      changeChickenMoving()
       move('up', 90)
     }
     if (level == 2) {
       move('up', 27)
     }
-    if (chickenMoving == true && chickenDirection === 'up') {
+
+    if (chickenDirection == 'up') {
       move('up', 10)
     }
-  }, [level])
+  }, [level, chickenMoving, chickenDirection])
 
 
   const graphics = {

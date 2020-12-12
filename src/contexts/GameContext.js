@@ -1,5 +1,5 @@
 import React, { createContext, Component } from 'react';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export const GameContext = createContext();
 
@@ -19,7 +19,7 @@ class GameContextProvider extends Component {
     this.setState({ level: level })
   }
   changeChickenDirection = (direction) => {
-    this.setState({chickenDirection: direction})
+    this.setState({ chickenDirection: direction })
   }
   changeInputText = (inputText) => {
     this.setState({ inputText: inputText })
@@ -45,8 +45,10 @@ class GameContextProvider extends Component {
     this.setState({ hint: hint })
   }
 
-  changeChickenMoving = () => {
-    this.setState({chickenMoving: !this.state.chickenMoving})
+  changeChickenMoving = (chickenMoving) => {
+    this.setState({ chickenMoving: chickenMoving }
+      //, () => { console.log(this.state.chickenMoving) }
+    )
   }
 
   render() {
