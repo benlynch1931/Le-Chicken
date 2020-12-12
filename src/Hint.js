@@ -14,9 +14,7 @@ const Hint = () => {
   }
 
   useEffect(() => {
-    if (level == 1) {
-      setCurrentHint(hints[level])
-    }
+    setCurrentHint(hints[level])
   }, [level, currentHint])
 
   return (
