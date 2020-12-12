@@ -7,6 +7,12 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 const UserTextInput = () => {
   const { changeInputText, inputText, changeLevel, level, changeChickenToMove, changeChickenDirection, chickenDirection } = useContext(GameContext)
 
+  const directions = new Map()
+  directions.set('haut', 'up')
+  directions.set('bas', 'down')
+  directions.set('droite', 'right')
+  directions.set('gauche', 'left')
+
   const checkInput = (text) => {
     changeInputText(text)
     if (level === 0 && text.toLowerCase() === "marcher") {
@@ -24,26 +30,14 @@ const UserTextInput = () => {
     }
 
     if (level === 2) {
-      if (text.toLowerCase() === "haut") {
-        Keyboard.dismiss();
-        changeChickenDirection('up');
-        changeChickenToMove(10);
-        changeInputText("");
-      } else if (text.toLowerCase() === "droite") {
-        Keyboard.dismiss();
-        changeChickenDirection('right');
-        changeChickenToMove(10);
-        changeInputText("");
-      } else if (text.toLowerCase() === "bas") {
-        Keyboard.dismiss();
-        changeChickenDirection('down');
-        changeChickenToMove(10);
-        changeInputText("");
-      } else if (text.toLowerCase() === "gauche") {
-        Keyboard.dismiss();
-        changeChickenDirection('left');
-        changeChickenToMove(10);
-        changeInputText("");
+      for (const [french, english] of directions.entries()) {
+        console.log(text.toLowerCase())
+        console.log(french)
+        if (text.toLowerCase() == french) {
+          changeChickenDirection(english);
+          changeChickenToMove(20);
+          changeInputText("");
+        }
       }
     }
   }
