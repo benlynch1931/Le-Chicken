@@ -11,13 +11,13 @@ const GameController = () => {
 
       const checkInput = (text) => {
         changeInputText(text)
-        if (hint === "Pour marcher: Type ‘marcher’" && text.toLowerCase() === "marcher") {
+        if (level === 0 && text.toLowerCase() === "marcher") {
           changeLevel(1)
           changeInputText("")
           changeHint("Pour ouvrir: Type 'ouvrir'")
         }
 
-        if (hint === "Pour ouvrir: Type 'ouvrir'" && text.toLowerCase() === "ouvrir") {
+        if (level === 1 && text.toLowerCase() === "ouvrir") {
           changeLevel(2)
           changeInputText("");
           changeHint("")
