@@ -24,9 +24,10 @@ test('renders correctly when the level is 1', async () => {
   mockContext.level = 1
   jest.useFakeTimers();
   await act(async () => {
-    create(<GameContext.Provider value={mockContext}><Chicken /></GameContext.Provider>)
+    newChicken = create(<GameContext.Provider value={mockContext}><Chicken /></GameContext.Provider>)
   });
   expect(mockContext.changeChickenGraphic).toHaveBeenCalled();
   jest.advanceTimersByTime(3000);
   expect(mockContext.increaseChickenPositionY).toHaveBeenCalled();
+  expect(newChicken).toMatchSnapshot();
 });
