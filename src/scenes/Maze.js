@@ -10,24 +10,24 @@ const Maze = () => {
 
   useEffect(() => {
     console.log('Here!')
-    for(const num in walls) {
-      if(walls[num].type == 'horizontal') {
+    for (const num in walls) {
+      if (walls[num].type == 'horizontal') {
         let horizontalWall = <Line x1={wp(`${walls[num].start}%`)} x2={wp(`${walls[num].end}%`)} y1={hp(`${walls[num].position}%`)} y2={hp(`${walls[num].position}%`)} stroke="#38761D" strokeWidth={hp(`${walls[num].stroke}%`)} />
         maze_array.push(horizontalWall)
       }
-      if(walls[num].type == 'vertical') {
+      if (walls[num].type == 'vertical') {
         maze_array.push(<Line x1={wp(`${walls[num].position}%`)} x2={wp(`${walls[num].position}%`)} y1={hp(`${walls[num].start}%`)} y2={hp(`${walls[num].end}%`)} stroke="#38761D" strokeWidth={hp(`${walls[num].stroke}%`)} />)
       }
     }
   })
 
-  const Test = ({maze_array}) => (
+  const Test = ({ maze_array }) => (
     <>
       {maze_array.map(wall => (
         wall
       ))}
     </>
-  ); 
+  );
 
 
   return (
@@ -42,7 +42,9 @@ const Maze = () => {
       {/* The walls for the maze */}
       <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%") }}>
         {
-          Test()
+          walls.filter(wall => wall.type == 'horizontal').map((wall) => (
+            <Line x1={wp(`${wall.start}%`)} x2={wp(`${wall.end}%`)} y1={hp(`${wall.position}%`)} y2={hp(`${wall.position}%`)} stroke="#38761D" strokeWidth={hp(`${wall.stroke}%`)} />
+          ))
         }
         {/* borders */}
         {/* <Line x1={wp(`${walls[0].start}%`)} x2={wp(`${walls[0].end}%`)} y1={hp(`${walls[0].position}%`)} y2={hp(`${walls[0].position}%`)} stroke="#38761D" strokeWidth={hp(`${walls[0].stroke}%`)} /> */}
