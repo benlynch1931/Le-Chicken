@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Chicken from './src/Chicken.js'
 import GameController from './src/GameController.js'
 import GameContextProvider from './src/contexts/GameContext.js';
@@ -9,21 +10,24 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 export default function App() {
 
   return (
-    <View style={styles.container}>
-      <GameContextProvider>
+    <GameContextProvider>
+      <KeyboardAwareScrollView
+        style={{ backgroundColor: 'white' }}
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        contentContainerStyle={styles.container}
+        scrollEnabled={false}
+      >
         <View style={{ height: hp("5%") }} />
         <SceneController />
         <Chicken />
         <GameController />
-      </GameContextProvider>
-    </View >
+      </KeyboardAwareScrollView >
+    </GameContextProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center'
   }
 });
