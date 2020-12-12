@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TextInput, View, StyleSheet } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const GameController = () => {
 
@@ -31,7 +31,7 @@ const GameController = () => {
       }
 
       return (
-        < View style={styles.container} >
+        < View style={styles.container}>
           <Text style={styles.hintText}>Hint: {hint}</Text>
           <TextInput style={styles.input}
             placeholderTextColor="black"
@@ -50,8 +50,7 @@ const GameController = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    width: wp('100%'),
+    width: wp('100%')
   },
   input: {
     zIndex: 3,
