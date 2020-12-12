@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Image, View, Text } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
 const Chicken = () => {
@@ -11,11 +11,11 @@ const Chicken = () => {
 
   const handleChickenGraphic = (direction, state) => {
     if (direction == 'up' && state == 'walk') {
-       changeChickenGraphic('walkUp')
-       return
+      changeChickenGraphic('walkUp')
+      return
     } else if (direction == 'up' && state == 'idle') {
-       changeChickenGraphic('up')
-       return
+      changeChickenGraphic('up')
+      return
     }
   }
 
@@ -40,7 +40,7 @@ const Chicken = () => {
   }
 
   useEffect(() => {
-    if (level ==  1) {
+    if (level == 1) {
       changeChickenMoving()
       move('up', 90)
     }
@@ -62,19 +62,18 @@ const Chicken = () => {
 
 
   return (
-    <View style={{zIndex: 4}}>
-      < Image
-        style={{
-          position: 'absolute',
-          top: chickenPositionY,
-          width: chickenWidth,
-          height: chickenHeight,
-          alignSelf: "center"
-        }}
-        nativeID={`chicken-${chickenGraphic}`}
-        source={graphics[chickenGraphic]}
-      />
-    </View>
+    < Image
+      style={{
+        position: 'absolute',
+        top: chickenPositionY,
+        width: chickenWidth,
+        height: chickenHeight,
+        alignSelf: "center",
+        zIndex: 4
+      }}
+      nativeID={`chicken-${chickenGraphic}`}
+      source={graphics[chickenGraphic]}
+    />
   );
 
 }

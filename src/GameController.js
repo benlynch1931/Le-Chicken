@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput, View, StyleSheet } from 'react-native';
+import { Text, TextInput, View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -31,15 +31,15 @@ const GameController = () => {
       }
 
       return (
-        < View style={styles.container}>
+        <View style={styles.container}>
           <Text style={styles.hintText}>Hint: {hint}</Text>
           <TextInput style={styles.input}
-            placeholderTextColor="black"
+            //placeholderTextColor="black"
 
             onChangeText={checkInput}
             value={inputText}
           />
-        </View >
+        </View>
       )
     }}
 
@@ -50,26 +50,29 @@ const GameController = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: wp('100%')
+    //width: wp('100%'),
+    //top: hp("70%")
+    //flex: 1
   },
   input: {
-    zIndex: 3,
+    //zIndex: 3,
     width: wp("40%"),
-    top: hp("75%"),
-    position: 'absolute',
+    // top: hp("75%"),
+    // position: 'relative',
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey',
     padding: 10,
     borderRadius: 5,
     textAlign: "center",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   hintText: {
-    zIndex: 3,
-    top: hp("70%"),
-    position: 'absolute',
-    alignSelf: "center"
+    //zIndex: 3,
+    //top: hp("70%"),
+    //position: 'absolute',
+    alignSelf: "center",
+    padding: hp("2%")
   }
 });
 
