@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 const Chicken = () => {
-  const { chickenPositionY, level, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, chickenMoving, changeChickenMoving, chickenDirection } = useContext(GameContext)
+  const { chickenPositionY, level, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, chickenDirection, changeChickenToMove, chickenToMove } = useContext(GameContext)
   const chickenWidth = wp("13.33%")
   const chickenHeight = hp("6.16%")
 
@@ -26,10 +26,10 @@ const Chicken = () => {
   const _finishMovement = (direction, chickenWalk) => {
     clearInterval(chickenWalk)
     handleChickenGraphic(direction, 'idle')
-    changeChickenMoving(false)
+    changeChickenToMove(0);
   }
 
-  const move = (direction, distance, context) => {
+  const move = (direction, distance) => {
     handleChickenGraphic(direction, 'walk');
     let chickenWalk = setInterval(() => {
       distance--;
@@ -41,20 +41,11 @@ const Chicken = () => {
   }
 
   useEffect(() => {
-    if (!chickenMoving) {
+    if (chickenToMove == 0) {
       return;
     }
-    if (level == 1) {
-      move('up', 90)
-    }
-    if (level == 2) {
-      move('up', 27)
-    }
-
-    if (chickenDirection == 'up') {
-      move('up', 10)
-    }
-  }, [level, chickenMoving, chickenDirection])
+    move('up', chickenToMove);
+  }, [level, chickenToMove, chickenDirection])
 
 
   const graphics = {

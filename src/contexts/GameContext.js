@@ -10,7 +10,7 @@ class GameContextProvider extends Component {
     chickenPositionY: hp("60%"),
     inputText: "",
     hint: "Pour marcher: Type ‘marcher’",
-    chickenMoving: false,
+    chickenToMove: 0,
     level: 0,
     chickenDirection: ""
   }
@@ -45,10 +45,8 @@ class GameContextProvider extends Component {
     this.setState({ hint: hint })
   }
 
-  changeChickenMoving = (chickenMoving) => {
-    this.setState({ chickenMoving: chickenMoving }
-      //, () => { console.log(this.state.chickenMoving) }
-    )
+  changeChickenToMove = (chickenToMove) => {
+    this.setState({ chickenToMove: chickenToMove })
   }
 
   render() {
@@ -62,7 +60,7 @@ class GameContextProvider extends Component {
         resetChickenPosition: this.resetChickenPosition,
         changeInputText: this.changeInputText,
         changeHint: this.changeHint,
-        changeChickenMoving: this.changeChickenMoving,
+        changeChickenToMove: this.changeChickenToMove,
         changeChickenDirection: this.changeChickenDirection,
         changeLevel: this.changeLevel
       }}>
