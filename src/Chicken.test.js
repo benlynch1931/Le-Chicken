@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer, { act } from 'react-test-renderer';
+import { create, act } from 'react-test-renderer';
 import Chicken from './Chicken.js';
 import { GameContext } from './contexts/GameContext.js';
 
@@ -14,7 +14,7 @@ const mockContext = {
 }
 
 test('renders correctly when the level is 0', () => {
-    const chicken = renderer.create(<GameContext.Provider value={mockContext}><Chicken /></GameContext.Provider>).toJSON();
+    const chicken = create(<GameContext.Provider value={mockContext}><Chicken /></GameContext.Provider>)
     expect(mockContext.increaseChickenPositionY).not.toBeCalled();
     expect(mockContext.changeChickenGraphic).not.toBeCalled();
     expect(chicken).toMatchSnapshot();
@@ -23,11 +23,11 @@ test('renders correctly when the level is 0', () => {
 test('renders correctly when the level is 1', async () => {
   mockContext.level = 1
   jest.useFakeTimers();
-  const chicken = await act(async () => {
-   return renderer.create(<GameContext.Provider value={mockContext}><Chicken /></GameContext.Provider>).toJSON();
+  await act(async () => {
+    newChicken = create(<GameContext.Provider value={mockContext}><Chicken /></GameContext.Provider>)
   });
   expect(mockContext.changeChickenGraphic).toHaveBeenCalled();
   jest.advanceTimersByTime(3000);
   expect(mockContext.increaseChickenPositionY).toHaveBeenCalled();
-  expect(chicken).toMatchSnapshot();
+  expect(newChicken).toMatchSnapshot();
 });
