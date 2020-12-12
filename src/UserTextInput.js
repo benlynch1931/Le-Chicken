@@ -33,7 +33,7 @@ const UserTextInput = () => {
     < View style={styles.container} >
       <TextInput style={styles.input}
         placeholderTextColor="black"
-
+        testID="textInput"
         onChangeText={checkInput}
         value={inputText}
       />
