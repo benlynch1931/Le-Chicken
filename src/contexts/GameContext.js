@@ -13,8 +13,23 @@ class GameContextProvider extends Component {
     hint: "Pour marcher: Type ‘marcher’",
     chickenToMove: 0,
     level: 0,
-    chickenDirection: "up"
+    chickenDirection: "up",
+    walls: [{
+      type: 'horizontal',
+      position: 48.34,
+      start: 56.67,
+      end: 100.00,
+      stroke: 1.85
+    }, {
+      type: 'vertical',
+      position: 2.00,
+      start: 0.00,
+      end: 49.26,
+      stroke: 4.00
+    }]
   }
+
+
 
   changeLevel = (level) => {
     this.setState({ level: level })
