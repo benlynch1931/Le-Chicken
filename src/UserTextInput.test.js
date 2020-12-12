@@ -20,7 +20,7 @@ test("Changes input but not level when incorrect input is given", () => {
     expect(mockContext.changeLevel).not.toBeCalled();
 })
 
-test('Changes level and input text when correct input is given', () => {
+test('Changes level and input text when level 0 is passed', () => {
     const { getByTestId } = render(<GameContext.Provider value={mockContext}><UserTextInput /></GameContext.Provider>)
     const input = getByTestId('textInput')
     fireEvent.changeText(input, "Marcher")
@@ -28,3 +28,21 @@ test('Changes level and input text when correct input is given', () => {
     expect(mockContext.changeLevel).toHaveBeenCalled();
 })
 
+test('Changes level and input text when level 1 is passed', () => {
+    mockContext.level = 1
+    const { getByTestId } = render(<GameContext.Provider value={mockContext}><UserTextInput /></GameContext.Provider>)
+    const input = getByTestId('textInput')
+    fireEvent.changeText(input, "Ouvrir")
+    expect(mockContext.changeInputText).toHaveBeenCalled();
+    expect(mockContext.changeLevel).toHaveBeenCalled();
+})
+
+test('Changes level and input text when level 2 is passed', () => {
+    mockContext.level = 2
+    const { getByTestId } = render(<GameContext.Provider value={mockContext}><UserTextInput /></GameContext.Provider>)
+    const input = getByTestId('textInput')
+    fireEvent.changeText(input, "Haut")
+    expect(mockContext.changeInputText).toHaveBeenCalled();
+    expect(mockContext.changeChickenMoving).toHaveBeenCalled();
+    expect(mockContext.changeChickenDirection).toHaveBeenCalled();
+})
