@@ -19,4 +19,11 @@ context('Menu', () => {
     cy.contains('Menu').click()
     cy.get('#menu').should('be.visible')
   })
+  it("has a button to turn music on", () => {
+    cy.contains('Music: Off').should('be.visible')
+  })
+  it("has a button to turn music back off", () => {
+    cy.contains('Music: Off').click()
+    cy.contains('Music: On').should('be.visible')
+  })
 })
