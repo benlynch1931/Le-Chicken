@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
 const Menu = (props) => {
+
+  const musicButtonText = () => {
+    if (props.musicPlaying) {
+      return "Music: On"
+    } else {
+      return "Music: Off"
+    }
+  }
 
   return (
     <View
@@ -14,6 +22,7 @@ const Menu = (props) => {
         color="#841584"
         nativeID='newGame'
       />
+      <Button title={musicButtonText()} onPress={props.toggleMusic} />
     </View>
   );
 }
