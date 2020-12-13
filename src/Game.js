@@ -23,7 +23,7 @@ const Game = (props) => {
         padding: hp("0.8%")
       }}>
         <Button
-          onPress={() => props.setScreen('menu')}
+          onPress={() => props.setView('menu')}
           title="Menu"
           color="#841584"
         />
