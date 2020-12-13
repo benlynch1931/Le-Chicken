@@ -3,15 +3,10 @@
 exports[`renders correctly when the level is 0 1`] = `
 <Image
   nativeID="chicken-walkUp"
-  source={
-    Object {
-      "testUri": "../../../assets/chicken-run-back.gif",
-    }
-  }
   style={
     Object {
-      "alignSelf": "center",
       "height": 82,
+      "left": 0,
       "position": "absolute",
       "top": 0,
       "width": 100,
@@ -24,15 +19,10 @@ exports[`renders correctly when the level is 0 1`] = `
 exports[`renders correctly when the level is 1 1`] = `
 <Image
   nativeID="chicken-walkUp"
-  source={
-    Object {
-      "testUri": "../../../assets/chicken-run-back.gif",
-    }
-  }
   style={
     Object {
-      "alignSelf": "center",
       "height": 82,
+      "left": 0,
       "position": "absolute",
       "top": 0,
       "width": 100,
