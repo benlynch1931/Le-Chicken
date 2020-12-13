@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Image, View } from 'react-native';
+import { View } from 'react-native';
 import Coop from './scenes/Coop.js';
 import Maze from './scenes/Maze.js';
 import { GameContext } from './contexts/GameContext.js';

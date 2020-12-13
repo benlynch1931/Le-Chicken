@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Image, View, Text } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { Image } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
