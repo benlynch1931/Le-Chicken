@@ -7,16 +7,18 @@ export default function App() {
 
   const [screen, setScreen] = useState('menu')
 
-  const gameComponent = () => {
-    if (screen == 'game') {
-      return <Game />
+  const currentScreen = () => {
+    switch (screen) {
+      case 'menu':
+        return <Menu setScreen={setScreen} />;
+      case 'game':
+        return <Game />;
     }
   }
 
   return (
     <View>
-      <Menu setScreen={setScreen} />
-      {gameComponent()}
+      {currentScreen()}
     </View>
   );
 };

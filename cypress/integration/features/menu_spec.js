@@ -10,4 +10,8 @@ context('Menu', () => {
     cy.contains('New Game').click()
     cy.get('#game').should('be.visible')
   })
+  it("No longer displays the menu after clicking 'new game'", () => {
+    cy.contains('New Game').click()
+    cy.get('#menu').should('not.be.visible')
+  })
 })
