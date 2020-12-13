@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import SoundController from './SoundController.js'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Menu = (props) => {
 
@@ -8,7 +8,10 @@ const Menu = (props) => {
     <View
       nativeID='menu'
     >
-      <Text>Menu</Text>
+      <View style={{
+        height: hp("20%"),
+        width: wp("100%"),
+      }} />
       <Button
         onPress={() => props.setView('game')}
         title="New Game"
@@ -17,12 +20,6 @@ const Menu = (props) => {
       />
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center'
-  }
-});
+};
 
 export default Menu;
