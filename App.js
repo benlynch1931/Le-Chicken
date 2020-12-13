@@ -1,33 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import Chicken from './src/Chicken.js'
-import GameController from './src/GameController.js'
-import GameContextProvider from './src/contexts/GameContext.js';
-import SceneController from './src/SceneController.js';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Game from './src/Game.js'
+import Menu from './src/Menu.js'
 
 export default function App() {
 
-  return (
-    <GameContextProvider>
-      <KeyboardAwareScrollView
-        style={{ backgroundColor: 'white' }}
-        resetScrollToCoords={{ x: 0, y: 0 }}
-        contentContainerStyle={styles.container}
-        scrollEnabled={false}
-      >
-        <View style={{ height: hp("5%") }} />
-        <SceneController />
-        <Chicken />
-        <GameController />
-      </KeyboardAwareScrollView >
-    </GameContextProvider>
-  );
-}
+  const [screen, setScreen] = useState('menu')
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center'
+  const gameComponent = () => {
+    if (screen == 'game') {
+      return <Game />
+    }
   }
-});
+
+  return (
+    <View>
+      <Menu setScreen={setScreen} />
+      {gameComponent()}
+    </View>
+  );
+};
