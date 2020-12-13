@@ -10,7 +10,10 @@ const mockContext = {
   changeChickenGraphic: jest.fn(),
   increaseChickenPosition: jest.fn(),
   chickenMoving: false,
-  changeChickenMoving: jest.fn()
+  changeChickenMoving: jest.fn(),
+  chickenDirection: "up",
+  chickenToMove: 1,
+  changeChickenToMove: jest.fn()
 }
 
 test('renders correctly when the level is 0', () => {

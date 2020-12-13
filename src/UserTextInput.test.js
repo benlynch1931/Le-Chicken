@@ -6,9 +6,10 @@ import { render, fireEvent } from '@testing-library/react-native'
 const mockContext = {
     changeInputText: jest.fn(),
     inputText: "b",
-    changeLevel: jest.fn(),
     level: 0,
-    changeChickenMoving: jest.fn(),
+    changeLevel: jest.fn(),
+    chickenToMove: 0,
+    changeChickenToMove: jest.fn(),
     changeChickenDirection: jest.fn()
 }
 
@@ -43,6 +44,6 @@ test('Changes level and input text when level 2 is passed', () => {
     const input = getByTestId('textInput')
     fireEvent.changeText(input, "Haut")
     expect(mockContext.changeInputText).toHaveBeenCalled();
-    expect(mockContext.changeChickenMoving).toHaveBeenCalled();
+    expect(mockContext.changeChickenToMove).toHaveBeenCalled();
     expect(mockContext.changeChickenDirection).toHaveBeenCalled();
 })
