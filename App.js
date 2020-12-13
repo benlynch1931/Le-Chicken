@@ -10,19 +10,20 @@ export default function App() {
 
   const [view, setView] = useState('menu')
 
-  const currentView = () => {
-    switch (view) {
-      case 'menu':
-        return <Menu setView={setView} />;
-      case 'game':
-        return <Game setView={setView} />;
-    }
-  }
+  // const currentView = () => {
+  //   switch (view) {
+  //     case 'menu':
+  //       return <Menu setView={setView} />;
+  //     case 'game':
+  //       return <Game setView={setView} />;
+  //   }
+  // }
 
   return (
     <View>
       <GameContextProvider>
-        {currentView()}
+        <Menu setView={setView} view={view} />
+        <Game setView={setView} view={view} />
         <SoundController view={view} />
       </GameContextProvider>
     </View>

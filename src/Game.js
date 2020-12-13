@@ -7,7 +7,7 @@ import SceneController from './SceneController.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Game = (props) => {
-
+  if (props.view != 'game') return null;
   return (
     <KeyboardAwareScrollView
       style={{ backgroundColor: 'white' }}

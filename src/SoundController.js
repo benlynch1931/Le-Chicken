@@ -46,12 +46,11 @@ export default function SoundController(props) {
   }, [sound]);
 
   const button = () => {
-    console.log(props.view)
     if (props.view == 'menu') {
       return <Button title={musicButtonText()} onPress={toggleMusic} />
     }
   }
-
+  if (props.view != 'menu') return null;
   return (
     <View>
       { button()}
