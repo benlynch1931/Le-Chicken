@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import { Audio } from 'expo-av'
+import GameContextProvider from './src/contexts/GameContext.js';
 import Game from './src/Game.js'
 import Menu from './src/Menu.js'
 
@@ -51,7 +52,9 @@ export default function App() {
 
   return (
     <View>
-      {currentScreen()}
+      <GameContextProvider>
+        {currentScreen()}
+      </GameContextProvider>
     </View>
   );
 };
