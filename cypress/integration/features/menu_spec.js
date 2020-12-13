@@ -14,4 +14,9 @@ context('Menu', () => {
     cy.contains('New Game').click()
     cy.get('#menu').should('not.be.visible')
   })
+  it("can return to the menu from the game", () => {
+    cy.contains('New Game').click()
+    cy.contains('Menu').click()
+    cy.get('#menu').should('be.visible')
+  })
 })

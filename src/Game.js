@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Chicken from './Chicken.js'
 import GameController from './GameController.js'
@@ -7,7 +7,7 @@ import GameContextProvider from './contexts/GameContext.js';
 import SceneController from './SceneController.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-const Game = () => {
+const Game = (props) => {
 
   return (
     <KeyboardAwareScrollView
@@ -18,8 +18,18 @@ const Game = () => {
       nativeID='game'
     >
       <GameContextProvider>
-
-        <View style={{ height: hp("5%") }} />
+        <View style={{
+          height: hp("5%"),
+          alignItems: 'flex-start',
+          width: wp("100%"),
+          padding: hp("0.8%")
+        }}>
+          <Button
+            onPress={() => props.setScreen('menu')}
+            title="Menu"
+            color="#841584"
+          />
+        </View>
         <SceneController />
         <Chicken />
         <GameController />

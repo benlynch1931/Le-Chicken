@@ -12,7 +12,7 @@ export default function App() {
       case 'menu':
         return <Menu setScreen={setScreen} />;
       case 'game':
-        return <Game />;
+        return <Game setScreen={setScreen} />;
     }
   }
 
