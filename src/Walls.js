@@ -40,13 +40,15 @@ const walls = [{
   start: 41.26,
   end: 49.26,
   stroke: 4.00
-}, {
+}, 
+{
   type: 'horizontal',
   position: 40.33,
   start: 39.33,
   end: 82.67,
   stroke: 1.85
-}, {
+}, 
+{
   type: 'vertical',
   position: 80.67,
   start: 8.00,

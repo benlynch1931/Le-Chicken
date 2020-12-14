@@ -41,16 +41,19 @@ const Chicken = () => {
   const move = (direction, distance) => {
     const horizWalls = walls.filter(wall => wall.type == 'horizontal')
     const vertiWalls = walls.filter(wall => wall.type == 'vertical')
-    for (let i = 0; i < horizWalls.length; i++) {
-      const wallPosition = adjustYCoords(horizWalls[i].position)
-      if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(horizWalls[i])) {
-        distance = Math.max(Math.floor((chickenPosition[1] - wallPosition) / hp(stepSize)), 0)
+    if(direction == 'up' || direction == 'down') {
+      for (let i = 0; i < horizWalls.length; i++) {
+        const wallPosition = adjustYCoords(horizWalls[i].position, linePadding(horizWalls[i].stroke, direction))
+        if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(horizWalls[i])) {
+          distance = Math.max(Math.floor((chickenPosition[1] - wallPosition) / hp(stepSize)), 0)
+        }
       }
-    }
-    for (let i = 0; i < vertiWalls.length; i++) {
-      const wallPosition = adjustXCoords(vertiWalls[i].position)
-      if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(vertiWalls[i])) {
-        distance = Math.max(Math.floor((chickenPosition[0] - wallPosition) / wp(stepSize)), 0)
+    } else {
+      for (let i = 0; i < vertiWalls.length; i++) {
+        const wallPosition = adjustXCoords(vertiWalls[i].position + linePadding(vertiWalls[i].stroke, direction))
+        if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(vertiWalls[i])) {
+          distance = Math.max(Math.floor((chickenPosition[0] - wallPosition) / wp(stepSize)), 0)
+        }
       }
     }
     handleChickenGraphic(direction, 'walk');
@@ -62,6 +65,17 @@ const Chicken = () => {
       _moveIncrement(direction);
       distance--;
     }, 30)
+  }
+
+  const linePadding = (stroke, direction) => {
+    switch (direction) {
+      case 'up':
+        return stroke/2
+      case 'down':
+        return -stroke/2
+      case 'right':
+        return stroke/2
+    }
   }
 
   const chickenWillReach = (wallPosition, distance, direction) => {
@@ -106,7 +120,7 @@ const Chicken = () => {
       case 'horizontal':
         return chickenPosition[0] > wp(wall.start) && chickenPosition[0] < wp(wall.end)
       case 'vertical':
-        return chickenPosition[1] < wp(wall.start) && chickenPosition[0] > wp(wall.end)
+        return chickenPosition[1] < hp(wall.start) && chickenPosition[0] > hp(wall.end)
     }
   }
 
@@ -114,8 +128,8 @@ const Chicken = () => {
     return wp(coord)
   }
 
-  const adjustYCoords = (position) => {
-    return hp(position) + hp('5.00%') + hp("1.85%")
+  const adjustYCoords = (position, padding) => {
+    return hp(position) + hp('5.00%') + hp("1.85%") + hp(padding)
   }
 
   useEffect(() => {
