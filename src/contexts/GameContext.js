@@ -29,7 +29,7 @@ class GameContextProvider extends Component {
       position: 2.00,
       start: 0.00,
       end: 49.26,
-      stroke: 1.85
+      stroke: 4.00
     }, {
       type: 'horizontal',
       position: 48.34,
@@ -41,7 +41,7 @@ class GameContextProvider extends Component {
       position: 98.00,
       start: 0.00,
       end: 49.26,
-      stroke: 1.85
+      stroke: 4.00
     }, {
       type: 'horizontal',
       position: 0.92,
@@ -59,7 +59,7 @@ class GameContextProvider extends Component {
       position: 41.33,
       start: 41.26,
       end: 49.26,
-      stroke: 1.85
+      stroke: 4.00
     }, {
       type: 'horizontal',
       position: 40.33,
@@ -71,7 +71,7 @@ class GameContextProvider extends Component {
       position: 80.67,
       start: 8.00,
       end: 39.41,
-      stroke: 1.85
+      stroke: 4.00
     }, {
       type: 'horizontal',
       position: 8.93,
@@ -83,13 +83,13 @@ class GameContextProvider extends Component {
       position: 63.33,
       start: 8.00,
       end: 23.40,
-      stroke: 1.85
+      stroke: 4.00
     }, {
       type: 'vertical',
       position: 46,
       start: 0.00,
       end: 31.16,
-      stroke: 1.85
+      stroke: 4.00
     }, {
       type: 'horizontal',
       position: 32.02,
