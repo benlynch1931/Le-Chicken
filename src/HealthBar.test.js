@@ -15,7 +15,7 @@ describe('HealthBar', () => {
         const foundHealthLevelElement = getByTestId('healthLevel')
         expect(foundHealthLevelElement.props.style.width).toEqual('90%')
     })
-    test('the color of the inner view changes to red when healthj is less than 25%', () => {
+    test('the color of the inner view changes to red when health is less than 25%', () => {
         const {getByTestId} = render(<HealthBar health={15}/>)
         const foundHealthLevelElement = getByTestId('healthLevel')
         expect(foundHealthLevelElement.props.style.backgroundColor).toEqual('rgb(227, 16, 16)')

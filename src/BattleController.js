@@ -17,9 +17,9 @@ const BattleController = (props) => {
       <HealthBar health={opponentHealth}/>
       <BattleOpponent></BattleOpponent>
       <BattleView></BattleView>
-     
-      <AttackCommands 
-      chickenHealth={chickenHealth} 
+
+      <AttackCommands
+      chickenHealth={chickenHealth}
       setChickenHealth={setChickenHealth}
       opponentHealth={opponentHealth}
       setOpponentHealth={setOpponentHealth}></AttackCommands>

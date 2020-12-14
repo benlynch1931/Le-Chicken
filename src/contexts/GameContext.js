@@ -8,6 +8,8 @@ const initialScene = 'coop';
 const initialChickenGraphic = 'idleright';
 const initialHint = "Pour marcher: Type ‘marcher’";
 const initialLevel = 0;
+const initialGameMode = 'battle';
+
 class GameContextProvider extends Component {
   state = {
     currentScene: initialScene,
@@ -17,6 +19,7 @@ class GameContextProvider extends Component {
     hint: initialHint,
     chickenToMove: 0,
     level: initialLevel,
+    gameMode: 'battle',
     chickenDirection: "up",
     walls: [{
       type: 'horizontal',
@@ -120,6 +123,9 @@ class GameContextProvider extends Component {
   changeLevel = (level) => {
     this.setState({ level: level })
   }
+  changeGameMode = (mode) => {
+    this.setState({ gameMode: mode})
+  }
   changeChickenDirection = (direction) => {
     this.setState({ chickenDirection: direction })
   }
@@ -171,7 +177,8 @@ class GameContextProvider extends Component {
         changeChickenToMove: this.changeChickenToMove,
         changeChickenDirection: this.changeChickenDirection,
         changeLevel: this.changeLevel,
-        restartGame: this.restartGame
+        restartGame: this.restartGame,
+        changeGameMode: this.changeGameMode
       }}>
         {this.props.children}
       </GameContext.Provider>
