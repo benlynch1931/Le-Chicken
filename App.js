@@ -1,33 +1,22 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import Chicken from './src/Chicken.js'
-import GameController from './src/GameController.js'
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Button } from 'react-native';
+import { Audio } from 'expo-av'
 import GameContextProvider from './src/contexts/GameContext.js';
-import SceneController from './src/SceneController.js';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Game from './src/Game.js'
+import Menu from './src/Menu.js'
+import SoundController from './src/SoundController.js'
 
 export default function App() {
 
-  return (
-    <GameContextProvider>
-      <KeyboardAwareScrollView
-        style={{ backgroundColor: 'white' }}
-        resetScrollToCoords={{ x: 0, y: 0 }}
-        contentContainerStyle={styles.container}
-        scrollEnabled={false}
-      >
-        <View style={{ height: hp("5%") }} />
-        <SceneController />
-        <Chicken />
-        <GameController />
-      </KeyboardAwareScrollView >
-    </GameContextProvider>
-  );
-}
+  const [view, setView] = useState('menu')
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center'
-  }
-});
+  return (
+    <View>
+      <GameContextProvider>
+        <Menu setView={setView} view={view} />
+        <Game setView={setView} view={view} />
+        <SoundController view={view} />
+      </GameContextProvider>
+    </View>
+  );
+};

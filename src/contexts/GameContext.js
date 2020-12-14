@@ -4,15 +4,19 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 export const GameContext = createContext();
 
 const chickenPositionDefault = [wp("43.34%"), hp("60%")];
+const initialScene = 'coop';
+const initialChickenGraphic = 'idleright';
+const initialHint = "Pour marcher: Type ‘marcher’";
+const initialLevel = 0;
 class GameContextProvider extends Component {
   state = {
-    currentScene: 'coop',
-    chickenGraphic: 'idleright',
+    currentScene: initialScene,
+    chickenGraphic: initialChickenGraphic,
     chickenPosition: chickenPositionDefault,
     inputText: "",
-    hint: "Pour marcher: Type ‘marcher’",
+    hint: initialHint,
     chickenToMove: 0,
-    level: 0,
+    level: initialLevel,
     chickenDirection: "up",
     walls: [{
       type: 'horizontal',
@@ -144,6 +148,16 @@ class GameContextProvider extends Component {
     this.setState({ chickenToMove: chickenToMove })
   }
 
+  restartGame = () => {
+    this.resetChickenPosition();
+    this.changeScene(initialScene);
+    this.changeChickenGraphic(initialChickenGraphic);
+    this.changeHint(initialHint);
+    this.changeLevel(initialLevel);
+    this.changeInputText("");
+    this.changeChickenToMove(0);
+  }
+
   render() {
     return (
       <GameContext.Provider value={{
@@ -156,7 +170,8 @@ class GameContextProvider extends Component {
         changeHint: this.changeHint,
         changeChickenToMove: this.changeChickenToMove,
         changeChickenDirection: this.changeChickenDirection,
-        changeLevel: this.changeLevel
+        changeLevel: this.changeLevel,
+        restartGame: this.restartGame
       }}>
         {this.props.children}
       </GameContext.Provider>

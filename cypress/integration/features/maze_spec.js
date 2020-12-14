@@ -2,6 +2,7 @@ context('Maze', () => {
   beforeEach(() => {
     cy.viewport('iphone-x')
     cy.visit('http://localhost:19006')
+    cy.contains('New Game').click()
     cy.get('input')
       .type('marcher')
   })
