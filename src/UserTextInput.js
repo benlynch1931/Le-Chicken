@@ -13,15 +13,19 @@ const UserTextInput = () => {
   directions.set('droite', 'right')
   directions.set('gauche', 'left')
 
+  const sendToDictionary = (frenchWord, englishWord) => {
+    addToDictionary({
+      french: frenchWord,
+      english: englishWord
+    });
+  }
+
   const checkInput = (text) => {
     changeInputText(text)
     if (level === 0 && text.toLowerCase() === "marcher") {
       Keyboard.dismiss();
       changeLevel(1)
-      addToDictionary({
-        french: 'Marcher',
-        english: 'To walk'
-      });
+      sendToDictionary('Marcher', 'To walk');
       changeChickenToMove(90);
       changeInputText("")
     }
@@ -29,10 +33,11 @@ const UserTextInput = () => {
     if (level === 1 && text.toLowerCase() === "ouvrir") {
       Keyboard.dismiss();
       changeLevel(2);
-      addToDictionary({
-        french: 'Ouvrir',
-        english: 'To open'
-      });
+      sendToDictionary('Ouvrir', 'To open');
+      sendToDictionary('Haut', 'Up');
+      sendToDictionary('Bas', 'Down');
+      sendToDictionary('Gauche', 'Left');
+      sendToDictionary('Droite', 'Right');
       changeChickenToMove(27);
       changeInputText("");
     }

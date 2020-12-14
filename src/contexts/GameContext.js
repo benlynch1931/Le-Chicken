@@ -1,6 +1,6 @@
 import React, { createContext, Component } from 'react';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { walls } from '../Walls.js'
+import { walls } from '../Walls.js';
 
 export const GameContext = createContext();
 
@@ -23,10 +23,10 @@ class GameContextProvider extends Component {
     walls: walls
   }
 
-  addToDictionary = (word) => {
-    let words = [...this.state.translations];
-    words.push({ word });
-    this.setState({ translations: words });
+  addToDictionary = (translation) => {
+    this.setState(prevState => ({
+      translations: [...prevState.translations, translation]
+    }))
   }
   changeLevel = (level) => {
     this.setState({ level: level })
