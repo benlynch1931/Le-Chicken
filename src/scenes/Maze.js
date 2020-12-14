@@ -1,13 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Image, View } from 'react-native';
 import { Svg, Line } from 'react-native-svg';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { GameContext } from '../contexts/GameContext.js';
 
-const Maze = () => {
-  const { walls } = useContext(GameContext)
+const Maze = (props) => {
+  const { walls, level, notePosition, currentScene, chickenPosition } = useContext(GameContext)
   const horizWalls = walls.filter(wall => wall.type == 'horizontal')
   const vertiWalls = walls.filter(wall => wall.type == 'vertical')
+
+  const renderNote = () => {
+    if(level == '2') {
+      return(
+        <Image style={{
+          height: hp("3.15%"),
+          width: wp("6.79%"),
+          top: hp("5%"),
+          left: wp("21%")
+        }}
+        source={require("../../assets/note.png")}
+        />
+      )
+    }
+  }
 
   return (
     <View
@@ -18,6 +33,7 @@ const Maze = () => {
       }}
       nativeID='maze'
     >
+    { renderNote() }
       {/* The walls for the maze */}
       <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%") }}>
         {

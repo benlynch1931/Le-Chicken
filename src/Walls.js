@@ -104,6 +104,12 @@ const walls = [{
   start: 23.085,
   end: 32.50,
   stroke: 4.00
+},
+{ type:'horizontal',
+  position: 4.00,
+  start: 18.00,
+  end: 31.00,
+  stroke: 1.85
 }]
 
 exports.walls = walls;
