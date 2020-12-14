@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import BattleOpponent from './BattleOpponent.js'
 import BattleChicken from './BattleChicken.js'
@@ -8,7 +8,7 @@ import HealthBar from './HealthBar.js'
 
 const BattleController = (props) => {
   const [chickenHealth, setChickenHealth] = useState(100)
-  const [opponentHealth, setOpponentHealth] = useState(100)
+  const [opponentHealth, setOpponentHealth] = useState(50)
 
   return (
     <View>
@@ -27,4 +27,5 @@ const BattleController = (props) => {
   )
 
 }
+
 export default BattleController;
