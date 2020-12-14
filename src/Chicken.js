@@ -39,7 +39,7 @@ const Chicken = () => {
   }
 
   const move = (direction, distance) => {
-    const horizWalls = walls.filter(wall => wall.type == 'horizontal' && wall.position == '40.33')
+    const horizWalls = walls.filter(wall => wall.type == 'horizontal')
     const vertiWalls = walls.filter(wall => wall.type == 'vertical')
     for (let i = 0; i < horizWalls.length; i++) {
       const wallPosition = adjustYCoords(horizWalls[i].position)
@@ -68,7 +68,7 @@ const Chicken = () => {
   }
 
   const chickenInLineWith = (wall) => {
-    return chickenPosition[0] >= wp(wall.start) && chickenPosition[0] <= wp(wall.end)
+    return chickenPosition[0] > wp(wall.start) && chickenPosition[0] < wp(wall.end)
   }
 
   const adjustXCoords = (coord) => {
@@ -115,7 +115,8 @@ const Chicken = () => {
         left: chickenPosition[0],
         width: chickenWidth,
         height: chickenHeight,
-        zIndex: 4
+        zIndex: 4,
+        backgroundColor: 'red'
       }}
       nativeID={`chicken-${chickenGraphic}`}
       source={graphics[chickenGraphic]}
