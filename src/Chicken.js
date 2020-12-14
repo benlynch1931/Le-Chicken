@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 const Chicken = () => {
-  const { chickenPosition, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove } = useContext(GameContext)
+  const { chickenPosition, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove, walls } = useContext(GameContext)
   const chickenWidth = wp("13.33%")
   const chickenHeight = hp("6.16%")
   const stepSize = "0.5%"
@@ -14,7 +14,8 @@ const Chicken = () => {
     changeChickenGraphic(`${state}${direction}`)
   }
 
-  const _moveIncrement = (direction) => {
+  const _moveIncrement = (direction, distance) => {
+
     switch (direction) {
       case 'up':
         increaseChickenPosition(0, -hp(stepSize))
@@ -38,13 +39,27 @@ const Chicken = () => {
   }
 
   const move = (direction, distance) => {
+    const horizWalls = walls.filter(wall => wall.type == 'horizontal' && wall.key == 8)
+    const vertiWalls = walls.filter(wall => wall.type == 'vertical')
+    for (let i = 0; i < horizWalls.length; i++) {
+      const wallPosition = hp(horizWalls[i].position) + hp('5.00%') + hp("1.85%")
+      console.log(distance)
+      console.log(chickenPosition[1])
+      console.log(wallPosition)
+      console.log(hp(stepSize))
+      if (chickenPosition[1] - (distance * hp(stepSize)) <= wallPosition + hp(stepSize) && chickenPosition[1] >= wallPosition - hp(stepSize)) {
+        distance = Math.max(Math.floor((chickenPosition[1] - wallPosition) / hp(stepSize)), 0)
+      }
+      console.log(distance)
+    }
     handleChickenGraphic(direction, 'walk');
     let chickenWalk = setInterval(() => {
-      distance--;
       if (distance <= 0) {
-        _finishMovement(direction, chickenWalk)
+        _finishMovement(direction, chickenWalk);
+        return;
       }
       _moveIncrement(direction);
+      distance--;
     }, 30)
   }
 
