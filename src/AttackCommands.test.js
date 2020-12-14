@@ -36,5 +36,5 @@ test("Changes input but not level when incorrect input is given", () => {
         setOpponentHealth={mockSetOpponentHealth}/>)
     const input = getByTestId('textInput')
     fireEvent.changeText(input, "frapper")
-    expect(mockSetOpponentHealth).toHaveBeenCalledWith(100 - 11);
+    expect(mockSetOpponentHealth).toHaveBeenCalledWith(100 - 26);
 })
