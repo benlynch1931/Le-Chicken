@@ -39,14 +39,12 @@ const Chicken = () => {
   }
 
   const move = (direction, distance) => {
-    const horizWalls = walls.filter(wall => wall.type == 'horizontal' && wall.key == 8)
+    const horizWalls = walls.filter(wall => wall.type == 'horizontal' && wall.position == '40.33')
     const vertiWalls = walls.filter(wall => wall.type == 'vertical')
     for (let i = 0; i < horizWalls.length; i++) {
       const wallPosition = adjustYCoords(horizWalls[i].position)
-      // console.log(chickenWillReach(wallPosition, distance))
-      // console.log(chickenInLineWith(horizWalls[i]))
       if (chickenWillReach(wallPosition, distance) && chickenInLineWith(horizWalls[i])) {
-        distance = Math.max(Math.floor((chickenPosition[1] - yAxisAdjust(hp(wall.position))) / hp(stepSize)), 0)
+        distance = Math.max(Math.floor((chickenPosition[1] - wallPosition) / hp(stepSize)), 0)
       }
     }
     handleChickenGraphic(direction, 'walk');
@@ -61,8 +59,6 @@ const Chicken = () => {
   }
 
   const chickenWillReach = (wallPosition, distance) => {
-    console.log(higherThan(chickenPositionAfterMovement(distance), wallPosition + hp(stepSize)))
-    console.log(lowerThan(chickenPosition[1], wallPosition - hp(stepSize)))
     return higherThan(chickenPositionAfterMovement(distance), wallPosition + hp(stepSize))
       && lowerThan(chickenPosition[1], wallPosition - hp(stepSize))
   }
@@ -80,7 +76,7 @@ const Chicken = () => {
   }
 
   const adjustYCoords = (position) => {
-    return hp(position[1]) + hp('5.00%') + hp("1.85%")
+    return hp(position) + hp('5.00%') + hp("1.85%")
   }
 
   const higherThan = (a, b) => {
