@@ -28,7 +28,7 @@ const Maze = () => {
 
         {
           vertiWalls.map((wall) => (
-            <Line x1={wp(`${wall.position}%`)} x2={wp(`${wall.position}%`)} y1={hp(`${wall.start}%`)} y2={hp(`${wall.end}%`)} stroke="#38761D" strokeWidth={hp(`${wall.stroke}%`)} />
+            <Line x1={wp(`${wall.position}%`)} x2={wp(`${wall.position}%`)} y1={hp(`${wall.start}%`)} y2={hp(`${wall.end}%`)} stroke="#38761D" strokeWidth={wp(`${wall.stroke}%`)} />
           ))
         }
       </Svg>
