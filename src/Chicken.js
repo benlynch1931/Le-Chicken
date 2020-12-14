@@ -1,63 +1,70 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Image, View, Text } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { Image } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
 const Chicken = () => {
-  const { chickenPositionY, level, chickenGraphic, changeChickenGraphic, increaseChickenPositionY, chickenMoving, changeChickenMoving, chickenDirection } = useContext(GameContext)
+  const { chickenPosition, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove } = useContext(GameContext)
   const chickenWidth = wp("13.33%")
   const chickenHeight = hp("6.16%")
+  const stepSize = "0.5%"
 
   const handleChickenGraphic = (direction, state) => {
-    if (direction == 'up' && state == 'walk') {
-      changeChickenGraphic('walkUp')
-      return
-    } else if (direction == 'up' && state == 'idle') {
-      changeChickenGraphic('up')
-      return
-    }
+    changeChickenGraphic(`${state}${direction}`)
   }
 
   const _moveIncrement = (direction) => {
-    increaseChickenPositionY(-(hp("0.5%")))
+    switch (direction) {
+      case 'up':
+        increaseChickenPosition(0, -hp(stepSize))
+        break;
+      case 'down':
+        increaseChickenPosition(0, hp(stepSize))
+        break;
+      case 'right':
+        increaseChickenPosition(wp(stepSize), 0)
+        break;
+      case 'left':
+        increaseChickenPosition(-wp(stepSize), 0)
+        break;
+    }
   }
 
   const _finishMovement = (direction, chickenWalk) => {
     clearInterval(chickenWalk)
-    handleChickenGraphic(direction, 'idle');
+    handleChickenGraphic(direction, 'idle')
+    changeChickenToMove(0);
   }
 
-  const move = (direction, distance, context) => {
+  const move = (direction, distance) => {
     handleChickenGraphic(direction, 'walk');
     let chickenWalk = setInterval(() => {
       distance--;
       if (distance <= 0) {
         _finishMovement(direction, chickenWalk)
       }
-      _moveIncrement('up');
+      _moveIncrement(direction);
     }, 30)
   }
 
   useEffect(() => {
-    if (level == 1) {
-      changeChickenMoving()
-      move('up', 90)
+    if (chickenToMove == 0) {
+      return;
     }
-    if (level == 2) {
-      move('up', 27)
-    }
-    if (chickenMoving == true && chickenDirection === 'up') {
-      move('up', 10)
-    }
-  }, [level])
+    move(chickenDirection, chickenToMove);
+  }, [level, chickenToMove, chickenDirection])
 
 
   const graphics = {
-    left: require('../assets/chicken-left.png'),
-    right: require('../assets/chicken-right.png'),
-    walkUp: require('../assets/chicken-run-back.gif'),
-    up: require('../assets/chicken-stand-back.png')
+    idleleft: require('../assets/chicken-left.png'),
+    idleright: require('../assets/chicken-right.png'),
+    idleup: require('../assets/chicken-stand-back.png'),
+    idledown: require('../assets/chicken-stand-front.png'),
+    walkup: require('../assets/chicken-run-back.gif'),
+    walkright: require('../assets/chicken-run-right.gif'),
+    walkleft: require('../assets/chicken-run-left.gif'),
+    walkdown: require('../assets/chicken-run-front.gif'),
   }
 
 
@@ -65,10 +72,10 @@ const Chicken = () => {
     < Image
       style={{
         position: 'absolute',
-        top: chickenPositionY,
+        top: chickenPosition[1],
+        left: chickenPosition[0],
         width: chickenWidth,
         height: chickenHeight,
-        alignSelf: "center",
         zIndex: 4
       }}
       nativeID={`chicken-${chickenGraphic}`}
