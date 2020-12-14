@@ -41,7 +41,7 @@ const UserTextInput = () => {
       for (const [french, english] of directions.entries()) {
         if (text.toLowerCase() == french) {
           changeChickenDirection(english);
-          changeChickenToMove(40);
+          changeChickenToMove(100);
           changeInputText("");
         }
       }
