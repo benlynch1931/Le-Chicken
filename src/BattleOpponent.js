@@ -30,7 +30,7 @@ const BattleOpponent = () => {
         height: chickenHeight,
         zIndex: 4
       }}
-      nativeID={`battleChicken`}
+      nativeID={`battleOpponent`}
       source={require('../assets/chicken-left.png')}
     />
   );
