@@ -114,9 +114,15 @@ class GameContextProvider extends Component {
       start: 30.67,
       end: 48.00,
       stroke: 9.85
-    }]
+    }],
+    translations: []
   }
 
+  addToDictionary = (word) => {
+    let words = [...this.state.translations];
+    words.push({ word });
+    this.setState({ translations: words });
+  }
   changeLevel = (level) => {
     this.setState({ level: level })
   }
@@ -171,7 +177,8 @@ class GameContextProvider extends Component {
         changeChickenToMove: this.changeChickenToMove,
         changeChickenDirection: this.changeChickenDirection,
         changeLevel: this.changeLevel,
-        restartGame: this.restartGame
+        restartGame: this.restartGame,
+        addToDictionary: this.addToDictionary
       }}>
         {this.props.children}
       </GameContext.Provider>
