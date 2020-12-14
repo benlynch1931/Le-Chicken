@@ -19,9 +19,15 @@ class GameContextProvider extends Component {
     chickenToMove: 0,
     level: initialLevel,
     chickenDirection: "up",
+    translations: [],
     walls: walls
   }
 
+  addToDictionary = (word) => {
+    let words = [...this.state.translations];
+    words.push({ word });
+    this.setState({ translations: words });
+  }
   changeLevel = (level) => {
     this.setState({ level: level })
   }
@@ -76,7 +82,8 @@ class GameContextProvider extends Component {
         changeChickenToMove: this.changeChickenToMove,
         changeChickenDirection: this.changeChickenDirection,
         changeLevel: this.changeLevel,
-        restartGame: this.restartGame
+        restartGame: this.restartGame,
+        addToDictionary: this.addToDictionary
       }}>
         {this.props.children}
       </GameContext.Provider>
