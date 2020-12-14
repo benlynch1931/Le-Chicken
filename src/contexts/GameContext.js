@@ -5,10 +5,10 @@ import { walls } from '../Walls.js'
 export const GameContext = createContext();
 
 const chickenPositionDefault = [wp("43.34%"), hp("60%")];
-const initialScene = 'maze';
+const initialScene = 'coop';
 const initialChickenGraphic = 'idleright';
 const initialHint = "Pour marcher: Type ‘marcher’";
-const initialLevel = 2;
+const initialLevel = 0;
 class GameContextProvider extends Component {
   state = {
     currentScene: initialScene,

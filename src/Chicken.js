@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 const Chicken = () => {
-  const { chickenPosition, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove, walls } = useContext(GameContext)
+  const { chickenPosition, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove, walls, currentScene } = useContext(GameContext)
   const chickenWidth = wp("11.73%")
   const chickenHeight = hp("5.42%")
   const stepSize = "0.5%"
@@ -39,21 +39,23 @@ const Chicken = () => {
   }
 
   const move = (direction, distance) => {
-    const horizWalls = walls.filter(wall => wall.type == 'horizontal')
-    const vertiWalls = walls.filter(wall => wall.type == 'vertical')
-    if (direction == 'up' || direction == 'down') {
-      for (let i = 0; i < horizWalls.length; i++) {
-        console.log(direction)
-        const wallPosition = adjustYCoords(horizWalls[i].position, linePadding(horizWalls[i].stroke, direction))
-        if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(horizWalls[i])) {
-          distance = Math.max(Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / hp(stepSize)), 0)
+    if(currentScene == 'maze'){
+      const horizWalls = walls.filter(wall => wall.type == 'horizontal')
+      const vertiWalls = walls.filter(wall => wall.type == 'vertical')
+      if (direction == 'up' || direction == 'down') {
+        for (let i = 0; i < horizWalls.length; i++) {
+          console.log(direction)
+          const wallPosition = adjustYCoords(horizWalls[i].position, linePadding(horizWalls[i].stroke, direction))
+          if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(horizWalls[i])) {
+            distance = Math.max(Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / hp(stepSize)), 0)
+          }
         }
-      }
-    } else {
-      for (let i = 0; i < vertiWalls.length; i++) {
-        const wallPosition = adjustXCoords(vertiWalls[i].position, linePadding(vertiWalls[i].stroke, direction))
-        if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(vertiWalls[i])) {
-          distance = Math.max(Math.floor((Math.abs(wallPosition - chickenEdge(direction))) / wp(stepSize)), 0)
+      } else {
+        for (let i = 0; i < vertiWalls.length; i++) {
+          const wallPosition = adjustXCoords(vertiWalls[i].position, linePadding(vertiWalls[i].stroke, direction))
+          if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(vertiWalls[i])) {
+            distance = Math.max(Math.floor((Math.abs(wallPosition - chickenEdge(direction))) / wp(stepSize)), 0)
+          }
         }
       }
     }
