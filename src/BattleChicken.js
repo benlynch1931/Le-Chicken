@@ -4,7 +4,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 const BattleChicken = () => {
-  const [chickenPosition, setChickenPosition] = useState(0)
+  const [chickenPosition, setChickenPosition] = useState(-10)
   const chickenWidth = wp("13.33%")
   const chickenHeight = hp("6.16%")
   let entrance;
@@ -14,7 +14,6 @@ const BattleChicken = () => {
         entrance = setInterval(() => {
             setChickenPosition(chickenPosition => chickenPosition + 2)
         }, 80)
-
         return () => {
             clearInterval(entrance)
         }
