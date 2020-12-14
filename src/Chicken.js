@@ -42,15 +42,12 @@ const Chicken = () => {
     const horizWalls = walls.filter(wall => wall.type == 'horizontal' && wall.key == 8)
     const vertiWalls = walls.filter(wall => wall.type == 'vertical')
     for (let i = 0; i < horizWalls.length; i++) {
-      const wallPosition = hp(horizWalls[i].position) + hp('5.00%') + hp("1.85%")
-      console.log(distance)
-      console.log(chickenPosition[1])
-      console.log(wallPosition)
-      console.log(hp(stepSize))
-      if (chickenPosition[1] - (distance * hp(stepSize)) <= wallPosition + hp(stepSize) && chickenPosition[1] >= wallPosition - hp(stepSize)) {
-        distance = Math.max(Math.floor((chickenPosition[1] - wallPosition) / hp(stepSize)), 0)
+      const wallPosition = adjustYCoords(horizWalls[i].position)
+      // console.log(chickenWillReach(wallPosition, distance))
+      // console.log(chickenInLineWith(horizWalls[i]))
+      if (chickenWillReach(wallPosition, distance) && chickenInLineWith(horizWalls[i])) {
+        distance = Math.max(Math.floor((chickenPosition[1] - yAxisAdjust(hp(wall.position))) / hp(stepSize)), 0)
       }
-      console.log(distance)
     }
     handleChickenGraphic(direction, 'walk');
     let chickenWalk = setInterval(() => {
@@ -61,6 +58,37 @@ const Chicken = () => {
       _moveIncrement(direction);
       distance--;
     }, 30)
+  }
+
+  const chickenWillReach = (wallPosition, distance) => {
+    console.log(higherThan(chickenPositionAfterMovement(distance), wallPosition + hp(stepSize)))
+    console.log(lowerThan(chickenPosition[1], wallPosition - hp(stepSize)))
+    return higherThan(chickenPositionAfterMovement(distance), wallPosition + hp(stepSize))
+      && lowerThan(chickenPosition[1], wallPosition - hp(stepSize))
+  }
+
+  const chickenPositionAfterMovement = (distance) => {
+    return chickenPosition[1] - (distance * hp(stepSize))
+  }
+
+  const chickenInLineWith = (wall) => {
+    return chickenPosition[0] >= wp(wall.start) && chickenPosition[0] <= wp(wall.end)
+  }
+
+  const adjustXCoords = (coord) => {
+    return wp(coord)
+  }
+
+  const adjustYCoords = (position) => {
+    return hp(position[1]) + hp('5.00%') + hp("1.85%")
+  }
+
+  const higherThan = (a, b) => {
+    return a <= b;
+  }
+
+  const lowerThan = (a, b) => {
+    return a >= b;
   }
 
   useEffect(() => {
