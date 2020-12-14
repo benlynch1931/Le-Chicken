@@ -5,8 +5,8 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const BattleChicken = () => {
   const [chickenPosition, setChickenPosition] = useState(-10)
-  const chickenWidth = wp("13.33%")
-  const chickenHeight = hp("6.16%")
+  const chickenWidth = wp("25.33%")
+  const chickenHeight = hp("15.16%")
   let entrance;
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const BattleChicken = () => {
     < Image
       style={{
         position: 'absolute',
-        top: hp("60%"),
+        top: hp("50%"),
         left: wp(chickenPosition),
         width: chickenWidth,
         height: chickenHeight,
