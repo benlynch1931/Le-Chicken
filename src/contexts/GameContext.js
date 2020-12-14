@@ -97,7 +97,7 @@ class GameContextProvider extends Component {
       position: 21.67,
       start: 31.10,
       end: 41.26,
-      stroke: 4.33
+      stroke: 8.67
     }, {
       type: 'horizontal',
       position: 24.01,
