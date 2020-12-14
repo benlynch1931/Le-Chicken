@@ -10,10 +10,10 @@ const BattleChicken = () => {
   let entrance;
 
   useEffect(() => {
-    if(chickenPosition < 80) {
+    if(chickenPosition < 20) {
         entrance = setInterval(() => {
             setChickenPosition(chickenPosition => chickenPosition + 2)
-        }, 30)
+        }, 80)
 
         return () => {
             clearInterval(entrance)
@@ -24,9 +24,9 @@ const BattleChicken = () => {
   return (
     < Image
       style={{
-        position: `wp('${chickenPosition}%')`,
+        position: 'absolute',
         top: hp("60%"),
-        left: chickenPosition,
+        left: wp(chickenPosition),
         width: chickenWidth,
         height: chickenHeight,
         zIndex: 4
