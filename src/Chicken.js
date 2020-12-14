@@ -6,8 +6,8 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const Chicken = () => {
   const { chickenPosition, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove, walls } = useContext(GameContext)
-  const chickenWidth = wp("13.33%")
-  const chickenHeight = hp("6.16%")
+  const chickenWidth = wp("11.73%")
+  const chickenHeight = hp("5.42%")
   const stepSize = "0.5%"
 
   const handleChickenGraphic = (direction, state) => {
@@ -43,14 +43,15 @@ const Chicken = () => {
     const vertiWalls = walls.filter(wall => wall.type == 'vertical')
     if (direction == 'up' || direction == 'down') {
       for (let i = 0; i < horizWalls.length; i++) {
-        const wallPosition = adjustYCoords(horizWalls[i].position, linePadding(horizWalls[i].stroke))
+        console.log(direction)
+        const wallPosition = adjustYCoords(horizWalls[i].position, linePadding(horizWalls[i].stroke, direction))
         if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(horizWalls[i])) {
           distance = Math.max(Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / hp(stepSize)), 0)
         }
       }
     } else {
       for (let i = 0; i < vertiWalls.length; i++) {
-        const wallPosition = adjustXCoords(vertiWalls[i].position, linePadding(vertiWalls[i].stroke))
+        const wallPosition = adjustXCoords(vertiWalls[i].position, linePadding(vertiWalls[i].stroke, direction))
         if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(vertiWalls[i])) {
           distance = Math.max(Math.floor((Math.abs(wallPosition - chickenEdge(direction))) / wp(stepSize)), 0)
         }
@@ -68,9 +69,12 @@ const Chicken = () => {
   }
 
   const linePadding = (stroke, direction) => {
+    console.log(direction)
+    console.log(stroke)
+    console.log(stroke / 2)
     switch (direction) {
       case 'up':
-        return stroke / 2
+        return (stroke / 2)
       case 'down':
         return -stroke / 2
       case 'right':
@@ -177,7 +181,6 @@ const Chicken = () => {
         width: chickenWidth,
         height: chickenHeight,
         zIndex: 4,
-        backgroundColor: 'red'
       }}
       nativeID={`chicken-${chickenGraphic}`}
       source={graphics[chickenGraphic]}

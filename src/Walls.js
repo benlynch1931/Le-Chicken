@@ -88,19 +88,19 @@ const walls = [{
   type: 'horizontal',
   position: 24.01,
   start: 0.00,
-  end: 17.33,
+  end: 16.33,
   stroke: 1.85
 },
 {
   type: 'horizontal',
   position: 24.01,
-  start: 30.67,
+  start: 31.67,
   end: 48.00,
   stroke: 1.85
 },
 {
   type: 'vertical',
-  position: 30.67,
+  position: 31.67,
   start: 23.085,
   end: 32.50,
   stroke: 4.00
