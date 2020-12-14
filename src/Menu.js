@@ -8,7 +8,7 @@ const Menu = (props) => {
   const { restartGame } = useContext(GameContext)
 
   const [gameStarted, setGameStarted] = useState(false)
-
+  if(props.view != 'menu'){ return null}
   const startNewGame = async () => {
     restartGame();
     await setGameStarted(true);

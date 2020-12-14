@@ -8,7 +8,7 @@ import SoundController from './src/SoundController.js'
 
 export default function App() {
 
-  const [view, setView] = useState('menu')
+  const [view, setView] = useState('battle')
 
   return (
     <View>
