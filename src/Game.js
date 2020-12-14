@@ -22,13 +22,13 @@ const Game = (props) => {
         width: wp("100%"),
         padding: hp("0.8%")
       }}>
-        <Button
+      </View>
+      <SceneController />
+      <Button
           onPress={() => props.setView('menu')}
           title="Menu"
           color="#841584"
         />
-      </View>
-      <SceneController />
       <Chicken />
       <GameController />
     </KeyboardAwareScrollView >
