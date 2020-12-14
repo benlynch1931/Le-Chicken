@@ -7,10 +7,17 @@ const BattleChicken = () => {
   const [chickenPosition, setChickenPosition] = useState(0)
   const chickenWidth = wp("13.33%")
   const chickenHeight = hp("6.16%")
+  let entrance;
 
   useEffect(() => {
     if(chickenPosition < 80) {
-        setChickenPosition(chickenPosition => chickenPosition + 0.25)
+        entrance = setInterval(() => {
+            setChickenPosition(chickenPosition => chickenPosition + 2)
+        }, 30)
+
+        return () => {
+            clearInterval(entrance)
+        }
     }
   }, [chickenPosition])
 
