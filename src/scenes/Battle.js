@@ -5,8 +5,10 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 const Battle = () => {
 
   return (
-    <View>
+    <View style={{backgroundColor: 'rgb(199, 252, 177)'}}>
+      
     </View>
   )
+
 }
 export default Battle;

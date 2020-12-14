@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Battle render correctly 1`] = `<View />`;
+
+exports[`Battle renders correctly 1`] = `<View />`;
