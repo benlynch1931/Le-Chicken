@@ -24,6 +24,7 @@ const UserTextInput = () => {
     changeInputText(text)
     if (level === 0 && text.toLowerCase() === "marcher") {
       Keyboard.dismiss();
+      changeNeedToUpdateChickenGraphic(true)
       changeLevel(1)
       sendToDictionary('Marcher', 'To walk');
       changeChickenToMove(90);
@@ -32,6 +33,7 @@ const UserTextInput = () => {
 
     if (level === 1 && text.toLowerCase() === "ouvrir") {
       Keyboard.dismiss();
+      changeNeedToUpdateChickenGraphic(true)
       changeLevel(2);
       sendToDictionary('Ouvrir', 'To open');
       sendToDictionary('Haut', 'Up');

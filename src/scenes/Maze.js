@@ -33,7 +33,7 @@ const Maze = (props) => {
           border: "solid #e3e3e3", 
           borderRadius: 12, 
           backgroundColor: "purple", 
-          display: isChickenAtNote() ? 'block' : 'none' }}>
+          display: chickenPosition[1] <= hp('35%') && chickenPosition[0] <= wp("18%") && chickenPosition[0] >= wp("10%") ? 'block' : 'none' }}>
         <Button color="black" title="Pick up note?" onPress={() => {changeScene('note')}}/>
         </View>
         </View>
