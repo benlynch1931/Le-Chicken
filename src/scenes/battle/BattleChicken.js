@@ -3,6 +3,10 @@ import { Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { BattleContext } from '../../contexts/BattleContext.js'
 
+import { Audio } from 'expo-av';
+
+
+
 const BattleChicken = () => {
   const { battleChickenPosition, chickenHealth, changeBattleChickenPosition, battleReport } = useContext(BattleContext)
   const chickenWidth = wp("30%")
@@ -10,6 +14,7 @@ const BattleChicken = () => {
   let entrance;
   let stepSize = "1%"
   let chickenSurge;
+  const [sound, setSound] = React.useState()
 
   useEffect(() => {
     if(battleChickenPosition[0] < 20) {
@@ -30,7 +35,7 @@ const BattleChicken = () => {
             if(counter < 4) {
               changeBattleChickenPosition(wp(stepSize), 0)
             } else {
-              console.log("moving back")
+              soundFX()
               changeBattleChickenPosition(-wp(stepSize), 0)
               changeBattleChickenPosition(-wp(stepSize), 0)
               changeBattleChickenPosition(-wp(stepSize), 0)
@@ -42,6 +47,14 @@ const BattleChicken = () => {
     }
 
   }, [battleReport])
+
+  async function soundFX() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("../../../assets/punch1.mp3")
+    )
+    setSound(sound);
+    await sound.playAsync();
+  }
 
   return (
     < Image
