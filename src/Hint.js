@@ -10,7 +10,7 @@ const Hint = () => {
   const hints = {
     0: "Pour marcher: Type ‘marcher’",
     1: "Pour ouvrir: Type 'ouvrir'",
-    2: "haut, droite, bas, gauche"
+    2: "Check your dictionary for [HAUT], [DROITE], [BAS], [GAUCHE]"
   }
 
   useEffect(() => {
