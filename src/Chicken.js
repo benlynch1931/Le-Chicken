@@ -43,11 +43,23 @@ const Chicken = () => {
     }
   }
 
+  const stepSize = (direction) => {
+    if (isVertical(direction)) {
+      return stepSizeVertical
+    } else {
+      return stepSizeHorizontal
+    }
+  }
+
+  const isVertical = (direction) => {
+    return (direction == 'up' || direction == 'down')
+  }
+
   const capDistance = (distance, wall, direction) => {
     const padding = linePadding(wall.stroke, direction)
     const wallPosition = adjustCoords(wall.position, direction, padding)
     if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(wall)) {
-      distance = Math.max(Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / stepSizeVertical), 0)
+      distance = Math.max(Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / stepSize(direction)), 0)
     }
     return distance
   }
