@@ -11,7 +11,7 @@ const BattleOpponent = () => {
   let stepSize = "1%"
 
   useEffect(() => {
-    if(opponentPosition[0] > 60) {
+    if(opponentPosition[0] > wp("16%")) {
         entrance = setInterval(() => {
             changeOpponentPosition(-wp(stepSize), 0)
         }, 80)

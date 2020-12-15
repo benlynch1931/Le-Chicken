@@ -14,7 +14,7 @@ const AttackCommands = () => {
             changeInputText("")
             chickenAttack()
         }
-    }  
+    }
   }
 
   const chickenAttack = () => {
@@ -66,17 +66,19 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     width: wp('100%'),
+    padding: hp("2%")
   },
   hintText: {
     alignSelf: "center",
-    padding: hp("2%")
+    paddingBottom: hp("1%")
+
   },
   input: {
     width: wp("40%"),
+    height: hp("5%"),
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey',
-    padding: 10,
     borderRadius: 5,
     textAlign: "center",
     alignSelf: "center"
