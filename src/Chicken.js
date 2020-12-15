@@ -13,7 +13,7 @@ const Chicken = () => {
 
 
 
-  const _moveIncrement = (direction, distance) => {
+  const moveIncrement = (direction) => {
 
     switch (direction) {
       case 'up':
@@ -31,8 +31,8 @@ const Chicken = () => {
     }
   }
 
-  const _finishMovement = (direction, chickenWalk) => {
-    clearInterval(chickenWalk)
+  const finishMovement = (interval) => {
+    clearInterval(interval)
     changeChickenToMove(0);
     triggerGraphicChange()
   }
@@ -68,14 +68,13 @@ const Chicken = () => {
     if (currentScene == 'maze') {
       walls.forEach(wall => distance = capDistanceForWall(wall, distance, direction))
     }
-
-    let chickenWalk = setInterval(() => {
-      if (distance <= 0) {
-        _finishMovement(direction, chickenWalk);
-        return;
+    let interval = setInterval(() => {
+      if (distance > 0) {
+        moveIncrement(direction);
+        distance--;
+      } else {
+        finishMovement(interval);
       }
-      _moveIncrement(direction);
-      distance--;
     }, 30)
   }
 
@@ -143,12 +142,10 @@ const Chicken = () => {
   }
 
   const chickenInLineWith = (wall) => {
-    switch (wall.type) {
-      case 'horizontal':
-        return chickenPosition[0] > adjustXCoords(wall.start) && chickenPosition[0] < adjustXCoords(wall.end)
-      case 'vertical':
-        // is the chicken more than the start, and less than the end of the line?
-        return chickenPosition[1] > adjustYCoords(wall.start) && chickenPosition[1] < adjustYCoords(wall.end)
+    if (wall.type == 'horizontal' && isVertical(chickenDirection)) {
+      return chickenPosition[0] > adjustXCoords(wall.start) && chickenPosition[0] < adjustXCoords(wall.end)
+    } else if (wall.type == 'vertical' && !isVertical(chickenDirection)) {
+      return chickenPosition[1] > adjustYCoords(wall.start) && chickenPosition[1] < adjustYCoords(wall.end)
     }
   }
 
