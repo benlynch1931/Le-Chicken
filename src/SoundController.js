@@ -8,6 +8,14 @@ export default function SoundController(props) {
   const [sound, setSound] = React.useState();
   const [musicPlaying, setMusicPlaying] = React.useState(false);
   let soundFile;
+  let battlePlaying = false
+
+  useEffect(() => {
+    if(currentScene == 'battle' && musicPlaying && battlePlaying == false) {
+      startMusic()
+      battlePlaying = true
+    }
+  }, [currentScene])
 
   async function startMusic() {
 
