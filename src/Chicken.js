@@ -48,6 +48,7 @@ const Chicken = () => {
     triggerGraphicChange()
   }
 
+
   const capDistanceForWall = (wall, distance, direction) => {
     const padding = linePadding(wall.stroke, direction)
     const wallPosition = adjustCoords(wall.position, direction, padding)
@@ -55,7 +56,7 @@ const Chicken = () => {
       distance = Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / stepSize(direction))
     }
     return distance
-  }
+   }
 
   const chickenWillReach = (wallPosition, distance, direction) => {
     let chickenStartsBeforeWall
