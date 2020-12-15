@@ -55,31 +55,18 @@ const Chicken = () => {
     return (direction == 'up' || direction == 'down')
   }
 
-  const capDistance = (distance, wall, direction) => {
+  const capDistanceForWall = (wall, distance, direction) => {
     const padding = linePadding(wall.stroke, direction)
     const wallPosition = adjustCoords(wall.position, direction, padding)
     if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(wall)) {
-      distance = Math.max(Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / stepSize(direction)), 0)
+      distance = Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / stepSize(direction))
     }
     return distance
   }
 
   const move = (direction, distance) => {
     if (currentScene == 'maze') {
-      const horizWalls = walls.filter(wall => wall.type == 'horizontal')
-      const vertiWalls = walls.filter(wall => wall.type == 'vertical')
-
-      if (direction == 'up' || direction == 'down') {
-        for (let i = 0; i < horizWalls.length; i++) {
-          const wall = horizWalls[i]
-          distance = capDistance(distance, wall, direction)
-        }
-      } else {
-        for (let i = 0; i < vertiWalls.length; i++) {
-          const wall = vertiWalls[i]
-          distance = capDistance(distance, wall, direction)
-        }
-      }
+      walls.forEach(wall => distance = capDistanceForWall(wall, distance, direction))
     }
 
     let chickenWalk = setInterval(() => {
