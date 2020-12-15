@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
-import { Audio } from 'expo-av'
+import React, { useState } from 'react';
+import { View } from 'react-native';
 import GameContextProvider from './src/contexts/GameContext.js';
 import Game from './src/Game.js'
 import Menu from './src/Menu.js'
@@ -8,7 +7,7 @@ import SoundController from './src/SoundController.js'
 
 export default function App() {
 
-  const [view, setView] = useState('battle')
+  const [view, setView] = useState('menu')
 
   return (
     <View>
