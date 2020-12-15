@@ -8,8 +8,8 @@ const Chicken = () => {
   const { chickenPosition, loop, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove, walls, currentScene, needToUpdateChickenGraphic, changeNeedToUpdateChickenGraphic } = useContext(GameContext)
   const chickenWidth = wp("11.73%")
   const chickenHeight = hp("5.42%")
-  const stepSizeVertical = "0.7%"
-  const stepSizeHorizontal = "1.4%"
+  const stepSizeVertical = "0.5%"
+  const stepSizeHorizontal = "1.0%"
 
 
 
@@ -75,13 +75,13 @@ const Chicken = () => {
   const linePadding = (stroke, direction) => {
     switch (direction) {
       case 'up':
-        return (stroke / 2)
+        return stroke/2
       case 'down':
-        return -stroke / 2
+        return -stroke/2
       case 'right':
-        return -stroke / 2
+        return -stroke/2
       case 'left':
-        return stroke / 2
+        return stroke/2
     }
   }
 
