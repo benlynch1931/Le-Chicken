@@ -6,9 +6,6 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 export class DPad extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      number: 0,
-    };
     this.t = undefined
     this.repeat = this.repeat.bind(this)
     this.startLoop = this.startLoop.bind(this)
@@ -18,21 +15,20 @@ export class DPad extends Component {
   static contextType = GameContext;
 
   repeat() {
-    this.setState({ number: this.state.number + 1 })
     this.context.changeChickenToMove(1)
-    this.t = setTimeout(this.repeat, 5)
+    this.t = setTimeout(this.repeat, 0)
   }
 
   startLoop() {
     this.context.changeLoop(true);
-    // this.context.changeNeedToUpdateChickenGraphic(true);
+    this.context.changeNeedToUpdateChickenGraphic(true);
     this.repeat()
   }
 
   stopLoop() {
     this.context.changeLoop(false);
     this.context.changeChickenToMove(0);
-    // this.context.changeNeedToUpdateChickenGraphic(true);
+    this.context.changeNeedToUpdateChickenGraphic(true);
     clearTimeout(this.t)
   }
 
