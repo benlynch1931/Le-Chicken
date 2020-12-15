@@ -23,7 +23,12 @@ class GameContextProvider extends Component {
     gameMode: initialGameMode,
     chickenDirection: "up",
     translations: [],
-    walls: walls
+    walls: walls,
+    needToUpdateChickenGraphic: false
+  }
+
+  changeNeedToUpdateChickenGraphic = (needToUpdateChickenGraphic) => {
+    this.setState({ needToUpdateChickenGraphic: needToUpdateChickenGraphic })
   }
 
   addToDictionary = (translation) => {
@@ -35,7 +40,7 @@ class GameContextProvider extends Component {
     this.setState({ level: level })
   }
   changeGameMode = (mode) => {
-    this.setState({ gameMode: mode})
+    this.setState({ gameMode: mode })
   }
   changeChickenDirection = (direction) => {
     this.setState({ chickenDirection: direction })
@@ -90,7 +95,8 @@ class GameContextProvider extends Component {
         changeLevel: this.changeLevel,
         restartGame: this.restartGame,
         changeGameMode: this.changeGameMode,
-        addToDictionary: this.addToDictionary
+        addToDictionary: this.addToDictionary,
+        changeNeedToUpdateChickenGraphic: this.changeNeedToUpdateChickenGraphic
       }}>
         {this.props.children}
       </GameContext.Provider>

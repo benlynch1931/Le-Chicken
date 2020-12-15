@@ -5,14 +5,12 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 const Chicken = () => {
-  const { chickenPosition, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove, walls, currentScene } = useContext(GameContext)
+  const { chickenPosition, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove, walls, currentScene, needToUpdateChickenGraphic, changeNeedToUpdateChickenGraphic } = useContext(GameContext)
   const chickenWidth = wp("11.73%")
   const chickenHeight = hp("5.42%")
   const stepSize = "0.5%"
 
-  const handleChickenGraphic = (direction, state) => {
-    changeChickenGraphic(`${state}${direction}`)
-  }
+
 
   const _moveIncrement = (direction, distance) => {
 
@@ -34,12 +32,12 @@ const Chicken = () => {
 
   const _finishMovement = (direction, chickenWalk) => {
     clearInterval(chickenWalk)
-    handleChickenGraphic(direction, 'idle')
+    //handleChickenGraphic(direction, 'idle')
     changeChickenToMove(0);
   }
 
   const move = (direction, distance) => {
-    if(currentScene == 'maze'){
+    if (currentScene == 'maze') {
       const horizWalls = walls.filter(wall => wall.type == 'horizontal')
       const vertiWalls = walls.filter(wall => wall.type == 'vertical')
       if (direction == 'up' || direction == 'down') {
@@ -59,7 +57,7 @@ const Chicken = () => {
         }
       }
     }
-    handleChickenGraphic(direction, 'walk');
+    //handleChickenGraphic(direction, 'walk');
     let chickenWalk = setInterval(() => {
       if (distance <= 0) {
         _finishMovement(direction, chickenWalk);
@@ -71,9 +69,6 @@ const Chicken = () => {
   }
 
   const linePadding = (stroke, direction) => {
-    console.log(direction)
-    console.log(stroke)
-    console.log(stroke / 2)
     switch (direction) {
       case 'up':
         return (stroke / 2)
@@ -160,6 +155,19 @@ const Chicken = () => {
     }
     move(chickenDirection, chickenToMove);
   }, [level, chickenToMove, chickenDirection])
+
+  useEffect(() => {
+    let action
+    if (chickenToMove > 0) {
+      action = 'walk'
+    } else {
+      action = 'idle'
+    }
+    if (needToUpdateChickenGraphic == true) {
+      changeChickenGraphic(`${action}${chickenDirection}`)
+      changeNeedToUpdateChickenGraphic(false)
+    }
+  }, [chickenToMove, chickenDirection])
 
 
   const graphics = {

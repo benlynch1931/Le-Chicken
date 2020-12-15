@@ -1,31 +1,36 @@
-import React, { useContext, Component } from 'react';
+import React, { useContext, useState, Component } from 'react';
 import { TextInput, Text, View, TouchableOpacity, Button, StyleSheet, Keyboard } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export class DPad extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       number: 0,
     };
-    this.direction = null;
-    this.timer = null;
-    this.addOne = this.addOne.bind(this);
-    this.stopTimer = this.stopTimer.bind(this);  
+    this.t = undefined
+    this.repeat = this.repeat.bind(this)
+    this.startLoop = this.startLoop.bind(this)
+    this.stopLoop = this.stopLoop.bind(this)
   }
 
-  addOne() {
-    const { changeChickenToMove, changeChickenDirection } = useContext(GameContext)
+  static contextType = GameContext;
 
-    this.setState({number: this.state.number+1});
-    changeChickenDirection(this.direction);
-    changeChickenToMove(this.state.number);
-    this.timer = setTimeout(this.addOne, 200);
+  repeat() {
+    this.setState({ number: this.state.number + 1 })
+    this.context.changeChickenToMove(6)
+    this.t = setTimeout(this.repeat, 0)
   }
 
-  stopTimer() {
-    clearTimeout(this.timer);
+  startLoop() {
+    this.context.changeNeedToUpdateChickenGraphic(true);
+    this.repeat()
+  }
+
+  stopLoop() {
+    this.context.changeNeedToUpdateChickenGraphic(true)
+    clearTimeout(this.t)
   }
 
   // var myVar = setInterval(myTimer, 1000);
@@ -55,13 +60,17 @@ export class DPad extends Component {
             title="HAUT"
             color="#841584"
           /> */}
-        <TouchableOpacity onPressIn={ this.direction = 'up', this.addOne  } onPressOut={ this.stopTimer }>
+        <TouchableOpacity
+          onPressIn={() => { this.startLoop(); }}
+          onPressOut={() => { this.stopLoop(); }}>
           <Text>HAUT</Text>
         </TouchableOpacity>
       </View >
     )
   }
 }
+
+export default DPad;
 
 const styles = StyleSheet.create({
   container: {
@@ -79,4 +88,3 @@ const styles = StyleSheet.create({
   //   alignSelf: "center"
   // }
 });
-export default DPad;
