@@ -5,11 +5,11 @@ import { walls } from '../Walls.js';
 export const GameContext = createContext();
 
 const chickenPositionDefault = [wp("43.34%"), hp("60%")];
-const initialScene = 'coop';
+const initialScene = 'battle';
 const initialChickenGraphic = 'idleright';
 const initialHint = "Pour marcher: Type ‘marcher’";
 const initialLevel = 0;
-const initialGameMode = 'game';
+// const initialGameMode = 'game';
 
 class GameContextProvider extends Component {
   state = {
@@ -20,7 +20,7 @@ class GameContextProvider extends Component {
     hint: initialHint,
     chickenToMove: 0,
     level: initialLevel,
-    gameMode: initialGameMode,
+    // gameMode: initialGameMode,
     chickenDirection: "up",
     translations: [],
     walls: walls
@@ -34,9 +34,9 @@ class GameContextProvider extends Component {
   changeLevel = (level) => {
     this.setState({ level: level })
   }
-  changeGameMode = (mode) => {
-    this.setState({ gameMode: mode})
-  }
+  // changeGameMode = (mode) => {
+  //   this.setState({ gameMode: mode})
+  // }
   changeChickenDirection = (direction) => {
     this.setState({ chickenDirection: direction })
   }
@@ -89,7 +89,7 @@ class GameContextProvider extends Component {
         changeChickenDirection: this.changeChickenDirection,
         changeLevel: this.changeLevel,
         restartGame: this.restartGame,
-        changeGameMode: this.changeGameMode
+        // changeGameMode: this.changeGameMode,
         addToDictionary: this.addToDictionary
       }}>
         {this.props.children}

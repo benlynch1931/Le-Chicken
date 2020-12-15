@@ -31,7 +31,7 @@ const BattleOpponent = () => {
         zIndex: 4
       }}
       nativeID={`battleOpponent`}
-      source={require('../assets/chicken-left.png')}
+      source={require('../../../assets/chicken-left.png')}
     />
   );
 }

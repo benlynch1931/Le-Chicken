@@ -31,10 +31,9 @@ const BattleChicken = () => {
         zIndex: 4
       }}
       nativeID={`battleChicken`}
-      source={require('../assets/chicken-right.png')}
+      source={require('../../../assets/chicken-right.png')}
     />
   );
 }
 
 export default BattleChicken
-

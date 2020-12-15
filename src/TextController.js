@@ -4,7 +4,7 @@ import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import UserTextInput from './UserTextInput.js'
 import Hint from './Hint.js'
-export class GameController extends Component {
+export class TextController extends Component {
   constructor() {
     super();
   }
@@ -29,4 +29,4 @@ export class GameController extends Component {
   }
 }
 
-export default GameController;
+export default TextController;

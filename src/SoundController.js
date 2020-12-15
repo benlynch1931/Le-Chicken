@@ -11,11 +11,11 @@ export default function SoundController(props) {
 
   async function startMusic() {
 
-    if (gameMode == 'battle') {
-      soundFile = require('../assets/Battle1.mp3')
-    } else {
+    // if (gameMode == 'battle') {
+      // soundFile = require('../assets/Battle1.mp3')
+    // } else {
       soundFile = require('../assets/feeling-good.mp3')
-    }
+    // }
     const { sound } = await Audio.Sound.createAsync(
       soundFile
     );
