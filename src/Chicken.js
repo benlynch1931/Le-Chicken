@@ -79,15 +79,11 @@ const Chicken = () => {
   }
 
   const linePadding = (stroke, direction) => {
-    switch (direction) {
-      case 'up':
-        return stroke / 2
-      case 'down':
-        return -stroke / 2
-      case 'right':
-        return -stroke / 2
-      case 'left':
-        return stroke / 2
+    let padding = stroke / 2
+    if (direction == 'up' || direction == 'left') {
+      return padding
+    } else {
+      return -padding
     }
   }
 
@@ -150,7 +146,7 @@ const Chicken = () => {
   }
 
   const adjustCoords = (coord, direction, padding = 0) => {
-    if (direction == 'up' || direction == 'down') {
+    if (isVertical(direction)) {
       return adjustYCoords(coord, padding)
     } else {
       return adjustXCoords(coord, padding)
