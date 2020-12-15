@@ -12,13 +12,17 @@ export class TextController extends Component {
   static contextType = GameContext;
 
   render() {
-    const { changeInputText, inputText, hint, changeHint, changeLevel, level, changeChickenMoving, changeChickenDirection } = this.context
+    const { currentScene, changeInputText, inputText, hint, changeHint, changeLevel, level, changeChickenMoving, changeChickenDirection } = this.context
     const styles = StyleSheet.create({
       container: {
         backgroundColor: '#fff',
         width: wp('100%'),
       }
     });
+
+    if (currentScene == 'battle') {
+      return null
+    }
 
     return (
       < View style={styles.container} >
