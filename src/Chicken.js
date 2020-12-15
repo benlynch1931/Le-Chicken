@@ -8,8 +8,8 @@ const Chicken = () => {
   const { chickenPosition, dPadPressed, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove, walls, currentScene, needToUpdateChickenGraphic, changeNeedToUpdateChickenGraphic } = useContext(GameContext)
   const chickenWidth = wp("11.73%")
   const chickenHeight = hp("5.42%")
-  const stepSizeVertical = "0.5%"
-  const stepSizeHorizontal = "1.0%"
+  const stepSizeVertical = hp("0.5%")
+  const stepSizeHorizontal = wp("1.0%")
 
 
 
@@ -17,49 +17,59 @@ const Chicken = () => {
 
     switch (direction) {
       case 'up':
-        increaseChickenPosition(0, -hp(stepSizeVertical))
+        increaseChickenPosition(0, -stepSizeVertical)
         break;
       case 'down':
-        increaseChickenPosition(0, hp(stepSizeVertical))
+        increaseChickenPosition(0, stepSizeVertical)
         break;
       case 'right':
-        increaseChickenPosition(wp(stepSizeHorizontal), 0)
+        increaseChickenPosition(stepSizeHorizontal, 0)
         break;
       case 'left':
-        increaseChickenPosition(-wp(stepSizeHorizontal), 0)
+        increaseChickenPosition(-stepSizeHorizontal, 0)
         break;
     }
   }
 
   const _finishMovement = (direction, chickenWalk) => {
     clearInterval(chickenWalk)
+    changeChickenToMove(0);
+    triggerGraphicChange()
+  }
+
+  const triggerGraphicChange = () => {
     if (!dPadPressed) {
       changeNeedToUpdateChickenGraphic(true);
     }
-    changeChickenToMove(0);
+  }
+
+  const capDistance = (distance, wall, direction) => {
+    const padding = linePadding(wall.stroke, direction)
+    const wallPosition = adjustCoords(wall.position, direction, padding)
+    if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(wall)) {
+      distance = Math.max(Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / stepSizeVertical), 0)
+    }
+    return distance
   }
 
   const move = (direction, distance) => {
     if (currentScene == 'maze') {
       const horizWalls = walls.filter(wall => wall.type == 'horizontal')
       const vertiWalls = walls.filter(wall => wall.type == 'vertical')
+
       if (direction == 'up' || direction == 'down') {
         for (let i = 0; i < horizWalls.length; i++) {
-          const wallPosition = adjustYCoords(horizWalls[i].position, linePadding(horizWalls[i].stroke, direction))
-          if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(horizWalls[i])) {
-            distance = Math.max(Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / hp(stepSizeVertical)), 0)
-          }
+          const wall = horizWalls[i]
+          distance = capDistance(distance, wall, direction)
         }
       } else {
         for (let i = 0; i < vertiWalls.length; i++) {
-          const wallPosition = adjustXCoords(vertiWalls[i].position, linePadding(vertiWalls[i].stroke, direction))
-          if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(vertiWalls[i])) {
-            distance = Math.max(Math.floor((Math.abs(wallPosition - chickenEdge(direction))) / wp(stepSizeHorizontal)), 0)
-          }
+          const wall = vertiWalls[i]
+          distance = capDistance(distance, wall, direction)
         }
       }
     }
-    //handleChickenGraphic(direction, 'walk');
+
     let chickenWalk = setInterval(() => {
       if (distance <= 0) {
         _finishMovement(direction, chickenWalk);
@@ -88,20 +98,20 @@ const Chicken = () => {
     let chickenEndsBeyondWall
     switch (direction) {
       case 'up':
-        chickenStartsBeforeWall = chickenEdge(direction) >= wallPosition - hp(stepSizeVertical)
-        chickenEndsBeyondWall = chickenPositionAfterMovement(distance, direction) <= wallPosition + hp(stepSizeVertical)
+        chickenStartsBeforeWall = chickenEdge(direction) >= wallPosition - stepSizeVertical
+        chickenEndsBeyondWall = chickenPositionAfterMovement(distance, direction) <= wallPosition + stepSizeVertical
         break;
       case 'down':
-        chickenStartsBeforeWall = chickenEdge(direction) <= wallPosition + hp(stepSizeVertical)
-        chickenEndsBeyondWall = chickenPositionAfterMovement(distance, direction) >= wallPosition - hp(stepSizeVertical)
+        chickenStartsBeforeWall = chickenEdge(direction) <= wallPosition + stepSizeVertical
+        chickenEndsBeyondWall = chickenPositionAfterMovement(distance, direction) >= wallPosition - stepSizeVertical
         break;
       case 'right':
-        chickenStartsBeforeWall = chickenEdge(direction) <= wallPosition + wp(stepSizeHorizontal)
-        chickenEndsBeyondWall = chickenPositionAfterMovement(distance, direction) >= wallPosition - wp(stepSizeHorizontal)
+        chickenStartsBeforeWall = chickenEdge(direction) <= wallPosition + stepSizeHorizontal
+        chickenEndsBeyondWall = chickenPositionAfterMovement(distance, direction) >= wallPosition - stepSizeHorizontal
         break;
       case 'left':
-        chickenStartsBeforeWall = chickenEdge(direction) >= wallPosition - wp(stepSizeHorizontal)
-        chickenEndsBeyondWall = chickenPositionAfterMovement(distance, direction) <= wallPosition + wp(stepSizeHorizontal)
+        chickenStartsBeforeWall = chickenEdge(direction) >= wallPosition - stepSizeHorizontal
+        chickenEndsBeyondWall = chickenPositionAfterMovement(distance, direction) <= wallPosition + stepSizeHorizontal
         break;
     }
     return chickenStartsBeforeWall && chickenEndsBeyondWall
@@ -123,23 +133,31 @@ const Chicken = () => {
   const chickenPositionAfterMovement = (distance, direction) => {
     switch (direction) {
       case 'up':
-        return chickenEdge(direction) - (distance * hp(stepSizeVertical))
+        return chickenEdge(direction) - (distance * stepSizeVertical)
       case 'down':
-        return chickenEdge(direction) + (distance * hp(stepSizeVertical))
+        return chickenEdge(direction) + (distance * stepSizeVertical)
       case 'right':
-        return chickenEdge(direction) + (distance * wp(stepSizeHorizontal))
+        return chickenEdge(direction) + (distance * stepSizeHorizontal)
       case 'left':
-        return chickenEdge(direction) - (distance * wp(stepSizeHorizontal))
+        return chickenEdge(direction) - (distance * stepSizeHorizontal)
     }
   }
 
   const chickenInLineWith = (wall) => {
     switch (wall.type) {
       case 'horizontal':
-        return chickenPosition[0] > wp(wall.start) && chickenPosition[0] < wp(wall.end)
+        return chickenPosition[0] > adjustXCoords(wall.start) && chickenPosition[0] < adjustXCoords(wall.end)
       case 'vertical':
         // is the chicken more than the start, and less than the end of the line?
         return chickenPosition[1] > adjustYCoords(wall.start) && chickenPosition[1] < adjustYCoords(wall.end)
+    }
+  }
+
+  const adjustCoords = (coord, direction, padding = 0) => {
+    if (direction == 'up' || direction == 'down') {
+      return adjustYCoords(coord, padding)
+    } else {
+      return adjustXCoords(coord, padding)
     }
   }
 
@@ -147,8 +165,8 @@ const Chicken = () => {
     return wp(coord) + wp(padding)
   }
 
-  const adjustYCoords = (position, padding = 0) => {
-    return hp(position) + hp('5.00%') + hp("1.85%") + hp(padding)
+  const adjustYCoords = (coord, padding = 0) => {
+    return hp(coord) + hp('5.00%') + hp("1.85%") + hp(padding)
   }
 
   useEffect(() => {
@@ -169,7 +187,7 @@ const Chicken = () => {
       changeChickenGraphic(`${action}${chickenDirection}`)
       changeNeedToUpdateChickenGraphic(false)
     }
-  }, [chickenToMove, chickenDirection])
+  }, [chickenToMove, chickenDirection, needToUpdateChickenGraphic])
 
 
   const graphics = {
