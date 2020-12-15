@@ -4,7 +4,10 @@ import Chicken from './Chicken.js';
 import { GameContext } from './contexts/GameContext.js';
 
 const mockContext = {
-  chickenPosition: [0, 0],
+  chickenPosition: {
+    x: 0,
+    y: 0
+  },
   level: 0,
   chickenGraphic: "walkUp",
   changeChickenGraphic: jest.fn(),

@@ -3,6 +3,7 @@ import { Text, TextInput, View, StyleSheet, Keyboard } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import UserTextInput from './UserTextInput.js'
+import DPad from './DPad.js'
 import Hint from './Hint.js'
 export class GameController extends Component {
   constructor() {
@@ -12,7 +13,7 @@ export class GameController extends Component {
   static contextType = GameContext;
 
   render() {
-    const { changeInputText, inputText, hint, changeHint, changeLevel, level, changeChickenMoving, changeChickenDirection } = this.context
+    const { changeInputText, inputText, hint, changeHint, currentScene, changeLevel, level, changeChickenMoving, changeChickenDirection } = this.context
     const styles = StyleSheet.create({
       container: {
         backgroundColor: '#fff',
@@ -20,10 +21,19 @@ export class GameController extends Component {
       }
     });
 
+    const activateDPad = () => {
+      if(currentScene === 'maze') {
+        return(
+          <DPad />
+        )
+      }
+    }
+
     return (
       < View style={styles.container} >
         <Hint />
         <UserTextInput />
+        { activateDPad() }
       </View >
     )
   }

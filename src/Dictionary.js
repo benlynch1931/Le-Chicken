@@ -10,9 +10,6 @@ const Dictionary = (props) => {
   const continueGame = async () => {
     props.setView('game');
   }
-  if (currentScene === 'maze'){
-    console.log(translations)
-  }
 
   if (props.view != 'dictionary') return null;
 

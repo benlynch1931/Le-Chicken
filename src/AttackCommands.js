@@ -10,13 +10,12 @@ const AttackCommands = (props) => {
 
   const checkInput = (text) => {
     setInputText(text)
-    if(chickenTurn == true) {
-        console.log(props.chickenHealth, props.opponentHealth)
-        if (text.toLowerCase() == "frapper") {
-            setInputText("")
-            chickenAttack()
-        }
-    }  
+    if (chickenTurn == true) {
+      if (text.toLowerCase() == "frapper") {
+        setInputText("")
+        chickenAttack()
+      }
+    }
   }
 
   const chickenAttack = () => {
@@ -28,24 +27,24 @@ const AttackCommands = (props) => {
   }
 
   const opponentTurn = () => {
-      setTimeout(() => {
-        props.setChickenHealth(props.chickenHealth - (Math.floor(Math.random() * 6) + 20))
-        setBattleReport("L’adversaire a frappé le chicken")
-        checkHealth()
-        setChickenTurn(true)
-      }, 2000)
+    setTimeout(() => {
+      props.setChickenHealth(props.chickenHealth - (Math.floor(Math.random() * 6) + 20))
+      setBattleReport("L’adversaire a frappé le chicken")
+      checkHealth()
+      setChickenTurn(true)
+    }, 2000)
   }
 
   const checkHealth = () => {
-      if(chickenTurn) {
-        if(props.opponentHealth <= 20) {
-            setResult("You won")
-        }
-      }else {
-          if(props.chickenHealth <= 20) {
-            setResult("You lost")
-          }
+    if (chickenTurn) {
+      if (props.opponentHealth <= 20) {
+        setResult("You won")
       }
+    } else {
+      if (props.chickenHealth <= 20) {
+        setResult("You lost")
+      }
+    }
   }
   return (
     <View style={styles.container}>
@@ -53,10 +52,10 @@ const AttackCommands = (props) => {
       <Text style={styles.hintText}>{`${battleReport}`}</Text>
       <Text style={styles.hintText}>{`${result}`}</Text>
       <TextInput style={styles.input}
-      placeholderTextColor="black"
-      testID="textInput"
-      onChangeText={checkInput}
-      value={inputText}
+        placeholderTextColor="black"
+        testID="textInput"
+        onChangeText={checkInput}
+        value={inputText}
       ></TextInput>
     </View>
   )
