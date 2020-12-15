@@ -39,7 +39,6 @@ test("Changes input but not level when incorrect input is given", () => {
     const { getByTestId } = render(<BattleContext.Provider value={mockContext}><AttackCommands/></BattleContext.Provider>)
     const input = getByTestId('textInput')
     fireEvent.changeText(input, "frapper")
-    console.log(input)
     expect(mockContext.changeInputText).toHaveBeenCalled();
 
 })
