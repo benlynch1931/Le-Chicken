@@ -1,4 +1,4 @@
-context('Menu', () => {
+context('Dictionary', () => {
   beforeEach(() => {
     cy.viewport('iphone-x')
     cy.visit('http://localhost:19006')
