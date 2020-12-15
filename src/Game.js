@@ -18,14 +18,24 @@ const Game = (props) => {
       scrollEnabled={false}
       nativeID='game'
     >
-      <View style={ styles.view }>
-        <Button
+      <View style={{
+        height: hp("5%"),
+        alignItems: 'flex-start',
+        width: wp("100%"),
+        padding: hp("0.8%")
+      }}>
+      </View>
+      <SceneController />
+      <Button
+          onPress={() => props.setView('dictionary')}
+          title="Dictionary"
+          color="#841584"
+        />
+      <Button
           onPress={() => props.setView('menu')}
           title="Menu"
           color="#841584"
         />
-      </View>
-      <SceneController />
       <Chicken />
       <GameController />
     </KeyboardAwareScrollView >
