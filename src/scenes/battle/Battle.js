@@ -12,9 +12,9 @@ const Battle = (props) => {
 
   return (
     <View>
-      <HealthBar health={chickenHealth}/>
+      <HealthBar character={"Chicken"} health={chickenHealth}/>
       <BattleChicken></BattleChicken>
-      <HealthBar health={opponentHealth}/>
+      <HealthBar character={"Opponent"} health={opponentHealth}/>
       <BattleOpponent></BattleOpponent>
       <BattleView></BattleView>
 
