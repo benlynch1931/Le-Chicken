@@ -33,33 +33,9 @@ export class DPad extends Component {
     clearTimeout(this.t)
   }
 
-  // var myVar = setInterval(myTimer, 1000);
-  // let direction = null
-
-  // const myTimer = () => {
-  //   changeChickenDirection(direction)
-  //   changeChickenToMove(1)
-  // }
-
-  // const myStopFunction= () => {
-  //   clearInterval(myVar);
-  // }
-
   render() {
     return (
       < View style={styles.container} >
-        {/* <TextInput style={styles.input}
-          placeholderTextColor="black"
-          testID="textInput"
-          onChangeText={checkInput}
-          value={inputText} */}
-        {/* /> */}
-        {/* <Button
-            onPressIn={debugMe()}
-            onPressOut={debugMe()}
-            title="HAUT"
-            color="#841584"
-          /> */}
         <TouchableOpacity
           onPressIn={() => { this.startLoop(); }}
           onPressOut={() => { this.stopLoop(); }}>
@@ -77,14 +53,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: wp('100%'),
   }
-  // input: {
-  //   width: wp("40%"),
-  //   fontSize: 20,
-  //   borderWidth: 2,
-  //   borderColor: 'grey',
-  //   padding: 10,
-  //   borderRadius: 5,
-  //   textAlign: "center",
-  //   alignSelf: "center"
-  // }
 });
