@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { Text, TextInput, View, StyleSheet, Keyboard } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import UserTextInput from './UserTextInput.js'
 import DPad from './DPad.js'
 import Hint from './Hint.js'
-
 export class GameController extends Component {
-  constructor(){
+  constructor() {
     super();
   }
 
@@ -23,7 +22,7 @@ export class GameController extends Component {
     });
 
     const activateDPad = () => {
-      if(currentScene === 'maze') {
+      if(currentScene == 'maze') {
         return(
           <DPad />
         )
@@ -37,8 +36,7 @@ export class GameController extends Component {
         { activateDPad() }
       </View >
     )
-
   }
-
 }
+
 export default GameController;

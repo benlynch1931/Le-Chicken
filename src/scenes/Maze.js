@@ -10,7 +10,7 @@ const Maze = () => {
   const vertiWalls = walls.filter(wall => wall.type == 'vertical')
 
   const isChickenAtNote = () => {
-    return (chickenPosition.y <= hp('35%') && chickenPosition.x <= wp("18%") && chickenPosition.x >= wp("10%"))
+    return (chickenPosition.y <= hp('35%') && chickenPosition.x <= wp("20%") && chickenPosition.x >= wp("10%"))
   }
 
   const renderNote = () => {
@@ -33,8 +33,8 @@ const Maze = () => {
           border: "solid #e3e3e3", 
           borderRadius: 12, 
           backgroundColor: "purple", 
-          display: chickenPosition[1] <= hp('35%') && chickenPosition[0] <= wp("18%") && chickenPosition[0] >= wp("10%") ? 'block' : 'none' }}>
-        <Button color="black" title="Pick up note?" onPress={() => {changeScene('note')}}/>
+          display: isChickenAtNote() ? 'block' : 'none' }}>
+        <Button color="black" title="Press to pick up note!" onPress={() => {changeScene('note')}}/>
         </View>
         </View>
         

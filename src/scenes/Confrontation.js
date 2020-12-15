@@ -24,7 +24,7 @@ const Confrontation = () => {
         style={{position: "absolute", width: wp("11.73%"), height:  hp("5.42%"), }}
         />
       </View>
-      <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition[1] < hp('20%') ? 'block' : 'none' }}>
+      <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') ? 'block' : 'none' }}>
         <Button color="white" title="Wipe the smug grin from the chicken's beak" onPress={() => {changeScene("battle")}}/>
       </View>
     </View>
