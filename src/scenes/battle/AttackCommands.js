@@ -10,7 +10,6 @@ const AttackCommands = () => {
     if (result !== ""){return}
     changeInputText(text)
     if(chickenTurn == true) {
-        console.log(chickenHealth, opponentHealth)
         if (text.toLowerCase() == "frapper") {
             changeInputText("")
             chickenAttack()
@@ -23,11 +22,11 @@ const AttackCommands = () => {
     changeBattleReport("Le chicken a frappé l’adversaire")
     checkHealth()
     changeChickenTurn()
+    if(!result == "") { return }
     opponentTurn()
   }
 
   const opponentTurn = () => {
-    if (result !== ""){return}
     setTimeout(() => {
       changeChickenHealth(Math.floor(Math.random() * 6) + 20)
       changeBattleReport("L’adversaire a frappé le chicken")
@@ -43,7 +42,7 @@ const AttackCommands = () => {
 
         }
       }else {
-          if(props.chickenHealth <= 20) {
+          if(chickenHealth <= 20) {
             changeResult("You lost")
           }
       }
