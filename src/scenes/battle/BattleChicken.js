@@ -8,7 +8,7 @@ import { Audio } from 'expo-av';
 
 
 const BattleChicken = () => {
-  const { battleChickenPosition, chickenHealth, changeBattleChickenPosition, battleReport } = useContext(BattleContext)
+  const { battleChickenPosition, changeBattleChickenPosition, battleReport } = useContext(BattleContext)
   const chickenWidth = wp("30%")
   const chickenHeight = hp("15.16%")
   let entrance;
@@ -39,14 +39,12 @@ const BattleChicken = () => {
               changeBattleChickenPosition(-wp(stepSize), 0)
               changeBattleChickenPosition(-wp(stepSize), 0)
               changeBattleChickenPosition(-wp(stepSize), 0)
-              // return () => {
-                clearInterval(chickenSurge)
-              // }
+              clearInterval(chickenSurge)
             }
         }, 25)
     }
 
-  }, [battleReport])
+  }, [battleReport, changeBattleChickenPosition])
 
   async function soundFX() {
     const { sound } = await Audio.Sound.createAsync(

@@ -5,9 +5,10 @@ import { BattleContext } from '../../contexts/BattleContext.js'
 import { Audio } from 'expo-av';
 
 const BattleOpponent = () => {
-  const { opponentPosition, opponentHealth, changeOpponentPosition } = useContext(BattleContext)
+  const { opponentPosition, battleReport, changeOpponentPosition } = useContext(BattleContext)
   const opponentWidth = wp("13.33%")
   const opponentHeight = hp("6.16%")
+  let opponentSurge;
   let entrance;
   let stepSize = "1%"
   const [sound, setSound] = React.useState()
@@ -23,6 +24,25 @@ const BattleOpponent = () => {
         }
     }
   }, [opponentPosition])
+
+  useEffect(() => {
+    let counter = 0
+    if(battleReport === "L’adversaire a frappé le chicken") {
+        opponentSurge = setInterval(() => {
+            counter = counter + 1
+            if(counter < 4) {
+              changeOpponentPosition(-wp(stepSize), 0)
+            } else {
+              soundFX()
+              changeOpponentPosition(wp(stepSize), 0)
+              changeOpponentPosition(wp(stepSize), 0)
+              changeOpponentPosition(wp(stepSize), 0)
+              clearInterval(opponentSurge)
+            }
+        }, 25)
+    }
+
+  }, [battleReport, changeOpponentPosition])
 
   async function soundFX() {
     const { sound } = await Audio.Sound.createAsync(
