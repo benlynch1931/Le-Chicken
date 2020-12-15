@@ -89,7 +89,7 @@ class GameContextProvider extends Component {
         changeChickenDirection: this.changeChickenDirection,
         changeLevel: this.changeLevel,
         restartGame: this.restartGame,
-        changeGameMode: this.changeGameMode
+        changeGameMode: this.changeGameMode,
         addToDictionary: this.addToDictionary
       }}>
         {this.props.children}
