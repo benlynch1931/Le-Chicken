@@ -25,11 +25,11 @@ class GameContextProvider extends Component {
     translations: [],
     walls: walls,
     needToUpdateChickenGraphic: false,
-    loop: false
+    dPadPressed: false
   }
 
-  changeLoop = (loop) => {
-    this.setState({loop: loop})
+  changeDPadPressed = (dPadPressed) => {
+    this.setState({ dPadPressed: dPadPressed })
   }
 
   changeNeedToUpdateChickenGraphic = (needToUpdateChickenGraphic) => {
@@ -102,7 +102,7 @@ class GameContextProvider extends Component {
         changeGameMode: this.changeGameMode,
         addToDictionary: this.addToDictionary,
         changeNeedToUpdateChickenGraphic: this.changeNeedToUpdateChickenGraphic,
-        changeLoop: this.changeLoop
+        changeDPadPressed: this.changeDPadPressed
       }}>
         {this.props.children}
       </GameContext.Provider>
