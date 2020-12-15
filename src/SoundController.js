@@ -1,15 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Button, View } from 'react-native';
-import { Audio } from 'expo-av'
+import { Audio } from 'expo-av';
+import { GameContext } from './contexts/GameContext.js';
 
 export default function SoundController(props) {
-
+  const { gameMode }  = useContext(GameContext);
   const [sound, setSound] = React.useState();
   const [musicPlaying, setMusicPlaying] = React.useState(false);
+  let soundFile;
 
   async function startMusic() {
+
+    if (gameMode == 'battle') {
+      soundFile = require('../assets/Battle1.mp3')
+    } else {
+      soundFile = require('../assets/feeling-good.mp3')
+    }
     const { sound } = await Audio.Sound.createAsync(
-      require('../assets/feeling-good.mp3')
+      soundFile
     );
     setSound(sound);
     await sound.playAsync();
@@ -50,6 +58,7 @@ export default function SoundController(props) {
       return <Button title={musicButtonText()} onPress={toggleMusic} />
     }
   }
+
   if (props.view != 'menu') return null;
   return (
     <View>
