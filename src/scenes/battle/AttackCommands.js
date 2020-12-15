@@ -4,7 +4,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { BattleContext } from '../../contexts/BattleContext.js';
 
 const AttackCommands = () => {
-  const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, displayResult, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
+  const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
 
   const checkInput = (text) => {
     if (result !== ""){return}
@@ -39,7 +39,6 @@ const AttackCommands = () => {
       if(chickenTurn) {
         if(opponentHealth <= 20) {
             changeResult("You won!")
-
         }
       }else {
           if(chickenHealth <= 20) {
