@@ -3,6 +3,7 @@ import { Text, TextInput, View, StyleSheet, Keyboard } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import UserTextInput from './UserTextInput.js'
+import DPad from './DPad.js'
 import Hint from './Hint.js'
 export class GameController extends Component {
   constructor() {
