@@ -4,8 +4,16 @@ import { walls } from '../Walls.js';
 
 export const GameContext = createContext();
 
+<<<<<<< HEAD
 const chickenPositionDefault = [wp("43.34%"), hp("60%")];
 const initialScene = 'confrontation';
+=======
+const chickenPositionDefault = {
+  x: wp("43.34%"),
+  y: hp("60%")
+}
+const initialScene = 'coop';
+>>>>>>> main
 const initialChickenGraphic = 'idleright';
 const initialHint = "Pour marcher: Type ‘marcher’";
 const initialLevel = 0;
@@ -21,7 +29,17 @@ class GameContextProvider extends Component {
     level: initialLevel,
     chickenDirection: "up",
     translations: [],
-    walls: walls
+    walls: walls,
+    needToUpdateChickenGraphic: false,
+    dPadPressed: false
+  }
+
+  changeDPadPressed = (dPadPressed) => {
+    this.setState({ dPadPressed: dPadPressed })
+  }
+
+  changeNeedToUpdateChickenGraphic = (needToUpdateChickenGraphic) => {
+    this.setState({ needToUpdateChickenGraphic: needToUpdateChickenGraphic })
   }
 
   addToDictionary = (translation) => {
@@ -32,7 +50,13 @@ class GameContextProvider extends Component {
   changeLevel = (level) => {
     this.setState({ level: level })
   }
+<<<<<<< HEAD
 
+=======
+  changeGameMode = (mode) => {
+    this.setState({ gameMode: mode })
+  }
+>>>>>>> main
   changeChickenDirection = (direction) => {
     this.setState({ chickenDirection: direction })
   }
@@ -45,8 +69,13 @@ class GameContextProvider extends Component {
   changeChickenGraphic = (chickenGraphic) => {
     this.setState({ chickenGraphic: chickenGraphic })
   }
-  increaseChickenPosition = (x, y) => {
-    this.setState({ chickenPosition: [this.state.chickenPosition[0] + x, this.state.chickenPosition[1] + y] })
+  increaseChickenPosition = (xIncrease, yIncrease) => {
+    this.setState({
+      chickenPosition: {
+        x: this.state.chickenPosition.x + xIncrease,
+        y: this.state.chickenPosition.y + yIncrease
+      }
+    })
   }
   resetChickenPosition = () => {
     this.setState({ chickenPosition: chickenPositionDefault })
@@ -68,6 +97,7 @@ class GameContextProvider extends Component {
     this.changeHint(initialHint);
     this.changeLevel(initialLevel);
     this.changeInputText("");
+    this.changeChickenDirection('up')
     this.changeChickenToMove(0);
   }
 
@@ -85,7 +115,14 @@ class GameContextProvider extends Component {
         changeChickenDirection: this.changeChickenDirection,
         changeLevel: this.changeLevel,
         restartGame: this.restartGame,
+<<<<<<< HEAD
         addToDictionary: this.addToDictionary
+=======
+        changeGameMode: this.changeGameMode,
+        addToDictionary: this.addToDictionary,
+        changeNeedToUpdateChickenGraphic: this.changeNeedToUpdateChickenGraphic,
+        changeDPadPressed: this.changeDPadPressed
+>>>>>>> main
       }}>
         {this.props.children}
       </GameContext.Provider>

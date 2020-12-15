@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 const UserTextInput = () => {
-  const { addToDictionary, changeInputText, changeCoopGraphic, inputText, changeLevel, level, changeChickenToMove, changeChickenDirection, chickenDirection } = useContext(GameContext)
+  const { addToDictionary, changeInputText, changeCoopGraphic, changeNeedToUpdateChickenGraphic, inputText, changeLevel, level, changeChickenToMove, changeChickenDirection, chickenDirection } = useContext(GameContext)
 
   const directions = new Map()
   directions.set('haut', 'up')
@@ -24,6 +24,7 @@ const UserTextInput = () => {
     changeInputText(text)
     if (level === 0 && text.toLowerCase() === "marcher") {
       Keyboard.dismiss();
+      changeNeedToUpdateChickenGraphic(true)
       changeLevel(1)
       sendToDictionary('Marcher', 'To walk');
       changeChickenToMove(90);
@@ -32,6 +33,7 @@ const UserTextInput = () => {
 
     if (level === 1 && text.toLowerCase() === "ouvrir") {
       Keyboard.dismiss();
+      changeNeedToUpdateChickenGraphic(true)
       changeLevel(2);
       sendToDictionary('Ouvrir', 'To open');
       sendToDictionary('Haut', 'Up');
@@ -45,6 +47,7 @@ const UserTextInput = () => {
     if (level === 2) {
       for (const [french, english] of directions.entries()) {
         if (text.toLowerCase() == french) {
+          changeNeedToUpdateChickenGraphic(true);
           changeChickenDirection(english);
           changeChickenToMove(100);
           changeInputText("");

@@ -1,13 +1,46 @@
-import React, { useContext } from 'react';
-import { Image, View } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { Image, View, Button } from 'react-native';
 import { Svg, Line } from 'react-native-svg';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { GameContext } from '../contexts/GameContext.js';
 
 const Maze = () => {
-  const { walls } = useContext(GameContext)
+  const { walls, level, notePosition, changeScene, chickenPosition } = useContext(GameContext)
   const horizWalls = walls.filter(wall => wall.type == 'horizontal')
   const vertiWalls = walls.filter(wall => wall.type == 'vertical')
+
+  const isChickenAtNote = () => {
+    return (chickenPosition.y <= hp('35%') && chickenPosition.x <= wp("18%") && chickenPosition.x >= wp("10%"))
+  }
+
+  const renderNote = () => {
+    if(level == '2') {
+      return(
+        <View>
+        <Image style={{
+          height: hp("3.15%"),
+          width: wp("6.79%"),
+          top: hp("28%"),
+          left: wp("21%")
+        }}
+        source={require("../../assets/note.png")}
+        />
+        
+        <View style={{
+          left: 40, 
+          top: hp("15%"), 
+          width: wp("30%"), 
+          border: "solid #e3e3e3", 
+          borderRadius: 12, 
+          backgroundColor: "purple", 
+          display: chickenPosition[1] <= hp('35%') && chickenPosition[0] <= wp("18%") && chickenPosition[0] >= wp("10%") ? 'block' : 'none' }}>
+        <Button color="black" title="Pick up note?" onPress={() => {changeScene('note')}}/>
+        </View>
+        </View>
+        
+      )
+    }
+  }
 
   return (
     <View
@@ -18,6 +51,7 @@ const Maze = () => {
       }}
       nativeID='maze'
     >
+    
       {/* The walls for the maze */}
       <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%") }}>
         {
@@ -32,6 +66,7 @@ const Maze = () => {
           ))
         }
       </Svg>
+      { renderNote() }
 
     </View>
   )

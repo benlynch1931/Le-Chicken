@@ -12,7 +12,7 @@ const SceneController = () => {
   let scene;
 
   useEffect(() => {
-    if (chickenPosition[1] <= hp("5%")) {
+    if (chickenPosition.y <= hp("5%")) {
       changeScene('maze')
       resetChickenPosition()
     }
