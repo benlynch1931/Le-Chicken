@@ -2,13 +2,10 @@ import React, { useState, useContext } from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { BattleContext } from '../../contexts/BattleContext.js';
-
 const AttackCommands = () => {
   const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
   let winner = false;
-
   const checkInput = (text) => {
-<<<<<<< HEAD:src/scenes/battle/AttackCommands.js
     if (winner) {return}
     changeInputText(text)
     if(chickenTurn == true) {
@@ -16,17 +13,8 @@ const AttackCommands = () => {
             changeInputText("")
             chickenAttack()
         }
-=======
-    setInputText(text)
-    if (chickenTurn == true) {
-      if (text.toLowerCase() == "frapper") {
-        setInputText("")
-        chickenAttack()
-      }
->>>>>>> main:src/AttackCommands.js
     }
   }
-
   const chickenAttack = () => {
     changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
     changeBattleReport("Le chicken a frappé l’adversaire")
@@ -34,27 +22,16 @@ const AttackCommands = () => {
     changeChickenTurn()
     opponentTurn()
   }
-
   const opponentTurn = () => {
-<<<<<<< HEAD:src/scenes/battle/AttackCommands.js
     if (winner) { return }
     checkHealth()
     setTimeout(() => {
       changeChickenHealth(Math.floor(Math.random() * 6) + 20)
       changeBattleReport("L’adversaire a frappé le chicken")
       changeChickenTurn()
-=======
-    setTimeout(() => {
-      props.setChickenHealth(props.chickenHealth - (Math.floor(Math.random() * 6) + 20))
-      setBattleReport("L’adversaire a frappé le chicken")
-      checkHealth()
-      setChickenTurn(true)
->>>>>>> main:src/AttackCommands.js
     }, 2000)
   }
-
   const checkHealth = () => {
-<<<<<<< HEAD:src/scenes/battle/AttackCommands.js
     if(opponentHealth <= 20) {
       winner = true
       changeResult("You won!")
@@ -63,17 +40,7 @@ const AttackCommands = () => {
       winner = true;
       changeResult("You lost")
       return;
-=======
-    if (chickenTurn) {
-      if (props.opponentHealth <= 20) {
-        setResult("You won")
       }
-    } else {
-      if (props.chickenHealth <= 20) {
-        setResult("You lost")
->>>>>>> main:src/AttackCommands.js
-      }
-    }
   }
   return (
     <View style={styles.container}>
@@ -81,16 +48,14 @@ const AttackCommands = () => {
       <Text style={styles.hintText}>{`${battleReport}`}</Text>
       <Text style={styles.hintText}>{`${result}`}</Text>
       <TextInput style={styles.input}
-        placeholderTextColor="black"
-        testID="textInput"
-        onChangeText={checkInput}
-        value={inputText}
+      placeholderTextColor="black"
+      testID="textInput"
+      onChangeText={checkInput}
+      value={inputText}
       ></TextInput>
     </View>
   )
-
 }
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
@@ -100,7 +65,6 @@ const styles = StyleSheet.create({
   hintText: {
     alignSelf: "center",
     paddingBottom: hp("1%")
-
   },
   input: {
     width: wp("40%"),
@@ -113,5 +77,4 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   }
 });
-
 export default AttackCommands;

@@ -14,12 +14,7 @@ export class GameController extends Component {
   static contextType = GameContext;
 
   render() {
-<<<<<<< HEAD
-    const { changeInputText, inputText, hint, changeHint, changeLevel, level, changeChickenMoving, changeChickenDirection } =  this.context
-
-=======
     const { changeInputText, inputText, hint, changeHint, currentScene, changeLevel, level, changeChickenMoving, changeChickenDirection } = this.context
->>>>>>> main
     const styles = StyleSheet.create({
       container: {
         backgroundColor: '#fff',
@@ -37,14 +32,9 @@ export class GameController extends Component {
 
     return (
       < View style={styles.container} >
-<<<<<<< HEAD
-        <Hint/>
-        <UserTextInput/>
-=======
         <Hint />
         <UserTextInput />
         { activateDPad() }
->>>>>>> main
       </View >
     )
 
