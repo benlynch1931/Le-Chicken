@@ -7,10 +7,7 @@ const AttackCommands = () => {
   const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, displayResult, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
 
   const checkInput = (text) => {
-    console.log("inside checkINput")
     if (result !== ""){return}
-    console.log("after if ")
-    console.log(changeInputText)
     changeInputText(text)
     if(chickenTurn == true) {
         console.log(chickenHealth, opponentHealth)
