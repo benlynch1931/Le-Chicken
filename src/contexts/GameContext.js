@@ -90,6 +90,7 @@ class GameContextProvider extends Component {
     this.changeHint(initialHint);
     this.changeLevel(initialLevel);
     this.changeInputText("");
+    this.changeChickenDirection('up')
     this.changeChickenToMove(0);
   }
 
