@@ -24,7 +24,12 @@ class GameContextProvider extends Component {
     chickenDirection: "up",
     translations: [],
     walls: walls,
-    needToUpdateChickenGraphic: false
+    needToUpdateChickenGraphic: false,
+    loop: false
+  }
+
+  changeLoop = (loop) => {
+    this.setState({loop: loop})
   }
 
   changeNeedToUpdateChickenGraphic = (needToUpdateChickenGraphic) => {
@@ -96,7 +101,8 @@ class GameContextProvider extends Component {
         restartGame: this.restartGame,
         changeGameMode: this.changeGameMode,
         addToDictionary: this.addToDictionary,
-        changeNeedToUpdateChickenGraphic: this.changeNeedToUpdateChickenGraphic
+        changeNeedToUpdateChickenGraphic: this.changeNeedToUpdateChickenGraphic,
+        changeLoop: this.changeLoop
       }}>
         {this.props.children}
       </GameContext.Provider>
