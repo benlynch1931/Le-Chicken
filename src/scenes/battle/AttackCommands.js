@@ -5,9 +5,10 @@ import { BattleContext } from '../../contexts/BattleContext.js';
 
 const AttackCommands = () => {
   const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
+  let winner = false;
 
   const checkInput = (text) => {
-    if (result !== ""){return}
+    if (winner) {return}
     changeInputText(text)
     if(chickenTurn == true) {
         if (text.toLowerCase() == "frapper") {
@@ -22,28 +23,28 @@ const AttackCommands = () => {
     changeBattleReport("Le chicken a frappé l’adversaire")
     checkHealth()
     changeChickenTurn()
-    if(!result == "") { return }
     opponentTurn()
   }
 
   const opponentTurn = () => {
+    if (winner) { return }
+    checkHealth()
     setTimeout(() => {
       changeChickenHealth(Math.floor(Math.random() * 6) + 20)
       changeBattleReport("L’adversaire a frappé le chicken")
-      checkHealth()
       changeChickenTurn()
     }, 2000)
   }
 
   const checkHealth = () => {
-      if(chickenTurn) {
-        if(opponentHealth <= 20) {
-            changeResult("You won!")
-        }
-      }else {
-          if(chickenHealth <= 20) {
-            changeResult("You lost")
-          }
+    if(opponentHealth <= 20) {
+      winner = true
+      changeResult("You won!")
+      return;
+    } else if(chickenHealth <= 20) {
+      winner = true;
+      changeResult("You lost")
+      return;
       }
   }
   return (
