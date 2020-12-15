@@ -29,6 +29,7 @@ export class DPad extends Component {
   }
 
   stopWalk() {
+    this.context.changeChickenToMove(0)
     this.context.changeDPadPressed(false);
     this.context.changeNeedToUpdateChickenGraphic(true);
     clearTimeout(this.t)
