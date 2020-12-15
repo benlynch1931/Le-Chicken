@@ -4,14 +4,15 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { BattleContext } from '../../contexts/BattleContext.js'
 
 const BattleChicken = () => {
-  const { battleChickenPosition, chickenHealth, changeBattleChickenPosition } = useContext(BattleContext)
+  const { battleChickenPosition, chickenHealth, changeBattleChickenPosition, battleReport } = useContext(BattleContext)
   const chickenWidth = wp("30%")
   const chickenHeight = hp("15.16%")
   let entrance;
   let stepSize = "1%"
+  let chickenSurge;
 
   useEffect(() => {
-    if(battleChickenPosition[0] < wp("4%")) {
+    if(battleChickenPosition[0] < 20) {
         entrance = setInterval(() => {
             changeBattleChickenPosition(wp(stepSize), 0)
         }, 80)
@@ -20,6 +21,27 @@ const BattleChicken = () => {
         }
     }
   }, [battleChickenPosition])
+
+  useEffect(() => {
+    let counter = 0
+    if(battleReport === "Le chicken a frappé l’adversaire") {
+        chickenSurge = setInterval(() => {
+            counter = counter + 1
+            if(counter < 4) {
+              changeBattleChickenPosition(wp(stepSize), 0)
+            } else {
+              console.log("moving back")
+              changeBattleChickenPosition(-wp(stepSize), 0)
+              changeBattleChickenPosition(-wp(stepSize), 0)
+              changeBattleChickenPosition(-wp(stepSize), 0)
+              // return () => {
+                clearInterval(chickenSurge)
+              // }
+            }
+        }, 25)
+    }
+
+  }, [battleReport])
 
   return (
     < Image
