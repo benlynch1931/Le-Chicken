@@ -15,7 +15,9 @@ export class DPad extends Component {
   static contextType = GameContext;
 
   repeat() {
-    this.context.changeChickenToMove(1)
+    if (this.context.chickenToMove == 0) {
+      this.context.changeChickenToMove(5)
+    }
     this.t = setTimeout(this.repeat, 0)
   }
 

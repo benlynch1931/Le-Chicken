@@ -46,7 +46,6 @@ const Chicken = () => {
       const vertiWalls = walls.filter(wall => wall.type == 'vertical')
       if (direction == 'up' || direction == 'down') {
         for (let i = 0; i < horizWalls.length; i++) {
-          console.log(direction)
           const wallPosition = adjustYCoords(horizWalls[i].position, linePadding(horizWalls[i].stroke, direction))
           if (chickenWillReach(wallPosition, distance, direction) && chickenInLineWith(horizWalls[i])) {
             distance = Math.max(Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / hp(stepSizeVertical)), 0)
@@ -75,13 +74,13 @@ const Chicken = () => {
   const linePadding = (stroke, direction) => {
     switch (direction) {
       case 'up':
-        return stroke/2
+        return stroke / 2
       case 'down':
-        return -stroke/2
+        return -stroke / 2
       case 'right':
-        return -stroke/2
+        return -stroke / 2
       case 'left':
-        return stroke/2
+        return stroke / 2
     }
   }
 
