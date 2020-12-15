@@ -6,7 +6,7 @@ import { GameContext } from './contexts/GameContext.js';
 
 const Dictionary = (props) => {
 
-  const { translations } = useContext(GameContext)
+  const { translations, currentScene } = useContext(GameContext)
   const continueGame = async () => {
     props.setView('game');
   }
@@ -14,7 +14,7 @@ const Dictionary = (props) => {
   if (props.view != 'dictionary') return null;
 
   const rendertranslations = () => {
-    return translations.map((translation, index) => <View><Text key={index}>{translation.word.french} ~~~~ {translation.word.english}</Text></View>);
+    return translations.map((word, index) => <View><Text key={index}>{word.french} ~~~~ {word.english}</Text></View>);
   }
 
   return (

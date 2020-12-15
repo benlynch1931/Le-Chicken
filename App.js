@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
-import { Audio } from 'expo-av'
+import React, { useState } from 'react';
+import { View } from 'react-native';
 import GameContextProvider from './src/contexts/GameContext.js';
 import Game from './src/Game.js'
 import Menu from './src/Menu.js'

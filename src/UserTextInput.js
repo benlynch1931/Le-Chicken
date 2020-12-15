@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 const UserTextInput = () => {
-  const { addToDictionary, changeInputText, changeCoopGraphic, inputText, changeLevel, level, changeChickenToMove, changeChickenDirection, chickenDirection } = useContext(GameContext)
+  const { addToDictionary, changeInputText, changeCoopGraphic, changeNeedToUpdateChickenGraphic, inputText, changeLevel, level, changeChickenToMove, changeChickenDirection, chickenDirection } = useContext(GameContext)
 
   const directions = new Map()
   directions.set('haut', 'up')
@@ -13,15 +13,19 @@ const UserTextInput = () => {
   directions.set('droite', 'right')
   directions.set('gauche', 'left')
 
+  const sendToDictionary = (frenchWord, englishWord) => {
+    addToDictionary({
+      french: frenchWord,
+      english: englishWord
+    });
+  }
+
   const checkInput = (text) => {
     changeInputText(text)
     if (level === 0 && text.toLowerCase() === "marcher") {
       Keyboard.dismiss();
       changeLevel(1)
-      addToDictionary({
-        french: 'Marcher',
-        english: 'To walk'
-      });
+      sendToDictionary('Marcher', 'To walk');
       changeChickenToMove(90);
       changeInputText("")
     }
@@ -29,10 +33,11 @@ const UserTextInput = () => {
     if (level === 1 && text.toLowerCase() === "ouvrir") {
       Keyboard.dismiss();
       changeLevel(2);
-      addToDictionary({
-        french: 'Ouvrir',
-        english: 'To open'
-      });
+      sendToDictionary('Ouvrir', 'To open');
+      sendToDictionary('Haut', 'Up');
+      sendToDictionary('Bas', 'Down');
+      sendToDictionary('Gauche', 'Left');
+      sendToDictionary('Droite', 'Right');
       changeChickenToMove(27);
       changeInputText("");
     }
@@ -40,6 +45,7 @@ const UserTextInput = () => {
     if (level === 2) {
       for (const [french, english] of directions.entries()) {
         if (text.toLowerCase() == french) {
+          changeNeedToUpdateChickenGraphic(true);
           changeChickenDirection(english);
           changeChickenToMove(100);
           changeInputText("");

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BattleView renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(199, 252, 177)",
+      "height": 821.5,
+      "width": 750,
+      "zIndex": "1",
+    }
+  }
+/>
+`;

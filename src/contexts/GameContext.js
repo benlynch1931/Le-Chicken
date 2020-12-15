@@ -1,14 +1,19 @@
 import React, { createContext, Component } from 'react';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { walls } from '../Walls.js'
+import { walls } from '../Walls.js';
 
 export const GameContext = createContext();
 
-const chickenPositionDefault = [wp("43.34%"), hp("60%")];
+const chickenPositionDefault = {
+  x: wp("43.34%"),
+  y: hp("60%")
+}
 const initialScene = 'coop';
 const initialChickenGraphic = 'idleright';
 const initialHint = "Pour marcher: Type ‘marcher’";
 const initialLevel = 0;
+const initialGameMode = 'game';
+
 class GameContextProvider extends Component {
   state = {
     currentScene: initialScene,
@@ -18,18 +23,32 @@ class GameContextProvider extends Component {
     hint: initialHint,
     chickenToMove: 0,
     level: initialLevel,
+    gameMode: initialGameMode,
     chickenDirection: "up",
     translations: [],
-    walls: walls
+    walls: walls,
+    needToUpdateChickenGraphic: false,
+    dPadPressed: false
   }
 
-  addToDictionary = (word) => {
-    let words = [...this.state.translations];
-    words.push({ word });
-    this.setState({ translations: words });
+  changeDPadPressed = (dPadPressed) => {
+    this.setState({ dPadPressed: dPadPressed })
+  }
+
+  changeNeedToUpdateChickenGraphic = (needToUpdateChickenGraphic) => {
+    this.setState({ needToUpdateChickenGraphic: needToUpdateChickenGraphic })
+  }
+
+  addToDictionary = (translation) => {
+    this.setState(prevState => ({
+      translations: [...prevState.translations, translation]
+    }))
   }
   changeLevel = (level) => {
     this.setState({ level: level })
+  }
+  changeGameMode = (mode) => {
+    this.setState({ gameMode: mode })
   }
   changeChickenDirection = (direction) => {
     this.setState({ chickenDirection: direction })
@@ -43,8 +62,13 @@ class GameContextProvider extends Component {
   changeChickenGraphic = (chickenGraphic) => {
     this.setState({ chickenGraphic: chickenGraphic })
   }
-  increaseChickenPosition = (x, y) => {
-    this.setState({ chickenPosition: [this.state.chickenPosition[0] + x, this.state.chickenPosition[1] + y] })
+  increaseChickenPosition = (xIncrease, yIncrease) => {
+    this.setState({
+      chickenPosition: {
+        x: this.state.chickenPosition.x + xIncrease,
+        y: this.state.chickenPosition.y + yIncrease
+      }
+    })
   }
   resetChickenPosition = () => {
     this.setState({ chickenPosition: chickenPositionDefault })
@@ -83,7 +107,10 @@ class GameContextProvider extends Component {
         changeChickenDirection: this.changeChickenDirection,
         changeLevel: this.changeLevel,
         restartGame: this.restartGame,
-        addToDictionary: this.addToDictionary
+        changeGameMode: this.changeGameMode,
+        addToDictionary: this.addToDictionary,
+        changeNeedToUpdateChickenGraphic: this.changeNeedToUpdateChickenGraphic,
+        changeDPadPressed: this.changeDPadPressed
       }}>
         {this.props.children}
       </GameContext.Provider>
