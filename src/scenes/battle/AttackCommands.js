@@ -9,6 +9,7 @@ const AttackCommands = (props) => {
   const [result, setResult] = useState("")
 
   const checkInput = (text) => {
+    if (result !== ""){return}
     setInputText(text)
     if(chickenTurn == true) {
         console.log(props.chickenHealth, props.opponentHealth)
@@ -39,7 +40,8 @@ const AttackCommands = (props) => {
   const checkHealth = () => {
       if(chickenTurn) {
         if(props.opponentHealth <= 20) {
-            setResult("You won")
+            setResult("You won!")
+
         }
       }else {
           if(props.chickenHealth <= 20) {
