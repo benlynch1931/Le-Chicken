@@ -4,11 +4,14 @@ import { walls } from '../Walls.js';
 
 export const GameContext = createContext();
 
-const chickenPositionDefault = [wp("43.34%"), hp("60%")];
-const initialScene = 'maze';
+const chickenPositionDefault = {
+  x: wp("43.34%"),
+  y: hp("60%")
+}
+const initialScene = 'coop';
 const initialChickenGraphic = 'idleright';
 const initialHint = "Pour marcher: Type ‘marcher’";
-const initialLevel = 2;
+const initialLevel = 0;
 const initialGameMode = 'game';
 
 class GameContextProvider extends Component {
@@ -59,8 +62,13 @@ class GameContextProvider extends Component {
   changeChickenGraphic = (chickenGraphic) => {
     this.setState({ chickenGraphic: chickenGraphic })
   }
-  increaseChickenPosition = (x, y) => {
-    this.setState({ chickenPosition: [this.state.chickenPosition[0] + x, this.state.chickenPosition[1] + y] })
+  increaseChickenPosition = (xIncrease, yIncrease) => {
+    this.setState({
+      chickenPosition: {
+        x: this.state.chickenPosition.x + xIncrease,
+        y: this.state.chickenPosition.y + yIncrease
+      }
+    })
   }
   resetChickenPosition = () => {
     this.setState({ chickenPosition: chickenPositionDefault })
