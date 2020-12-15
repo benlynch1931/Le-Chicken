@@ -30,7 +30,7 @@ const SceneController = () => {
 
   return (
     < View >
-      { scene}
+      { scene }
     </View >
   )
 }
