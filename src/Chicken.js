@@ -183,7 +183,9 @@ const Chicken = () => {
     walkdown: require('../assets/chicken-run-front.gif'),
   }
 
-
+  if (currentScene == 'battle') {
+    return null
+  }
   return (
     < Image
       style={{

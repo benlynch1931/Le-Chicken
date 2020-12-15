@@ -4,14 +4,22 @@ import { Audio } from 'expo-av';
 import { GameContext } from './contexts/GameContext.js';
 
 export default function SoundController(props) {
-  const { gameMode }  = useContext(GameContext);
+  const { currentScene }  = useContext(GameContext);
   const [sound, setSound] = React.useState();
   const [musicPlaying, setMusicPlaying] = React.useState(false);
   let soundFile;
+  let battlePlaying = false
+
+  useEffect(() => {
+    if(currentScene == 'battle' && musicPlaying && battlePlaying == false) {
+      startMusic()
+      battlePlaying = true
+    }
+  }, [currentScene])
 
   async function startMusic() {
 
-    if (gameMode == 'battle') {
+    if (currentScene == 'battle') {
       soundFile = require('../assets/Battle1.mp3')
     } else {
       soundFile = require('../assets/feeling-good.mp3')
