@@ -4,13 +4,13 @@ import { Svg, Line } from 'react-native-svg';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { GameContext } from '../contexts/GameContext.js';
 
-const Maze = (props) => {
+const Maze = () => {
   const { walls, level, notePosition, changeScene, chickenPosition } = useContext(GameContext)
   const horizWalls = walls.filter(wall => wall.type == 'horizontal')
   const vertiWalls = walls.filter(wall => wall.type == 'vertical')
 
   const isChickenAtNote = () => {
-    return (chickenPosition[1] <= hp('35%') && chickenPosition[0] <= wp("18%") && chickenPosition[0] >= wp("10%"))
+    return (chickenPosition.y <= hp('35%') && chickenPosition.x <= wp("18%") && chickenPosition.x >= wp("10%"))
   }
 
   const renderNote = () => {
