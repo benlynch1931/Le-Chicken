@@ -1,31 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
+import { BattleContext } from '../../contexts/BattleContext.js'
 
 const BattleChicken = () => {
-  const [chickenPosition, setChickenPosition] = useState(-10)
+  const { battleChickenPosition, chickenHealth, changeBattleChickenPosition } = useContext(BattleContext)
   const chickenWidth = wp("25.33%")
   const chickenHeight = hp("15.16%")
   let entrance;
+  let stepSize = "1%"
 
   useEffect(() => {
-    if(chickenPosition < 20) {
+    if(battleChickenPosition[0] < 20) {
         entrance = setInterval(() => {
-            setChickenPosition(chickenPosition => chickenPosition + 2)
+            changeBattleChickenPosition(wp(stepSize), 0)
         }, 80)
         return () => {
             clearInterval(entrance)
         }
     }
-  }, [chickenPosition])
+  }, [battleChickenPosition])
 
   return (
     < Image
       style={{
         position: 'absolute',
         top: hp("50%"),
-        left: wp(chickenPosition),
+        left: wp(battleChickenPosition),
         width: chickenWidth,
         height: chickenHeight,
         zIndex: 4

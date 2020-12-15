@@ -1,51 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { BattleContext } from '../../contexts/BattleContext.js';
 
-const AttackCommands = (props) => {
-  const [inputText, setInputText] = useState("")
-  const [battleReport, setBattleReport] = useState("")
-  const [chickenTurn, setChickenTurn] = useState(true)
-  const [result, setResult] = useState("")
+const AttackCommands = () => {
+  const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, displayResult, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
 
   const checkInput = (text) => {
     if (result !== ""){return}
-    setInputText(text)
+    changeInputText(text)
     if(chickenTurn == true) {
-        console.log(props.chickenHealth, props.opponentHealth)
+        console.log(chickenHealth, opponentHealth)
         if (text.toLowerCase() == "frapper") {
-            setInputText("")
+            changeInputText("")
             chickenAttack()
         }
     }  
   }
 
   const chickenAttack = () => {
-    props.setOpponentHealth(props.opponentHealth - (Math.floor(Math.random() * 6) + 20))
-    setBattleReport("Le chicken a frappé l’adversaire")
+    changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
+    changeBattleReport("Le chicken a frappé l’adversaire")
     checkHealth()
-    setChickenTurn(false)
+    changeChickenTurn()
     opponentTurn()
   }
 
   const opponentTurn = () => {
-      setTimeout(() => {
-        props.setChickenHealth(props.chickenHealth - (Math.floor(Math.random() * 6) + 20))
-        setBattleReport("L’adversaire a frappé le chicken")
-        checkHealth()
-        setChickenTurn(true)
-      }, 2000)
+    if (result !== ""){return}
+    setTimeout(() => {
+      changeChickenHealth(Math.floor(Math.random() * 6) + 20)
+      changeBattleReport("L’adversaire a frappé le chicken")
+      checkHealth()
+      changeChickenTurn()
+    }, 2000)
   }
 
   const checkHealth = () => {
       if(chickenTurn) {
-        if(props.opponentHealth <= 20) {
-            setResult("You won!")
+        if(opponentHealth <= 20) {
+            changeResult("You won!")
 
         }
       }else {
           if(props.chickenHealth <= 20) {
-            setResult("You lost")
+            changeResult("You lost")
           }
       }
   }

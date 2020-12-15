@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
+import { BattleContext } from '../../contexts/BattleContext.js'
 
 const BattleOpponent = () => {
-  const [opponentPosition, setOpponentPosition] = useState(90)
-  const chickenWidth = wp("13.33%")
-  const chickenHeight = hp("6.16%")
+  const { opponentPosition, opponentHealth, changeOpponentPosition } = useContext(BattleContext)
+  const opponentWidth = wp("13.33%")
+  const opponentHeight = hp("6.16%")
   let entrance;
+  let stepSize = "1%"
 
   useEffect(() => {
-    if(opponentPosition > 60) {
+    if(opponentPosition[0] > 60) {
         entrance = setInterval(() => {
-            setOpponentPosition(opponentPosition => opponentPosition - 2)
+            changeOpponentPosition(-wp(stepSize), 0)
         }, 80)
         return () => {
             clearInterval(entrance)
@@ -26,8 +27,8 @@ const BattleOpponent = () => {
         position: 'absolute',
         top: hp("20%"),
         left: wp(opponentPosition),
-        width: chickenWidth,
-        height: chickenHeight,
+        width: opponentWidth,
+        height: opponentHeight,
         zIndex: 4
       }}
       nativeID={`battleOpponent`}
