@@ -8,7 +8,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import BattleController from './BattleController.js'
 
 const Game = (props) => {
-  if (props.view == 'menu') return null;
+  if (props.view != 'game') return null;
   if(props.view == 'game') {
   return (
     <KeyboardAwareScrollView
