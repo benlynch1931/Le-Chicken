@@ -25,16 +25,6 @@ const Game = (props) => {
         }}>
         </View>
         <SceneController />
-        <Button
-          onPress={() => props.setView('dictionary')}
-          title="Dictionary"
-          color="#841584"
-        />
-        <Button
-          onPress={() => props.setView('menu')}
-          title="Menu"
-          color="#841584"
-        />
         <Chicken />
         <GameController />
       </KeyboardAwareScrollView >
