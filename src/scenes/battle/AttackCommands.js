@@ -13,27 +13,42 @@ const AttackCommands = () => {
     changeInputText(text)
     if(chickenTurn == true) {
         if (text.toLowerCase() == "frapper") {
-            changeInputText("")
-            chickenAttack()
+          changeInputText("")
+          chickenFrappe()
+        }
+        if (text.toLowerCase() == "sauter") {
+          changeInputText("")
+          chickenSauter()
         }
     }
   }
-  const chickenAttack = () => {
+  const chickenFrappe = () => {
     // level switched for testing 5 = chicken Opponent
-    if(level === 4) {
+    if(level === 5) {
       changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
       changeBattleReport("Le chicken a frappé l’adversaire")
-       checkHealth()
-       changeChickenTurn()
+      checkHealth()
+      changeChickenTurn()
       chickenOpponentTurn()
     } else {
       changeBattleReport("Le chicken a frappé l’adversaire. Aie!!!")
       changeChickenHealth(Math.floor(Math.random() * 6) + 20)
-       checkHealth()
-       changeChickenTurn()
+      checkHealth()
+      changeChickenTurn()
       fenceOpponentTurn()
     }
   }
+
+  const chickenSauter = () => {
+    if(level === 4) {
+      changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
+      changeBattleReport("Le chicken a sauter l’adversaire")
+      checkHealth()
+      changeChickenTurn()
+      fenceOpponentTurn()
+    }
+  }
+
   const chickenOpponentTurn = () => {
     if (winner) { return }
     checkHealth()
@@ -45,17 +60,22 @@ const AttackCommands = () => {
   }
 
   const fenceOpponentTurn = () => {
-    setTimeout(() => {
-      changeBattleReport("La cloture attend…")
+    if(battleReport == "Le chicken a sauter l’adversaire") {
+      changeBattleReport("Chicken used sauter")
       changeChickenTurn()
-    }, 2000)
+    } else {
+      setTimeout(() => {
+        changeBattleReport("La cloture attend…")
+        changeChickenTurn()
+      }, 2000)
+    }
   }
   const checkHealth = () => {
     if(opponentHealth <= 20) {
       winner = true
       changeResult("You won!")
       setTimeout(() => {
-        changeLevel(5)
+        changeLevel(level + 1)
         changeScene('confrontation')
       }, 3000)
       return;
