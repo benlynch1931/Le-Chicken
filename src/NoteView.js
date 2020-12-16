@@ -15,7 +15,7 @@ const NoteView = (props) => {
   if (props.view != 'note') return null;
 
   const note = () => {
-    return <Text> notes[level] </Text>
+    return <Text> {notes[level]} </Text>
   }
 
   return (
