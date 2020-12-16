@@ -5,7 +5,7 @@ import { BattleContext } from '../../contexts/BattleContext.js';
 import { GameContext } from '../../contexts/GameContext.js';
 
 const AttackCommands = () => {
-  const { changeLevel, changeScene } = useContext(GameContext)
+  const { changeLevel, changeScene, level } = useContext(GameContext)
   const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
   let winner = false;
   const checkInput = (text) => {
@@ -19,18 +19,37 @@ const AttackCommands = () => {
     }
   }
   const chickenAttack = () => {
-    changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
-    changeBattleReport("Le chicken a frappé l’adversaire")
+    // level switched for testing 5 = chicken Opponent
+    if(level === 5) {
+      changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
+      changeBattleReport("Le chicken a frappé l’adversaire")
+      // checkHealth()
+      // changeChickenTurn()
+      chickenOpponentTurn()
+    } else {
+      changeBattleReport("Le chicken a frappé l’adversaire. Aie!!!")
+      changeChickenHealth(Math.floor(Math.random() * 6) + 20)
+      // checkHealth()
+      // changeChickenTurn()
+      fenceOpponentTurn()
+    }
     checkHealth()
     changeChickenTurn()
-    opponentTurn()
+  
   }
-  const opponentTurn = () => {
+  const chickenOpponentTurn = () => {
     if (winner) { return }
     checkHealth()
     setTimeout(() => {
       changeChickenHealth(Math.floor(Math.random() * 6) + 20)
       changeBattleReport("L’adversaire a frappé le chicken")
+      changeChickenTurn()
+    }, 2000)
+  }
+
+  const fenceOpponentTurn = () => {
+    setTimeout(() => {
+      changeBattleReport("La cloture attend…")
       changeChickenTurn()
     }, 2000)
   }

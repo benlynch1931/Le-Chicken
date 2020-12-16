@@ -29,7 +29,7 @@ const BattleChicken = () => {
 
   useEffect(() => {
     let counter = 0
-    if(battleReport === "Le chicken a frappé l’adversaire") {
+    if(battleReport === "Le chicken a frappé l’adversaire" || battleReport === "Le chicken a frappé l’adversaire. Aie!!!") {
         chickenSurge = setInterval(() => {
             counter = counter + 1
             if(counter < 4) {
