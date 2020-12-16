@@ -11,8 +11,21 @@ class BattleContextProvider extends Component {
     chickenTurn: true,
     chickenHealth: 100,
     opponentHealth: 50,
-    battleChickenPosition: [wp("-5%"), hp("60%")],
-    opponentPosition: [wp("25%"), hp("20%")]
+    battleChickenPosition: {
+      x: wp("-5%"), 
+      y: hp("43%")
+    },
+    opponentPosition: [wp("25%"), hp("20%")],
+    chickenWidth: wp("30%"),
+    chickenHeight: hp("15.16%")
+  }
+
+  changeChickenWidth = (width) => {
+    this.setState({chickenWidth: width})
+  }
+
+  changeChickenHeight = (height) => {
+    this.setState({chickenHeight: height})
   }
 
   changeChickenTurn = () => {
@@ -30,10 +43,14 @@ class BattleContextProvider extends Component {
     this.setState({ result: result })
   }
 
-  changeBattleChickenPosition = (x, y) => {
-    this.setState({ battleChickenPosition: [this.state.battleChickenPosition[0] + x, this.state.battleChickenPosition[1] + y] })
+  changeBattleChickenPosition = (xChange, yChange) => {
+    this.setState({ battleChickenPosition: {
+      x: this.state.battleChickenPosition.x + xChange,
+      y: this.state.battleChickenPosition.y + yChange 
+    }
+    })
   }
-
+ 
   changeOpponentPosition = (x, y) => {
     this.setState({ opponentPosition: [this.state.opponentPosition[0] + x, this.state.opponentPosition[1] + y] })
   }
@@ -57,7 +74,9 @@ class BattleContextProvider extends Component {
         changeChickenHealth: this.changeChickenHealth,
         changeOpponentHealth: this.changeOpponentHealth,
         changeBattleReport: this.changeBattleReport,
-        changeChickenTurn: this.changeChickenTurn
+        changeChickenTurn: this.changeChickenTurn,
+        changeChickenWidth: this.changeChickenWidth,
+        changeChickenHeight: this.changeChickenHeight
       }}>
         {this.props.children}
       </BattleContext.Provider>

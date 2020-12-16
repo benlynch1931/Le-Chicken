@@ -4,7 +4,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { BattleContext } from '../../contexts/BattleContext.js'
 import { Audio } from 'expo-av';
 
-const BattleOpponent = () => {
+const ChickenOpponent = () => {
   const { opponentPosition, battleReport, changeOpponentPosition } = useContext(BattleContext)
   const opponentWidth = wp("13.33%")
   const opponentHeight = hp("6.16%")
@@ -12,6 +12,8 @@ const BattleOpponent = () => {
   let entrance;
   let stepSize = "1%"
   const [sound, setSound] = React.useState()
+  const opponents = {
+  }
 
 
   useEffect(() => {
@@ -69,4 +71,4 @@ const BattleOpponent = () => {
   );
 }
 
-export default BattleOpponent
+export default ChickenOpponent
