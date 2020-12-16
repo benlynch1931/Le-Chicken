@@ -50,15 +50,15 @@ export class DPad extends Component {
     //if (this.context.currentScene == 'coop') return null;
     return (
       < View style={styles.container} >
-        <View />
+        <View style={styles.spacer} />
         {this.renderButton('up', 'HAUT')}
-        <View />
+        <View style={styles.spacer} />
         {this.renderButton('left', 'GAUCHE')}
-        <View />
+        <View style={styles.spacer} />
         {this.renderButton('right', 'DROITE')}
-        <View />
+        <View style={styles.spacer} />
         {this.renderButton('down', 'BAS')}
-        <View />
+        <View style={styles.spacer} />
       </View >
     )
   }
@@ -69,20 +69,23 @@ export default DPad;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    width: wp('40%'),
+    width: wp('30%'),
     alignSelf: 'center',
-    display: 'grid',
-    gridTemplateColumns: 'auto auto auto'
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   },
   button: {
     borderStyle: 'solid',
     borderRadius: 5,
     borderWidth: 1,
     height: hp('4%'),
-    width: wp('10%'),
+    width: wp('10%')
   },
   buttonText: {
     fontSize: hp('1%'),
     margin: 'auto'
+  },
+  spacer: {
+    width: wp('10%')
   }
 });
