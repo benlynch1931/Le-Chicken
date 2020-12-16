@@ -14,7 +14,7 @@ context('Maze', () => {
   })
 
   it('places chicken at starting point', () => {
-    cy.get('#chicken-idleup').should('have.css', 'top', '467px')
+    cy.get('#chicken-idleup').should('have.css', 'top', '446.5px')
   })
 
   it("moves the chicken up, when typing 'haut'", () => {
@@ -29,10 +29,10 @@ context('Maze', () => {
     cy.wait(1000)
     cy.get('input')
       .type('haut')
-    cy.get('#chicken-idleup').should('have.css', 'top', '391px')
+    cy.get('#chicken-idleup').should('have.css', 'top', '350.5px')
   })
 
-  it("can complete the maze", () => {
+  it("can pick up the note and complete the maze", () => {
     cy.get('input').type('haut')
     cy.wait(1000)
     cy.get('input').type('droite')
@@ -57,6 +57,10 @@ context('Maze', () => {
     cy.wait(2000)
     cy.get('input').type('droite')
     cy.wait(2000)
+    cy.get('#Note1Button').click()
+    cy.contains("to hit")
+    cy.contains("Add to Dictionary").click()
+    cy.get('#Note1').should('not.exist')
     cy.get('input').type('haut')
     cy.wait(4000)
     cy.get('#chicken-walkup').should('not.be.visible')
