@@ -39,7 +39,7 @@ const Maze = (props) => {
             // borderRadius: 12,
             display: isChickenAtNote() ? 'block' : 'none' }}>
             <TouchableOpacity
-            onPress={() => {props.setView('note'), addToDictionary({french: 'Frapper', english: 'To hit'})}}
+            onPress={() => {props.setView('note'); addToDictionary({french: 'Frapper', english: 'To hit'})}}
             style={{
               alignSelf: 'center',
               marginTop: '1%',
