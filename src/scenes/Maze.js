@@ -27,28 +27,29 @@ const Maze = (props) => {
           }}
             source={require("../../assets/note.png")}
           />
-        <View style={{
-          zIndex: 4,
-          position: 'absolute',
-          left: 40,
-          top: hp("15%"),
-          width: wp("30%"),
-          border: "black",
-          borderWidth: "3%",
-          backgroundColor: '#f0f0d1',
-          // borderRadius: 12,
-          display: isChickenAtNote() ? 'block' : 'none' }}>
-          <TouchableOpacity
-          onPress={() => props.setView('note'), addToDictionary({french: 'Frapper', english: 'To hit'})}
-          style={{
-            alignSelf: 'center',
-            marginTop: '1%',
-            width: '90%',
-            height: '100%'
-          }}
-          >
-          <Text style={{fontFamily: 'Pixel'}}>Press to pick up note!</Text>
-          </TouchableOpacity>
+          <View style={{
+            zIndex: 4,
+            position: 'absolute',
+            left: 40,
+            top: hp("15%"),
+            width: wp("30%"),
+            border: "black",
+            borderWidth: "3%",
+            backgroundColor: '#f0f0d1',
+            // borderRadius: 12,
+            display: isChickenAtNote() ? 'block' : 'none' }}>
+            <TouchableOpacity
+            onPress={() => props.setView('note'), addToDictionary({french: 'Frapper', english: 'To hit'})}
+            style={{
+              alignSelf: 'center',
+              marginTop: '1%',
+              width: '90%',
+              height: '100%'
+            }}
+            >
+            <Text style={{fontFamily: 'Pixel'}}>Press to pick up note!</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
       )
