@@ -8,9 +8,7 @@ import { Audio } from 'expo-av';
 
 
 const BattleChicken = () => {
-  const { battleChickenPosition, changeBattleChickenPosition, battleReport } = useContext(BattleContext)
-  const chickenWidth = wp("30%")
-  const chickenHeight = hp("15.16%")
+  const { battleChickenPosition, changeBattleChickenPosition, battleReport, chickenWidth, chickenHeight, changeChickenWidth, changeChickenHeight } = useContext(BattleContext)
   let entrance;
   let exit;
   let stepSize = "1%"
@@ -18,7 +16,7 @@ const BattleChicken = () => {
   const [sound, setSound] = React.useState()
 
   useEffect(() => {
-    if(battleChickenPosition[0] < 20) {
+    if(battleChickenPosition.x < 20) {
         entrance = setInterval(() => {
             changeBattleChickenPosition(wp(stepSize), 0)
         }, 80)
@@ -42,19 +40,28 @@ const BattleChicken = () => {
     if(battleReport === "Le chicken a sauté l’adversaire") {   
       exit = setInterval(() => {
         counter1 = counter1 + 1
-        if(counter1 < 10) {
-          console.log("inside if")
-          changeBattleChickenPosition(wp(stepSize), 0)
-          //changeBattleChickenPosition(0, -hp(stepSize))
+        if(counter1 < 61) {
+          changeBattleChickenPosition(0, -hp(stepSize))
+          if(counter1 == 1) {
+            boingSoundFX() 
+          }
         } else {
-          boingSoundFX() 
+          chickenDescend()
           clearInterval(exit)
         }
-      }, 80)
+      }, 10)
    
     }
   }, [battleReport, changeBattleChickenPosition])
 
+  const chickenDescend = () => {
+    changeChickenWidth(wp("15%"))
+    changeChickenHeight(hp("7%"))
+    changeBattleChickenPosition(wp("60%"), 0)
+    for (let i = 0; i < 30; i++) {
+      changeBattleChickenPosition(0, hp(stepSize))
+    }
+  }
   useEffect(() => {
     let counter = 0
     if(battleReport === "Le chicken a frappé l’adversaire" || battleReport === "Le chicken a frappé l’adversaire. Aie!!!") {
@@ -72,7 +79,7 @@ const BattleChicken = () => {
         }, 25)
     }
 
-  }, [battleReport, changeBattleChickenPosition])
+  }, [battleReport, changeBattleChickenPosition, changeChickenWidth, changeChickenHeight])
 
   async function soundFX() {
     const { sound } = await Audio.Sound.createAsync(
@@ -86,8 +93,8 @@ const BattleChicken = () => {
     < Image
       style={{
         position: 'absolute',
-        top: hp("43%"),
-        left: wp(battleChickenPosition),
+        top: battleChickenPosition.y,
+        left: battleChickenPosition.x,
         width: chickenWidth,
         height: chickenHeight,
         zIndex: 4

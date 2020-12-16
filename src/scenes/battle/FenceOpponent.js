@@ -35,12 +35,6 @@ const FenceOpponent = () => {
 
   }, [battleReport])
 
-  useEffect(() => {
-    if(battleReport === "Le chicken a sauté l’adversaire") {
-      boingSoundFX()      
-    }
-
-  }, [battleReport])
 
   async function whistleSoundFX() {
     const { sound } = await Audio.Sound.createAsync(
@@ -50,13 +44,6 @@ const FenceOpponent = () => {
     await sound.playAsync();
   }
 
-  async function boingSoundFX() {
-    const { sound } = await Audio.Sound.createAsync(
-      require("../../../assets/boing_sound.mp3")
-    )
-    setSound(sound);
-    await sound.playAsync();
-  }
 
   return (
     < Image
@@ -66,7 +53,7 @@ const FenceOpponent = () => {
         left: wp(opponentPosition),
         width: opponentWidth,
         height: opponentHeight,
-        zIndex: 4
+        zIndex: 3
       }}
       nativeID={`fenceOpponent`}
       source={require('../../../assets/BattleFence.png')}

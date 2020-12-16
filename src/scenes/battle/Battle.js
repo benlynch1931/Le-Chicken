@@ -18,11 +18,11 @@ const Battle = () => {
 
   const opponent = () => {
     // Swapped levels for spiking
-    if (level === 4) {
+    if (level === 5) {
       return (
         <ChickenOpponent></ChickenOpponent>
       )
-    } else if (level === 5) {
+    } else if (level === 4) {
       return (
         <FenceOpponent></FenceOpponent>
       )

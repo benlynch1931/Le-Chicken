@@ -24,7 +24,7 @@ const HealthBar = (props) => {
         borderWidth: 2,
         borderColor: '#000000',
         backgroundColor: '#FFFFFF',
-        zIndex: '3',
+        zIndex: '6',
         left: position.left,
         top: position.top
       }}>
@@ -33,7 +33,7 @@ const HealthBar = (props) => {
           width: `${health}%`,
           height: '100%',
           backgroundColor: `${lifeBarColor}`,
-          zIndex: '2'
+          zIndex: '5'
         }}>
 
         </View>
