@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     width: wp('15%')
   },
   buttonText: {
-    fontSize: hp('1.5%'),
+    fontFamily: 'Pixel',
+    fontSize: hp('1%'),
     marginTop: hp('1.5%'),
     alignSelf: 'center',
     color: 'white'
