@@ -35,9 +35,7 @@ export class GameController extends Component {
         paddingTop: hp('1%'),
         paddingBottom: hp("1%"),
         alignSelf: 'center',
-        backgroundColor: "#5D8BBA",
-
-
+        backgroundColor: "#59c090",
       },
       menuButton: {
         // borderWidth: 1.5,
