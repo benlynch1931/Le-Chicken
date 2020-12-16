@@ -21,26 +21,32 @@ export class GameController extends Component {
       },
       menuBar: {
         width: wp('60%'),
-        height: hp('4%'),
+        // height: hp('4%'),
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginTop: hp('1%'),
-        alignSelf: 'center'
+        alignSelf: 'center',
+        fontSize: hp('1%')
       },
     });
 
     return (
       < View style={styles.container} >
         <View style={styles.menuBar}>
-          <Button
+
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={() => this.props.setView('dictionary')}
+        >
+          <Text style={styles.menuButtonText}>Dictionary</Text>
+        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.menuButton}
             onPress={() => this.props.setView('menu')}
-            title="Menu"
-          />
-          <Button
-            onPress={() => this.props.setView('dictionary')}
-            title="Dictionary"
-          />
+          >
+            <Text style={styles.menuButtonText}>Menu</Text>
+          </TouchableOpacity>
         </View>
         <Hint style={styles.hint} />
         <UserTextInput />

@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
   },
   hintText: {
     alignSelf: "center",
-    padding: hp("0.8%")
+    padding: hp("0.8%"),
+    fontSize: 10
   }
 });
 export default Hint;

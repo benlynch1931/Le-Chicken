@@ -53,9 +53,11 @@ export class DPad extends Component {
         <View style={styles.spacer} />
         {this.renderButton('up', 'HAUT')}
         <View style={styles.spacer} />
+
         {this.renderButton('left', 'GAUCHE')}
         <View style={styles.spacer} />
         {this.renderButton('right', 'DROITE')}
+
         <View style={styles.spacer} />
         {this.renderButton('down', 'BAS')}
         <View style={styles.spacer} />
@@ -70,10 +72,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     marginTop: hp('1%'),
-    width: wp('45%'),
+    width: wp('47%'),
     alignSelf: 'center',
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginLeft: wp('1%')
   },
   button: {
     borderStyle: 'solid',
@@ -90,6 +93,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   spacer: {
-    width: wp('15%')
+    width: wp('15%'),
+    height: hp('5%')
   }
 });
