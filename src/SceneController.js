@@ -94,6 +94,7 @@ const SceneController = (props) => {
             height: '100%',
             zIndex: 1
           }}
+          nativeID="Note1Button"
           >
           <Text style={{fontFamily: 'Pixel'}}>Press to pick up note!</Text>
           </TouchableOpacity>

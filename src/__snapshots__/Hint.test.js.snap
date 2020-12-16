@@ -13,11 +13,13 @@ exports[`displays correct hint at level 0 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "padding": 26.5,
+        "fontFamily": "Pixel",
+        "fontSize": 10,
+        "lineHeight": 18,
+        "padding": 10.5,
       }
     }
   >
-    Hint: 
     Pour marcher: Type ‘marcher’
   </Text>
 </View>
@@ -36,12 +38,14 @@ exports[`displays correct hint at level 1 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "padding": 26.5,
+        "fontFamily": "Pixel",
+        "fontSize": 10,
+        "lineHeight": 18,
+        "padding": 10.5,
       }
     }
   >
-    Hint: 
-    Pour ouvrir: Type 'ouvrir'
+    Hint: Pour ouvrir: Type 'ouvrir'
   </Text>
 </View>
 `;

@@ -22,6 +22,7 @@ const Maze = (props) => {
             left: wp("21%")
           }}
             source={require("../../assets/note.png")}
+            nativeID="Note1"
           />
         </View>
 

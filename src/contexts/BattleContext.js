@@ -15,7 +15,10 @@ class BattleContextProvider extends Component {
       x: wp("-5%"), 
       y: hp("43%")
     },
-    opponentPosition: [wp("25%"), hp("20%")],
+    opponentPosition: {
+      x: wp("105%"),
+      y: hp("20%")
+    },
     chickenWidth: wp("30%"),
     chickenHeight: hp("15.16%")
   }
@@ -51,8 +54,12 @@ class BattleContextProvider extends Component {
     })
   }
  
-  changeOpponentPosition = (x, y) => {
-    this.setState({ opponentPosition: [this.state.opponentPosition[0] + x, this.state.opponentPosition[1] + y] })
+  changeOpponentPosition = (xChange, yChange) => {
+    this.setState({ opponentPosition: {
+      x: this.state.opponentPosition.x + xChange,
+      y: this.state.opponentPosition.y + yChange 
+    }
+    })
   }
 
   changeChickenHealth = (damage) => {
