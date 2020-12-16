@@ -12,7 +12,7 @@ const Confrontation = (props) => {
     if (level == 4) {
       return (
         <Image
-        source={require('../../assets/chicken-stand-front.png')}
+        source={require('../../assets/chicken-front-opponent.png')}
         style={{position: "absolute", width: wp("11.73%"), height:  hp("5.42%"), }}
         />
       )
