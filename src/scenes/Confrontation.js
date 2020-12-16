@@ -36,6 +36,17 @@ const Confrontation = (props) => {
     }
   }
 
+  const note = () => {
+    if(level == 4 || level == 5) {
+      return (
+        < Image
+        source={require('../../assets/note.png')}
+        style={{width: wp("12%"), height: wp("12%")}}
+        />
+      )
+    }
+  }
+
   return (
     <View style={{
         width: wp("100%"),
@@ -43,10 +54,7 @@ const Confrontation = (props) => {
         backgroundColor: 'rgb(200, 224, 200)'
     }}>
       <View style={{position: "absolute", width: wp("16%"), top: hp("8%"), left: wp("50%"), marginLeft: -wp("8%")}}>
-      < Image
-        source={require('../../assets/note.png')}
-        style={{width: wp("12%"), height: wp("12%")}}
-        />
+      { note() }
        {chickenOpponent()}
       </View>
       {noteButton()}

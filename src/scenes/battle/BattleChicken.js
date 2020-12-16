@@ -8,16 +8,15 @@ import { Audio } from 'expo-av';
 
 
 const BattleChicken = () => {
-  const { battleChickenPosition, changeBattleChickenPosition, battleReport } = useContext(BattleContext)
-  const chickenWidth = wp("30%")
-  const chickenHeight = hp("15.16%")
+  const { battleChickenPosition, changeBattleChickenPosition, battleReport, chickenWidth, chickenHeight, changeChickenWidth, changeChickenHeight } = useContext(BattleContext)
   let entrance;
+  let exit;
   let stepSize = "1%"
   let chickenSurge;
   const [sound, setSound] = React.useState()
 
   useEffect(() => {
-    if(battleChickenPosition[0] < 20) {
+    if(battleChickenPosition.x < 20) {
         entrance = setInterval(() => {
             changeBattleChickenPosition(wp(stepSize), 0)
         }, 80)
@@ -27,9 +26,45 @@ const BattleChicken = () => {
     }
   }, [battleChickenPosition])
 
+  async function boingSoundFX() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("../../../assets/boing_sound.mp3")
+    )
+    setSound(sound);
+    await sound.playAsync();
+  }
+
+
+  useEffect(() => {
+    let counter1 = 0
+    if(battleReport === "Le chicken a sauté l’adversaire") {   
+      exit = setInterval(() => {
+        counter1 = counter1 + 1
+        if(counter1 < 61) {
+          changeBattleChickenPosition(0, -hp(stepSize))
+          if(counter1 == 1) {
+            boingSoundFX() 
+          }
+        } else {
+          chickenDescend()
+          clearInterval(exit)
+        }
+      }, 10)
+   
+    }
+  }, [battleReport, changeBattleChickenPosition])
+
+  const chickenDescend = () => {
+    changeChickenWidth(wp("15%"))
+    changeChickenHeight(hp("7%"))
+    changeBattleChickenPosition(wp("60%"), 0)
+    for (let i = 0; i < 30; i++) {
+      changeBattleChickenPosition(0, hp(stepSize))
+    }
+  }
   useEffect(() => {
     let counter = 0
-    if(battleReport === "Le chicken a frappé l’adversaire") {
+    if(battleReport === "Le chicken a frappé l’adversaire" || battleReport === "Le chicken a frappé l’adversaire. Aie!!!") {
         chickenSurge = setInterval(() => {
             counter = counter + 1
             if(counter < 4) {
@@ -44,7 +79,7 @@ const BattleChicken = () => {
         }, 25)
     }
 
-  }, [battleReport, changeBattleChickenPosition])
+  }, [battleReport, changeBattleChickenPosition, changeChickenWidth, changeChickenHeight])
 
   async function soundFX() {
     const { sound } = await Audio.Sound.createAsync(
@@ -58,8 +93,8 @@ const BattleChicken = () => {
     < Image
       style={{
         position: 'absolute',
-        top: hp("43%"),
-        left: wp(battleChickenPosition),
+        top: battleChickenPosition.y,
+        left: battleChickenPosition.x,
         width: chickenWidth,
         height: chickenHeight,
         zIndex: 4,
