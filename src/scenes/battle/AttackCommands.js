@@ -65,6 +65,9 @@ const AttackCommands = () => {
     } else if(chickenHealth <= 20) {
       winner = true;
       changeResult("You lost")
+      setTimeout(() => {
+        changeScene('confrontation')
+      }, 3000)
       return;
       }
   }
