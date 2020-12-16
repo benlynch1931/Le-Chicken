@@ -27,7 +27,7 @@ const UserTextInput = () => {
       changeNeedToUpdateChickenGraphic(true)
       changeLevel(1)
       sendToDictionary('Marcher', 'To walk');
-      changeChickenToMove(90);
+      changeChickenToMove(84);
       changeInputText("")
     }
 
@@ -40,7 +40,6 @@ const UserTextInput = () => {
       sendToDictionary('Bas', 'Down');
       sendToDictionary('Gauche', 'Left');
       sendToDictionary('Droite', 'Right');
-      changeChickenToMove(27);
       changeInputText("");
     }
 
