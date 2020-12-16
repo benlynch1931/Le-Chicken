@@ -30,12 +30,28 @@ const FenceOpponent = () => {
   useEffect(() => {
     let counter = 0
     if(battleReport === "La cloture attend…") {
-      soundFX()      
+      whistleSoundFX()      
     }
 
-  }, [battleReport, changeOpponentPosition])
+  }, [battleReport])
 
-  async function soundFX() {
+  useEffect(() => {
+    let counter = 0
+    if(battleReport === "Chicken used sauter") {
+      crumbleSoundFX()      
+    }
+
+  }, [battleReport])
+
+  async function whistleSoundFX() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("../../../assets/cricket_snippet.m4a")
+    )
+    setSound(sound);
+    await sound.playAsync();
+  }
+
+  async function crumbleSoundFX() {
     const { sound } = await Audio.Sound.createAsync(
       require("../../../assets/cricket_snippet.m4a")
     )
