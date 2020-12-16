@@ -14,11 +14,17 @@ export class GameController extends Component {
 
   render() {
     const { changeInputText, inputText, hint, changeHint, currentScene, changeLevel, level, changeChickenMoving, changeChickenDirection } = this.context
+
     const styles = StyleSheet.create({
       container: {
         backgroundColor: '#fff',
-        width: wp('100%')
-        // paddingBottom: 2
+        width: wp('100%'),
+      },
+      battleContainer: {
+        backgroundColor: '#fff',
+        width: wp('100%'),
+        position: 'absolute',
+        marginTop: hp("66.58%")
       },
       menuBar: {
         width: wp('100%'),
@@ -46,6 +52,8 @@ export class GameController extends Component {
       }
     });
 
+    const containerStyle = (currentScene == "battle") ? styles.battleContainer : styles.container
+
     const activateDPad = () => {
       if (currentScene == 'confrontation') {
         return (
@@ -54,8 +62,24 @@ export class GameController extends Component {
       }
     }
 
+    const activateUserInput = () => {
+      if (currentScene == 'battle') {
+        return null
+      } else {
+        return <UserTextInput />
+      }
+    }
+
+    const activateHint = () => {
+      if (currentScene == 'battle') {
+        return null
+      } else {
+        return <Hint style={styles.hint} />
+      }
+    }
+
     return (
-      < View style={styles.container} >
+      < View style={containerStyle} >
         <View style={styles.menuBar}>
 
         <TouchableOpacity
@@ -71,8 +95,8 @@ export class GameController extends Component {
             <Text style={styles.menuButtonText}>Menu</Text>
           </TouchableOpacity>
         </View>
-        <Hint style={styles.hint} />
-        <UserTextInput />
+        {activateHint()}
+        {activateUserInput()}
         {activateDPad()}
       </View >
     )

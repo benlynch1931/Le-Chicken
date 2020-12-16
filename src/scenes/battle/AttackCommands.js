@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     width: wp('100%'),
-    padding: hp("2%")
+    padding: hp("5%")
   },
   hintText: {
     fontFamily: 'Pixel',
