@@ -30,6 +30,9 @@ const styles = StyleSheet.create({
     width: wp('100%'),
   },
   hintText: {
+    fontFamily: 'Pixel',
+    lineHeight: 18,
+    fontSize: 10,
     alignSelf: "center",
     padding: hp("0.8%"),
     fontSize: 10

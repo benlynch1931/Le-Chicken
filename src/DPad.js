@@ -115,7 +115,8 @@ const styles = StyleSheet.create({
     width: wp('14.7%') // minus the margin offset to keep other buttons in place
   },
   buttonText: {
-    fontSize: hp('1.5%'),
+    fontFamily: 'Pixel',
+    fontSize: hp('1%'),
     marginTop: hp('1.5%'),
     alignSelf: 'center',
     color: '#EBEBEB'
