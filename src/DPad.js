@@ -69,7 +69,8 @@ export default DPad;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    width: wp('30%'),
+    marginTop: hp('1%'),
+    width: wp('45%'),
     alignSelf: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap'
@@ -77,15 +78,18 @@ const styles = StyleSheet.create({
   button: {
     borderStyle: 'solid',
     borderRadius: 5,
-    borderWidth: 1,
-    height: hp('4%'),
-    width: wp('10%')
+    borderWidth: 2,
+    backgroundColor: '#6495ED',
+    height: hp('5%'),
+    width: wp('15%')
   },
   buttonText: {
-    fontSize: hp('1%'),
-    margin: 'auto'
+    fontSize: hp('1.5%'),
+    marginTop: hp('1.5%'),
+    alignSelf: 'center',
+    color: 'white'
   },
   spacer: {
-    width: wp('10%')
+    width: wp('15%')
   }
 });
