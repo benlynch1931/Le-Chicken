@@ -6,7 +6,7 @@ export const GameContext = createContext();
 
 const chickenPositionDefault = {
   x: wp("43.34%"),
-  y: hp("60%")
+  y: hp("55%")
 }
 const initialScene = 'coop';
 const initialChickenGraphic = 'idleright';
@@ -75,7 +75,7 @@ class GameContextProvider extends Component {
   }
   resetChickenPosition = () => {
     this.setState({ chickenPosition: chickenPositionDefault })
-    this.changeChickenGraphic('up')
+    this.changeChickenGraphic('idleup')
   }
 
   changeHint = (hint) => {
