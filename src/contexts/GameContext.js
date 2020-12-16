@@ -47,6 +47,10 @@ class GameContextProvider extends Component {
     }))
   }
 
+  resetDictionary = () => {
+    this.setState({ translations: [] })
+  }
+
   changeLevel = (level) => {
     this.setState({ level: level })
   }
@@ -95,6 +99,7 @@ class GameContextProvider extends Component {
     this.changeInputText("");
     this.changeChickenDirection('up')
     this.changeChickenToMove(0);
+    this.resetDictionary();
   }
 
   render() {

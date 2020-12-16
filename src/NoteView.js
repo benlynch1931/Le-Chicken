@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { render } from 'react-dom';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { GameContext } from './contexts/GameContext.js';
 
@@ -15,7 +15,7 @@ const NoteView = (props) => {
   if (props.view != 'note') return null;
 
   const note = () => {
-    return <Text> {notes[level]} </Text>
+    return <Text style={{fontFamily: 'Pixel', alignSelf: 'center', fontSize: 20, marginTop: 10}}> {notes[level]} </Text>
   }
 
   return (
@@ -26,15 +26,18 @@ const NoteView = (props) => {
         height: hp("10%"),
         width: wp("100%")
       }} />
-      <Button
-        onPress={() => { continueGame(); changeLevel(level + 1); }}
-        title="Add to Dictionary"
-        color="#841584"
-      />
-      <Text style={{ alignSelf: 'center' }}>
+      <Text style={{ alignSelf: 'center', fontFamily: 'Pixel', marginBottom: 10 }}>
         ~* Note *~
       </Text>
       { note()}
+
+      <TouchableOpacity
+        onPress={() => { continueGame(); changeLevel(level + 1); }}
+      >
+        <Text style={{ alignSelf: 'center', fontFamily: 'Pixel', marginTop: 20, color: 'purple' }}>
+          Add to Dictionary
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };

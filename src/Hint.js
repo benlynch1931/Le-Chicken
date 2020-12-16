@@ -8,9 +8,9 @@ const Hint = () => {
   const { level } = useContext(GameContext)
   const [currentHint, setCurrentHint] = useState("Pour marcher: Type ‘marcher’")
   const hints = {
-    0: "Pour marcher: Type ‘marcher’",
-    1: "Pour ouvrir: Type 'ouvrir'",
-    2: "Check your dictionary for [HAUT], [DROITE], [BAS], [GAUCHE]"
+    0: "Hint: Pour marcher: Type ‘marcher’",
+    1: "Hint: Pour ouvrir: Type 'ouvrir'",
+    2: "Hint: Check your dictionary for [HAUT], [DROITE], [BAS], [GAUCHE]"
   }
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Hint = () => {
 
   return (
     < View style={styles.container} >
-      <Text style={styles.hintText}>Hint: {currentHint}</Text>
+      <Text style={styles.hintText}>{currentHint}</Text>
     </View >
   )
 }

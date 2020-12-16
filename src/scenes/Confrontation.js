@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Image, View, Button, Text } from 'react-native';
+import { Image, View, Button, Text, TouchableOpacity } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { GameContext } from './../contexts/GameContext.js';
 
 
 const Confrontation = (props) => {
 
-  const { changeScene, chickenPosition, level } = useContext(GameContext)
+  const { changeScene, chickenPosition, level, addToDictionary } = useContext(GameContext)
 
   const chickenOpponent = () => {
     if (level == 4) {
@@ -22,15 +22,37 @@ const Confrontation = (props) => {
   const noteButton = () => {
     if (level == 4) {
       return (
-        <View style={{alignSelf: "center", top: hp("21%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('40%') && level == 4 ? 'block' : 'none' }}>
-        <Button color="white" title="Wipe the smug grin from the chicken's beak" onPress={() => {changeScene("battle")}}/>
+        <View style={{alignSelf: "center", top: hp("21%"), height: hp('5%'),width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 4 ? 'block' : 'none' }}>        
+        <TouchableOpacity
+          onPress={() => {changeScene("battle")}}
+          style={{
+            alignSelf: 'center',
+            marginTop: '2%',
+            paddingLeft: '1%',
+            width: '100%',
+            height: '100%'
+          }}
+          >
+          <Text style={{fontFamily: 'Pixel', fontSize: 12}}>Wipe the smug grin from the chicken's beak</Text>
+          </TouchableOpacity>
         </View>
       )
     }
     else if (level == 5) {
       return (
-        <View style={{alignSelf: "center", top: hp("21%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('40%') ? 'block' : 'none' }}>
-        <Button color="white" title="Take note?" onPress={() => {props.setView('note')}}/>
+        <View style={{alignSelf: "center", top: hp("21%"), height: hp('5%'),width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 5 ? 'block' : 'none' }}>        
+        <TouchableOpacity
+          onPress={() => {props.setView('note'); addToDictionary({french: 'Sauter', english: 'To jump'})}}
+          style={{
+            alignSelf: 'center',
+            marginTop: '2%',
+            paddingLeft: '1%',
+            width: '100%',
+            height: '100%'
+          }}
+          >
+            <Text style={{fontFamily: 'Pixel', fontSize: 12}}>Take note?</Text>
+          </TouchableOpacity>
         </View>
       )
     }
