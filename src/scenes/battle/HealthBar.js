@@ -20,7 +20,7 @@ const HealthBar = (props) => {
       style={{
         position: 'absolute',
         width: wp("30%"),
-        height: hp("5%"),
+        height: hp("3%"),
         borderWidth: 2,
         borderColor: '#000000',
         backgroundColor: '#FFFFFF',
