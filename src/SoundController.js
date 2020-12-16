@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Button, View, TouchableOpacity, Text } from 'react-native';
+import { Button, View, TouchableOpacity, Text, Image } from 'react-native';
 import { Audio } from 'expo-av';
 import { GameContext } from './contexts/GameContext.js';
 
@@ -74,7 +74,7 @@ export default function SoundController(props) {
         <TouchableOpacity
           onPress={() => toggleMusic() }
         >
-        <Text style={{fontFamily: 'Pixel'}}>{musicButtonText()}</Text>
+        <Text style={{fontFamily: 'Pixel', alignSelf: 'center', marginTop: 30, color: 'purple'}}>{musicButtonText()}</Text>
         </TouchableOpacity>
       )
     }
@@ -84,6 +84,11 @@ export default function SoundController(props) {
   return (
     <View>
       { button()}
+      <Image style={{
+        marginTop: '20%'
+      }}
+
+      source={require('../assets/chickenWalkingGif.gif')}/>
     </View>
   )
 

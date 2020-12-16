@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity, Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { GameContext } from './contexts/GameContext.js';
 import { useFonts } from 'expo-font';
@@ -28,7 +28,7 @@ const Menu = (props) => {
           // style={styles.menuButton}
           onPress={() => continueGame()}
       >
-        <Text style={{fontFamily: 'Pixel'}}>Continue Game</Text>
+        <Text style={{fontFamily: 'Pixel', alignSelf: 'center', marginTop: 30}}>Continue Game</Text>
       </TouchableOpacity>
       )
     }
@@ -41,14 +41,17 @@ const Menu = (props) => {
     >
       <View style={{
         height: hp("20%"),
-        width: wp("100%"),
+        width: wp("100%")
       }} />
-      { continueGameButton()}
       <TouchableOpacity
           onPress={() => startNewGame()}
       >
-        <Text style={{fontFamily: 'Pixel'}}>New Game</Text>
+        <Text style={{fontFamily: 'Pixel', fontSize: 30, alignSelf: 'center'}}>Le Chicken:</Text>
+        <Text style={{fontFamily: 'Pixel', fontSize: 30, alignSelf: 'center'}}>The Poulet</Text>
+
+        <Text style={{fontFamily: 'Pixel', alignSelf: 'center', marginTop: 30}}>New Game</Text>
       </TouchableOpacity>
+      { continueGameButton()}
     </View>
   );
 };
