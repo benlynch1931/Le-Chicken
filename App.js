@@ -9,26 +9,31 @@ import NoteView from './src/NoteView.js'
 import * as Font from 'expo-font'
 import { AppLoading } from 'expo'
 
-const fetchFonts = () => {
-  return Font.loadAsync({
-  'Pixel': require('./assets/fonts/PressStart2P-Regular.ttf')
-  });
-}
-
 export default function App() {
   const [view, setView] = useState('menu')
   const [dataLoaded, setDataLoaded] = useState(false)
-  fetchFonts()
 
-  return (
-    <View>
-      <GameContextProvider>
-        <Menu setView={setView} view={view} />
-        <Dictionary setView={setView} view={view} />
-        <Game setView={setView} view={view} />
-        <SoundController view={view} />
-        <NoteView view={view} setView={setView}/>
-      </GameContextProvider>
-    </View>
-  );
+  const fetchFonts = async() => {
+    await Font.loadAsync({
+    'Pixel': require('./assets/fonts/PressStart2P-Regular.ttf')
+    })
+    setDataLoaded(true)
+  }
+
+  if(dataLoaded == false) {
+    fetchFonts();
+    return <AppLoading/>
+  } else {
+    return (
+      <View>
+        <GameContextProvider>
+          <Menu setView={setView} view={view} />
+          <Dictionary setView={setView} view={view} />
+          <Game setView={setView} view={view} />
+          <SoundController view={view} />
+          <NoteView view={view} setView={setView}/>
+        </GameContextProvider>
+      </View>
+    );
+  }
 };
