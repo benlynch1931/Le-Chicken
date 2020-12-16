@@ -34,7 +34,7 @@ const SceneController = (props) => {
   } else if (currentScene === 'battle') {
     scene = <Battle />
   } else if (currentScene === 'confrontation') {
-    scene = <Confrontation/>
+    scene = <Confrontation setView={props.setView} view={props.view}/>
   }
 
   return (
