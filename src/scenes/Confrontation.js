@@ -19,45 +19,6 @@ const Confrontation = (props) => {
     }
   }
 
-  const noteButton = () => {
-    if (level == 4) {
-      return (
-        <View style={{alignSelf: "center", top: hp("21%"), height: hp('5%'),width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 4 ? 'block' : 'none' }}>        
-        <TouchableOpacity
-          onPress={() => {changeScene("battle")}}
-          style={{
-            alignSelf: 'center',
-            marginTop: '2%',
-            paddingLeft: '1%',
-            width: '100%',
-            height: '100%'
-          }}
-          >
-          <Text style={{fontFamily: 'Pixel', fontSize: 12}}>Wipe the smug grin from the chicken's beak</Text>
-          </TouchableOpacity>
-        </View>
-      )
-    }
-    else if (level == 5) {
-      return (
-        <View style={{alignSelf: "center", top: hp("21%"), height: hp('5%'),width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 5 ? 'block' : 'none' }}>        
-        <TouchableOpacity
-          onPress={() => {props.setView('note'); addToDictionary({french: 'Sauter', english: 'To jump'})}}
-          style={{
-            alignSelf: 'center',
-            marginTop: '2%',
-            paddingLeft: '1%',
-            width: '100%',
-            height: '100%'
-          }}
-          >
-            <Text style={{fontFamily: 'Pixel', fontSize: 12}}>Take note?</Text>
-          </TouchableOpacity>
-        </View>
-      )
-    }
-  }
-
   const note = () => {
     if(level == 4 || level == 5) {
       return (
@@ -89,7 +50,6 @@ const Confrontation = (props) => {
         { note() }
         {chickenOpponent()}
       </View>
-      {noteButton()}
     </View>
   );
 }

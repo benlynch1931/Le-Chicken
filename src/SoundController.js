@@ -18,9 +18,6 @@ export default function SoundController(props) {
   }, [currentScene])
 
   useEffect(() => {
-    console.log(currentScene) 
-    console.log(musicPlaying)
-    console.log(battlePlaying)
     if(currentScene !== 'battle' && musicPlaying && battlePlaying === true) {
       startMusic()
       setBattlePlaying(false)
