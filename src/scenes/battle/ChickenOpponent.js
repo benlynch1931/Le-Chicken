@@ -66,7 +66,7 @@ const ChickenOpponent = () => {
         resizeMode: "stretch"
       }}
       nativeID={`battleOpponent`}
-      source={require('../../../assets/chicken-left.png')}
+      source={require('../../../assets/chicken-opponent-left.png')}
     />
   );
 }

@@ -17,12 +17,11 @@ const Battle = () => {
   const { level } = useContext(GameContext)
 
   const opponent = () => {
-    // Swapped levels for spiking
-    if (level === 5) {
+    if (level === 4) {
       return (
         <ChickenOpponent></ChickenOpponent>
       )
-    } else if (level === 4) {
+    } else if (level === 6) {
       return (
         <FenceOpponent></FenceOpponent>
       )

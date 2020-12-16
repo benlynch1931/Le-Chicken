@@ -12,7 +12,7 @@ const Confrontation = (props) => {
     if (level == 4) {
       return (
         <Image
-        source={require('../../assets/chicken-stand-front.png')}
+        source={require('../../assets/chicken-front-opponent.png')}
         style={{position: "absolute", width: wp("11.73%"), height:  hp("5.42%"), }}
         />
       )
@@ -22,14 +22,14 @@ const Confrontation = (props) => {
   const noteButton = () => {
     if (level == 4) {
       return (
-        <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') && level == 4 ? 'block' : 'none' }}>
+        <View style={{alignSelf: "center", top: hp("21%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('40%') && level == 4 ? 'block' : 'none' }}>
         <Button color="white" title="Wipe the smug grin from the chicken's beak" onPress={() => {changeScene("battle")}}/>
         </View>
       )
     }
     else if (level == 5) {
       return (
-        <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') ? 'block' : 'none' }}>
+        <View style={{alignSelf: "center", top: hp("21%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('40%') ? 'block' : 'none' }}>
         <Button color="white" title="Take note?" onPress={() => {props.setView('note')}}/>
         </View>
       )
@@ -49,13 +49,23 @@ const Confrontation = (props) => {
 
   return (
     <View style={{
+      width: wp("100%"),
+      height: hp("61.58%"),
+      backgroundColor: 'rgb(200, 224, 200)'
+  }}>
+    <Image
+      style={{
+        position: 'absolute',
         width: wp("100%"),
+        // top: hp("2.5%"),
         height: hp("61.58%"),
-        backgroundColor: 'rgb(200, 224, 200)'
-    }}>
-      <View style={{position: "absolute", width: wp("16%"), top: hp("8%"), left: wp("50%"), marginLeft: -wp("8%")}}>
-      { note() }
-       {chickenOpponent()}
+        resizeMode: "stretch"
+      }}
+      source={require('../../assets/styling/yard-styling.png')}
+    />
+      <View style={{position: "absolute", width: wp("16%"), top: hp("28%"), left: wp("50%"), marginLeft: -wp("8%")}}>
+        { note() }
+        {chickenOpponent()}
       </View>
       {noteButton()}
     </View>

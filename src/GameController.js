@@ -46,6 +46,14 @@ export class GameController extends Component {
       }
     });
 
+    const activateDPad = () => {
+      if (currentScene == 'confrontation') {
+        return (
+          <DPad />
+        )
+      }
+    }
+
     return (
       < View style={styles.container} >
         <View style={styles.menuBar}>
@@ -65,7 +73,7 @@ export class GameController extends Component {
         </View>
         <Hint style={styles.hint} />
         <UserTextInput />
-        <DPad />
+        {activateDPad()}
       </View >
     )
   }

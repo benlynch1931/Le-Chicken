@@ -24,7 +24,7 @@ const AttackCommands = () => {
   }
   const chickenFrapper = () => {
     // level switched for testing 5 = chicken Opponent
-    if(level === 5) {
+    if(level === 4) {
       changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
       changeBattleReport("Le chicken a frappé l’adversaire")
       checkHealth()
@@ -40,7 +40,7 @@ const AttackCommands = () => {
   }
 
   const chickenSauter = () => {
-    if(level === 4) {
+    if(level === 6) {
       changeBattleReport("Le chicken a sauté l’adversaire")
     }
   }

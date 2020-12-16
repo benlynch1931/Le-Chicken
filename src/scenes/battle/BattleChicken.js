@@ -58,10 +58,17 @@ const BattleChicken = () => {
     changeChickenWidth(wp("15%"))
     changeChickenHeight(hp("7%"))
     changeBattleChickenPosition(wp("60%"), 0)
-    for (let i = 0; i < 30; i++) {
-      changeBattleChickenPosition(0, hp(stepSize))
-    }
+    let counter2 = 0
+    descent = setInterval(() => {
+      counter2 = counter2 + 1
+      if(counter2 < 31) {
+        changeBattleChickenPosition(0, hp(stepSize))
+      } else {
+        clearInterval(descent)
+      }
+    }, 10)
   }
+
   useEffect(() => {
     let counter = 0
     if(battleReport === "Le chicken a frappé l’adversaire" || battleReport === "Le chicken a frappé l’adversaire. Aie!!!") {
