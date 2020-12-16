@@ -14,20 +14,16 @@ export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false)
 
   const fetchFonts = async() => {
-    const font = await Font.loadAsync({
+    await Font.loadAsync({
     'Pixel': require('./assets/fonts/PressStart2P-Regular.ttf')
     })
-    return font
+    setDataLoaded(true)
   }
-  
+
   if(dataLoaded == false) {
-    const font = fetchFonts();
-    if(font){
-      setDataLoaded(true)
-    }
+    fetchFonts();
     return <AppLoading/>
   } else {
-
     return (
       <View>
         <GameContextProvider>
