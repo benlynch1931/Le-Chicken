@@ -15,31 +15,32 @@ const Maze = (props) => {
   }
 
   const renderNote = () => {
-    if(level == '2') {
-      return(
+    if (level == '2') {
+      return (
         <View style={{ zIndex: 4 }}>
-        <Image style={{
-          position: 'absolute',
-          height: hp("3.15%"),
-          width: wp("6.79%"),
-          top: hp("28%"),
-          left: wp("21%")
-        }}
-        source={require("../../assets/note.png")}
-        />
+          <Image style={{
+            position: 'absolute',
+            height: hp("3.15%"),
+            width: wp("6.79%"),
+            top: hp("28%"),
+            left: wp("21%")
+          }}
+            source={require("../../assets/note.png")}
+          />
 
-        <View style={{
-          zIndex: 4,
-          position: 'absolute',
-          left: 40,
-          top: hp("15%"),
-          width: wp("30%"),
-          border: "solid #e3e3e3",
-          borderRadius: 12,
-          backgroundColor: "purple",
-          display: isChickenAtNote() ? 'block' : 'none' }}>
-        <Button color="black" title="Press to pick up note!" onPress={() => {props.setView('note')}}/>
-        </View>
+          <View style={{
+            zIndex: 4,
+            position: 'absolute',
+            left: 40,
+            top: hp("15%"),
+            width: wp("30%"),
+            border: "solid #e3e3e3",
+            borderRadius: 12,
+            backgroundColor: "purple",
+            display: isChickenAtNote() ? 'block' : 'none'
+          }}>
+            <Button color="black" title="Press to pick up note!" onPress={() => { props.setView('note') }} />
+          </View>
         </View>
 
       )
@@ -55,19 +56,18 @@ const Maze = (props) => {
       }}
       nativeID='maze'
     >
-    <Image
-      style={{
-        zIndex: 3,
-        position: 'absolute',
-        width: wp("100%"),
-        // top: hp("2.5%"),
-        height: hp("61.58%"),
-        resizeMode: "stretch"
-      }}
-      source={require('../../assets/styling/maze-styling-final.png')}
-    />
+      <Image
+        style={{
+          zIndex: 3,
+          position: 'absolute',
+          width: wp("100%"),
+          height: hp("61.58%"),
+          resizeMode: "stretch"
+        }}
+        source={require('../../assets/styling/maze-styling-final.png')}
+      />
       {/* The walls for the maze */}
-      <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%"), zIndex: 2}}>
+      <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%"), zIndex: 2 }}>
         {
           horizWalls.map((wall, index) => (
             <Line key={`h${index}`} x1={wp(`${wall.start}%`)} x2={wp(`${wall.end}%`)} y1={hp(`${wall.position}%`)} y2={hp(`${wall.position}%`)} stroke="#38761D" strokeWidth={hp(`${wall.stroke}%`)} />
@@ -80,7 +80,7 @@ const Maze = (props) => {
           ))
         }
       </Svg>
-      { renderNote() }
+      { renderNote()}
 
     </View>
   )
