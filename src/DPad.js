@@ -47,7 +47,7 @@ export class DPad extends Component {
   }
 
   render() {
-    //if (this.context.currentScene == 'coop') return null;
+    if (this.context.currentScene == 'coop') return null;
     return (
       < View style={styles.container} >
         <View style={styles.spacer} />
