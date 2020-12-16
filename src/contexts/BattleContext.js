@@ -10,7 +10,7 @@ class BattleContextProvider extends Component {
     battleReport: "",
     chickenTurn: true,
     chickenHealth: 100,
-    opponentHealth: 50,
+    opponentHealth:100,
     battleChickenPosition: {
       x: wp("-5%"), 
       y: hp("43%")
