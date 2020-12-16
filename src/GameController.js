@@ -18,29 +18,49 @@ export class GameController extends Component {
       container: {
         backgroundColor: '#fff',
         width: wp('100%')
+        // paddingBottom: 2
       },
       menuBar: {
-        width: wp('60%'),
-        height: hp('4%'),
+        width: wp('100%'),
+        // height: hp('4%'),
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginTop: hp('1%'),
-        alignSelf: 'center'
+        paddingTop: hp('1%'),
+        paddingBottom: hp("1%"),
+        alignSelf: 'center',
+        backgroundColor: "#5D8BBA",
+
+
       },
+      menuButton: {
+        // borderWidth: 1.5,
+        // borderRadius: 12,
+        // padding: 4
+        // paddingLeft: 4
+      },
+      menuButtonText: {
+        fontSize: hp('2%'),
+        color: '#EBEBEB'
+      }
     });
 
     return (
       < View style={styles.container} >
         <View style={styles.menuBar}>
-          <Button
+
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={() => this.props.setView('dictionary')}
+        >
+          <Text style={styles.menuButtonText}>Dictionary</Text>
+        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.menuButton}
             onPress={() => this.props.setView('menu')}
-            title="Menu"
-          />
-          <Button
-            onPress={() => this.props.setView('dictionary')}
-            title="Dictionary"
-          />
+          >
+            <Text style={styles.menuButtonText}>Menu</Text>
+          </TouchableOpacity>
         </View>
         <Hint style={styles.hint} />
         <UserTextInput />

@@ -8,7 +8,8 @@ const Coop = () => {
     < Image
       style={{
         width: wp("100%"),
-        height: hp("61.58%")
+        height: hp("61.58%"),
+        resizeMode: "stretch"
       }}
       source={require('../../assets/coop.png')}
     />

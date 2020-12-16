@@ -76,10 +76,11 @@ const styles = StyleSheet.create({
   },
   input: {
     width: wp("40%"),
+    height: hp("5%"),
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey',
-    padding: 10,
+    // padding: 10,
     borderRadius: 5,
     textAlign: "center",
     alignSelf: "center"

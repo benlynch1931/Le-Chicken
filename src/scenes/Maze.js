@@ -27,21 +27,21 @@ const Maze = (props) => {
         }}
         source={require("../../assets/note.png")}
         />
-        
+
         <View style={{
           zIndex: 4,
           position: 'absolute',
-          left: 40, 
-          top: hp("15%"), 
-          width: wp("30%"), 
-          border: "solid #e3e3e3", 
-          borderRadius: 12, 
-          backgroundColor: "purple", 
+          left: 40,
+          top: hp("15%"),
+          width: wp("30%"),
+          border: "solid #e3e3e3",
+          borderRadius: 12,
+          backgroundColor: "purple",
           display: isChickenAtNote() ? 'block' : 'none' }}>
         <Button color="black" title="Press to pick up note!" onPress={() => {props.setView('note')}}/>
         </View>
         </View>
-        
+
       )
     }
   }
@@ -55,12 +55,14 @@ const Maze = (props) => {
       }}
       nativeID='maze'
     >
-    <Image 
+    <Image
       style={{
         zIndex: 3,
         position: 'absolute',
         width: wp("100%"),
-        height: hp("61.58%")
+        // top: hp("2.5%"),
+        height: hp("61.58%"),
+        resizeMode: "stretch"
       }}
       source={require('../../assets/styling/maze-styling-final.png')}
     />

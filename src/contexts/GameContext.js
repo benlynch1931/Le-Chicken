@@ -28,7 +28,8 @@ class GameContextProvider extends Component {
     needToUpdateChickenGraphic: false,
     dPadPressed: false,
     notes: {
-      2: "Frapper to hit"
+      2: "`Frapper` - to hit",
+      5: "`Sauter` - to jump"
     }
   }
 

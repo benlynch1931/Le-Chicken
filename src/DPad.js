@@ -10,6 +10,8 @@ export class DPad extends Component {
     this.startWalk = this.startWalk.bind(this)
     this.continueWalk = this.continueWalk.bind(this)
     this.stopWalk = this.stopWalk.bind(this)
+    this.isClicked = false
+    this.clickedButton = ''
   }
 
   static contextType = GameContext;
@@ -36,10 +38,18 @@ export class DPad extends Component {
   }
 
   renderButton(direction, text) {
+    if (this.isClicked === false) {
+      this.buttonStyle = styles.button
+    } else if (this.isClicked === true && this.clickedButton === text) {
+      this.buttonStyle = styles.buttonClicked
+    } else {
+      this.buttonStyle = styles.button
+    }
     return <TouchableOpacity
-      onPressIn={() => { this.startWalk(direction); }}
-      onPressOut={() => { this.stopWalk(); }}
-      style={styles.button}
+      onPressIn={() => { this.isClicked = true; this.clickedButton = text; this.startWalk(direction); }}
+      onPressOut={() => { this.isClicked = false; this.clickedButton = ''; this.stopWalk(); }}
+      style={this.buttonStyle}
+      activeOpacity={1}
     >
 
       <Text style={styles.buttonText}>{text}</Text>
@@ -53,9 +63,11 @@ export class DPad extends Component {
         <View style={styles.spacer} />
         {this.renderButton('up', 'HAUT')}
         <View style={styles.spacer} />
+
         {this.renderButton('left', 'GAUCHE')}
         <View style={styles.spacer} />
         {this.renderButton('right', 'DROITE')}
+
         <View style={styles.spacer} />
         {this.renderButton('down', 'BAS')}
         <View style={styles.spacer} />
@@ -70,26 +82,46 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     marginTop: hp('1%'),
-    width: wp('45%'),
+    width: wp('47%'),
     alignSelf: 'center',
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginLeft: wp('1%')
   },
   button: {
     borderStyle: 'solid',
     borderRadius: 5,
-    borderWidth: 2,
-    backgroundColor: '#6495ED',
+    borderWidth: 1,
+    borderColor: '#545454',
+    shadowOffset: { width: wp('0.3%'), height: wp("0.3%") },
+    shadowColor: '#000000',
+    shadowOpacity: 1.0,
+    backgroundColor: '#5D8BBA',
     height: hp('5%'),
     width: wp('15%')
+  },
+  buttonClicked: {
+    borderStyle: 'solid',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#545454',
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 1.0,
+    marginTop: wp("0.3%"),
+    marginLeft: wp("0.3%"),
+    backgroundColor: '#5D8BBA',
+    height: hp('5%') - wp("0.3%"), // minus the margin offset to keep other buttons in place
+    width: wp('14.7%') // minus the margin offset to keep other buttons in place
   },
   buttonText: {
     fontSize: hp('1.5%'),
     marginTop: hp('1.5%'),
     alignSelf: 'center',
-    color: 'white'
+    color: '#EBEBEB'
   },
   spacer: {
-    width: wp('15%')
+    width: wp('15%'),
+    height: hp('5%')
   }
 });

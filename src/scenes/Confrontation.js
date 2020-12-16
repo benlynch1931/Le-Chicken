@@ -4,14 +4,14 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { GameContext } from './../contexts/GameContext.js';
 
 
-const Confrontation = () => {
+const Confrontation = (props) => {
 
   const { changeScene, chickenPosition, level } = useContext(GameContext)
 
   const chickenOpponent = () => {
     if (level == 4) {
       return (
-        <Image 
+        <Image
         source={require('../../assets/chicken-stand-front.png')}
         style={{position: "absolute", width: wp("11.73%"), height:  hp("5.42%"), }}
         />
@@ -19,7 +19,7 @@ const Confrontation = () => {
     }
   }
 
-  const secondNote = () => {
+  const noteButton = () => {
     if (level == 4) {
       return (
         <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') && level == 4 ? 'block' : 'none' }}>
@@ -30,7 +30,7 @@ const Confrontation = () => {
     else if (level == 5) {
       return (
         <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') ? 'block' : 'none' }}>
-        <Button color="white" title="Take note?" onPress={() => {changeScene("noteView")}}/>
+        <Button color="white" title="Take note?" onPress={() => {props.setView('note')}}/>
         </View>
       )
     }
@@ -49,7 +49,7 @@ const Confrontation = () => {
         />
        {chickenOpponent()}
       </View>
-      {secondNote()}
+      {noteButton()}
     </View>
   );
 }

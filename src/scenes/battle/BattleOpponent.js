@@ -60,7 +60,8 @@ const BattleOpponent = () => {
         left: wp(opponentPosition),
         width: opponentWidth,
         height: opponentHeight,
-        zIndex: 4
+        zIndex: 4,
+        resizeMode: "stretch"
       }}
       nativeID={`battleOpponent`}
       source={require('../../../assets/chicken-left.png')}
