@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, TouchableOpacity, Text } from 'react-native';
 import { Audio } from 'expo-av';
 import { GameContext } from './contexts/GameContext.js';
 
@@ -63,7 +63,13 @@ export default function SoundController(props) {
 
   const button = () => {
     if (props.view == 'menu') {
-      return <Button title={musicButtonText()} onPress={toggleMusic} />
+      return(
+        <TouchableOpacity
+          onPress={() => toggleMusic() }
+        >
+        <Text style={{fontFamily: 'Pixel'}}>{musicButtonText()}</Text>
+        </TouchableOpacity>
+      )
     }
   }
 

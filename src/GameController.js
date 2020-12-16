@@ -40,7 +40,8 @@ export class GameController extends Component {
         // paddingLeft: 4
       },
       menuButtonText: {
-        fontSize: hp('2%'),
+        fontFamily: 'Pixel',
+        fontSize: hp('1.5%'),
         color: '#EBEBEB'
       }
     });
