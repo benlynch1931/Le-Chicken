@@ -21,7 +21,7 @@ const Battle = () => {
       return (
         <ChickenOpponent></ChickenOpponent>
       )
-    } else if (level === 5) {
+    } else if (level === 6) {
       return (
         <FenceOpponent></FenceOpponent>
       )

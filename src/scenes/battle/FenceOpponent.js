@@ -6,7 +6,7 @@ import { Audio } from 'expo-av';
 
 const FenceOpponent = () => {
   const { opponentPosition, battleReport, changeOpponentPosition } = useContext(BattleContext)
-  const opponentWidth = wp("100%")
+  const opponentWidth = wp("101%")
   const opponentHeight = hp("6.16%")
   let opponentSurge;
   let entrance;
@@ -17,7 +17,7 @@ const FenceOpponent = () => {
 
 
   useEffect(() => {
-    if(opponentPosition[0] > wp("1%")) {
+    if(opponentPosition[0] > wp("0%")) {
         entrance = setInterval(() => {
             changeOpponentPosition(-wp(stepSize), 0)
         }, 80)

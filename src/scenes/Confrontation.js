@@ -53,6 +53,7 @@ const Confrontation = (props) => {
         height: hp("61.58%"),
         backgroundColor: 'rgb(200, 224, 200)'
     }}>
+      <Image source={require("../../assets/BattleFence.png")} />
       <View style={{position: "absolute", width: wp("16%"), top: hp("28%"), left: wp("50%"), marginLeft: -wp("8%")}}>
         { note() }
         {chickenOpponent()}

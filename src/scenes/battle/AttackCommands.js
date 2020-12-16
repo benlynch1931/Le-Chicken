@@ -40,7 +40,7 @@ const AttackCommands = () => {
   }
 
   const chickenSauter = () => {
-    if(level === 5) {
+    if(level === 6) {
       changeBattleReport("Le chicken a sauté l’adversaire")
     }
   }
