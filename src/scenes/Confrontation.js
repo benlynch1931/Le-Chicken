@@ -49,11 +49,20 @@ const Confrontation = (props) => {
 
   return (
     <View style={{
+      width: wp("100%"),
+      height: hp("61.58%"),
+      backgroundColor: 'rgb(200, 224, 200)'
+  }}>
+    <Image
+      style={{
+        position: 'absolute',
         width: wp("100%"),
+        // top: hp("2.5%"),
         height: hp("61.58%"),
-        backgroundColor: 'rgb(200, 224, 200)'
-    }}>
-      <Image source={require("../../assets/BattleFence.png")} />
+        resizeMode: "stretch"
+      }}
+      source={require('../../assets/styling/yard-styling.png')}
+    />
       <View style={{position: "absolute", width: wp("16%"), top: hp("28%"), left: wp("50%"), marginLeft: -wp("8%")}}>
         { note() }
         {chickenOpponent()}
