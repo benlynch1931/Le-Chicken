@@ -14,7 +14,7 @@ const AttackCommands = () => {
     if(chickenTurn == true) {
         if (text.toLowerCase() == "frapper") {
           changeInputText("")
-          chickenFrappe()
+          chickenFrapper()
         }
         if (text.toLowerCase() == "sauter") {
           changeInputText("")
@@ -22,9 +22,9 @@ const AttackCommands = () => {
         }
     }
   }
-  const chickenFrappe = () => {
+  const chickenFrapper = () => {
     // level switched for testing 5 = chicken Opponent
-    if(level === 5) {
+    if(level === 4) {
       changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
       changeBattleReport("Le chicken a frappé l’adversaire")
       checkHealth()
@@ -41,11 +41,7 @@ const AttackCommands = () => {
 
   const chickenSauter = () => {
     if(level === 4) {
-      changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
-      changeBattleReport("Le chicken a sauter l’adversaire")
-      checkHealth()
-      changeChickenTurn()
-      fenceOpponentTurn()
+      changeBattleReport("Le chicken a sauté l’adversaire")
     }
   }
 
@@ -60,16 +56,12 @@ const AttackCommands = () => {
   }
 
   const fenceOpponentTurn = () => {
-    if(battleReport == "Le chicken a sauter l’adversaire") {
-      changeBattleReport("Chicken used sauter")
+    setTimeout(() => {
+      changeBattleReport("La cloture attend…")
       changeChickenTurn()
-    } else {
-      setTimeout(() => {
-        changeBattleReport("La cloture attend…")
-        changeChickenTurn()
-      }, 2000)
-    }
+    }, 2000)
   }
+
   const checkHealth = () => {
     if(opponentHealth <= 20) {
       winner = true

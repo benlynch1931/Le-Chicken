@@ -12,6 +12,7 @@ const BattleChicken = () => {
   const chickenWidth = wp("30%")
   const chickenHeight = hp("15.16%")
   let entrance;
+  let exit;
   let stepSize = "1%"
   let chickenSurge;
   const [sound, setSound] = React.useState()
@@ -26,6 +27,33 @@ const BattleChicken = () => {
         }
     }
   }, [battleChickenPosition])
+
+  async function boingSoundFX() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("../../../assets/boing_sound.mp3")
+    )
+    setSound(sound);
+    await sound.playAsync();
+  }
+
+
+  useEffect(() => {
+    let counter1 = 0
+    if(battleReport === "Le chicken a sauté l’adversaire") {   
+      exit = setInterval(() => {
+        counter1 = counter1 + 1
+        if(counter1 < 10) {
+          console.log("inside if")
+          changeBattleChickenPosition(wp(stepSize), 0)
+          //changeBattleChickenPosition(0, -hp(stepSize))
+        } else {
+          boingSoundFX() 
+          clearInterval(exit)
+        }
+      }, 80)
+   
+    }
+  }, [battleReport, changeBattleChickenPosition])
 
   useEffect(() => {
     let counter = 0

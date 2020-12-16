@@ -36,9 +36,8 @@ const FenceOpponent = () => {
   }, [battleReport])
 
   useEffect(() => {
-    let counter = 0
-    if(battleReport === "Chicken used sauter") {
-      crumbleSoundFX()      
+    if(battleReport === "Le chicken a sauté l’adversaire") {
+      boingSoundFX()      
     }
 
   }, [battleReport])
@@ -51,9 +50,9 @@ const FenceOpponent = () => {
     await sound.playAsync();
   }
 
-  async function crumbleSoundFX() {
+  async function boingSoundFX() {
     const { sound } = await Audio.Sound.createAsync(
-      require("../../../assets/cricket_snippet.m4a")
+      require("../../../assets/boing_sound.mp3")
     )
     setSound(sound);
     await sound.playAsync();
