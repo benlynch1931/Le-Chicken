@@ -61,12 +61,13 @@ const Maze = (props) => {
         position: 'absolute',
         width: wp("100%"),
         // top: hp("2.5%"),
-        height: hp("61.58%")
+        height: hp("61.58%"),
+        resizeMode: "stretch"
       }}
       source={require('../../assets/styling/maze-styling-final.png')}
     />
       {/* The walls for the maze */}
-      <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%"), zIndex: 4}}>
+      <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%"), zIndex: 2}}>
         {
           horizWalls.map((wall, index) => (
             <Line key={`h${index}`} x1={wp(`${wall.start}%`)} x2={wp(`${wall.end}%`)} y1={hp(`${wall.position}%`)} y2={hp(`${wall.position}%`)} stroke="#38761D" strokeWidth={hp(`${wall.stroke}%`)} />

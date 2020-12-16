@@ -62,7 +62,8 @@ const BattleChicken = () => {
         left: wp(battleChickenPosition),
         width: chickenWidth,
         height: chickenHeight,
-        zIndex: 4
+        zIndex: 4,
+        resizeMode: "stretch"
       }}
       nativeID={`battleChicken`}
       source={require('../../../assets/chicken-right.png')}
