@@ -82,7 +82,6 @@ const AttackCommands = () => {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.hintText}>Hint: Frapper</Text>
       <Text style={styles.hintText}>{`${battleReport}`}</Text>
       <Text style={styles.hintText}>{`${result}`}</Text>
       <TextInput style={styles.input}
@@ -101,10 +100,12 @@ const styles = StyleSheet.create({
     padding: hp("2%")
   },
   hintText: {
+    fontFamily: 'Pixel',
     alignSelf: "center",
     paddingBottom: hp("1%")
   },
   input: {
+    fontFamily: 'Pixel',
     width: wp("40%"),
     height: hp("5%"),
     fontSize: 20,

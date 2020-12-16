@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Image, View, Button } from 'react-native';
+import { Image, View, Button, TouchableOpacity, Text } from 'react-native';
 import { Svg, Line } from 'react-native-svg';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { GameContext } from '../contexts/GameContext.js';
@@ -27,20 +27,28 @@ const Maze = (props) => {
           }}
             source={require("../../assets/note.png")}
           />
-
-          <View style={{
-            zIndex: 4,
-            position: 'absolute',
-            left: 40,
-            top: hp("15%"),
-            width: wp("30%"),
-            border: "solid #e3e3e3",
-            borderRadius: 12,
-            backgroundColor: "purple",
-            display: isChickenAtNote() ? 'block' : 'none'
-          }}>
-            <Button color="black" title="Press to pick up note!" onPress={() => { props.setView('note') }} />
-          </View>
+        <View style={{
+          zIndex: 4,
+          position: 'absolute',
+          left: 40,
+          top: hp("15%"),
+          width: wp("30%"),
+          border: "black",
+          borderWidth: "3%",
+          backgroundColor: '#f0f0d1',
+          // borderRadius: 12,
+          display: isChickenAtNote() ? 'block' : 'none' }}>
+          <TouchableOpacity
+          onPress={() => props.setView('note'), addToDictionary({french: 'Frapper', english: 'To hit'})}
+          style={{
+            alignSelf: 'center',
+            marginTop: '1%',
+            width: '90%',
+            height: '100%'
+          }}
+          >
+          <Text style={{fontFamily: 'Pixel'}}>Press to pick up note!</Text>
+          </TouchableOpacity>
         </View>
 
       )
