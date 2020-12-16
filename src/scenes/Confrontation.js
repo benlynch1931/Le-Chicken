@@ -19,6 +19,23 @@ const Confrontation = () => {
     }
   }
 
+  const secondNote = () => {
+    if (level == 4) {
+      return (
+        <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') && level == 4 ? 'block' : 'none' }}>
+        <Button color="white" title="Wipe the smug grin from the chicken's beak" onPress={() => {changeScene("battle")}}/>
+        </View>
+      )
+    }
+    else if (level == 5) {
+      return (
+        <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') ? 'block' : 'none' }}>
+        <Button color="white" title="Take note?" onPress={() => {changeScene("noteView")}}/>
+        </View>
+      )
+    }
+  }
+
   return (
     <View style={{
         width: wp("100%"),
@@ -32,9 +49,7 @@ const Confrontation = () => {
         />
        {chickenOpponent()}
       </View>
-      <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') && level == 4 ? 'block' : 'none' }}>
-        <Button color="white" title="Wipe the smug grin from the chicken's beak" onPress={() => {changeScene("battle")}}/>
-      </View>
+      {secondNote()}
     </View>
   );
 }
