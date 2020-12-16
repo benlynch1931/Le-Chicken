@@ -20,22 +20,19 @@ const AttackCommands = () => {
   }
   const chickenAttack = () => {
     // level switched for testing 5 = chicken Opponent
-    if(level === 5) {
+    if(level === 4) {
       changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
       changeBattleReport("Le chicken a frappé l’adversaire")
-      // checkHealth()
-      // changeChickenTurn()
+       checkHealth()
+       changeChickenTurn()
       chickenOpponentTurn()
     } else {
       changeBattleReport("Le chicken a frappé l’adversaire. Aie!!!")
       changeChickenHealth(Math.floor(Math.random() * 6) + 20)
-      // checkHealth()
-      // changeChickenTurn()
+       checkHealth()
+       changeChickenTurn()
       fenceOpponentTurn()
     }
-    checkHealth()
-    changeChickenTurn()
-  
   }
   const chickenOpponentTurn = () => {
     if (winner) { return }
