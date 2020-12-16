@@ -25,7 +25,7 @@ const AttackCommands = () => {
   const chickenFrapper = () => {
     // level switched for testing 5 = chicken Opponent
     if(level === 4) {
-      changeOpponentHealth(Math.floor(Math.random() * 6) + 20)
+      changeOpponentHealth(Math.floor(Math.random() * 6) + 30)
       changeBattleReport("Le chicken a frappé l’adversaire")
       checkHealth()
       changeChickenTurn()
