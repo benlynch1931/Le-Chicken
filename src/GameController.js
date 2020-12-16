@@ -21,19 +21,11 @@ export class GameController extends Component {
       }
     });
 
-    const activateDPad = () => {
-      if(currentScene == 'maze') {
-        return(
-          <DPad />
-        )
-      }
-    }
-
     return (
       < View style={styles.container} >
         <Hint />
         <UserTextInput />
-        { activateDPad() }
+        <DPad />
       </View >
     )
   }
