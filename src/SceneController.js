@@ -7,7 +7,7 @@ import Battle from './scenes/battle/Battle.js';
 import Confrontation from './scenes/Confrontation.js'
 import { GameContext } from './contexts/GameContext.js';
 
-const SceneController = () => {
+const SceneController = (props) => {
   const { currentScene, chickenPosition, changeScene, resetChickenPosition, changeChickenToMove, changeLevel, level } = useContext(GameContext)
   let scene;
 
@@ -30,7 +30,7 @@ const SceneController = () => {
   if (currentScene === 'coop') {
     scene = <Coop />
   } else if (currentScene === 'maze') {
-    scene = <Maze />
+    scene = <Maze setView={props.setView} view={props.view}/>
   } else if (currentScene === 'battle') {
     scene = <Battle />
   } else if (currentScene === 'confrontation') {

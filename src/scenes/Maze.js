@@ -3,8 +3,9 @@ import { Image, View, Button } from 'react-native';
 import { Svg, Line } from 'react-native-svg';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { GameContext } from '../contexts/GameContext.js';
+import NoteView from '../NoteView.js'
 
-const Maze = () => {
+const Maze = (props) => {
   const { walls, level, notePosition, changeScene, chickenPosition } = useContext(GameContext)
   const horizWalls = walls.filter(wall => wall.type == 'horizontal')
   const vertiWalls = walls.filter(wall => wall.type == 'vertical')
@@ -34,7 +35,7 @@ const Maze = () => {
           borderRadius: 12, 
           backgroundColor: "purple", 
           display: isChickenAtNote() ? 'block' : 'none' }}>
-        <Button color="black" title="Press to pick up note!" onPress={() => {changeScene('note')}}/>
+        <Button color="black" title="Press to pick up note!" onPress={() => {props.setView('note')}}/>
         </View>
         </View>
         

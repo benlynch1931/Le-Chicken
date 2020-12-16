@@ -26,7 +26,10 @@ class GameContextProvider extends Component {
     translations: [],
     walls: walls,
     needToUpdateChickenGraphic: false,
-    dPadPressed: false
+    dPadPressed: false,
+    notes: {
+      2: "Frapper to hit"
+    }
   }
 
   changeDPadPressed = (dPadPressed) => {
@@ -42,6 +45,7 @@ class GameContextProvider extends Component {
       translations: [...prevState.translations, translation]
     }))
   }
+
   changeLevel = (level) => {
     this.setState({ level: level })
   }
