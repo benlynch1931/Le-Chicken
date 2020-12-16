@@ -23,7 +23,6 @@ const Maze = (props) => {
           }}
             source={require("../../assets/note.png")}
           />
-          
         </View>
 
       )
