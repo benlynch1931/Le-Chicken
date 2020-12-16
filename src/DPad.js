@@ -35,30 +35,30 @@ export class DPad extends Component {
     clearTimeout(this.t)
   }
 
+  renderButton(direction, text) {
+    return <TouchableOpacity
+      onPressIn={() => { this.startWalk(direction); }}
+      onPressOut={() => { this.stopWalk(); }}
+      style={styles.button}
+    >
+
+      <Text style={styles.buttonText}>{text}</Text>
+    </TouchableOpacity>
+  }
+
   render() {
-    if (this.context.currentScene == 'coop') return null;
+    //if (this.context.currentScene == 'coop') return null;
     return (
       < View style={styles.container} >
-        <TouchableOpacity
-          onPressIn={() => { this.startWalk('up'); }}
-          onPressOut={() => { this.stopWalk(); }}>
-          <Text>HAUT</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPressIn={() => { this.startWalk('down'); }}
-          onPressOut={() => { this.stopWalk(); }}>
-          <Text>BAS</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPressIn={() => { this.startWalk('right'); }}
-          onPressOut={() => { this.stopWalk(); }}>
-          <Text>DROITE</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPressIn={() => { this.startWalk('left'); }}
-          onPressOut={() => { this.stopWalk(); }}>
-          <Text>GAUCHE</Text>
-        </TouchableOpacity>
+        <View />
+        {this.renderButton('up', 'HAUT')}
+        <View />
+        {this.renderButton('left', 'GAUCHE')}
+        <View />
+        {this.renderButton('right', 'DROITE')}
+        <View />
+        {this.renderButton('down', 'BAS')}
+        <View />
       </View >
     )
   }
@@ -69,6 +69,20 @@ export default DPad;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    width: wp('100%'),
+    width: wp('40%'),
+    alignSelf: 'center',
+    display: 'grid',
+    gridTemplateColumns: 'auto auto auto'
+  },
+  button: {
+    borderStyle: 'solid',
+    borderRadius: 5,
+    borderWidth: 1,
+    height: hp('4%'),
+    width: wp('10%'),
+  },
+  buttonText: {
+    fontSize: hp('1%'),
+    margin: 'auto'
   }
 });

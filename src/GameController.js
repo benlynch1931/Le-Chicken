@@ -21,7 +21,7 @@ export class GameController extends Component {
       },
       menuBar: {
         width: wp('60%'),
-        height: hp('3%'),
+        height: hp('4%'),
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -42,7 +42,7 @@ export class GameController extends Component {
             title="Dictionary"
           />
         </View>
-        <Hint />
+        <Hint style={styles.hint} />
         <UserTextInput />
         <DPad />
       </View >
