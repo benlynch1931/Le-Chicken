@@ -2,7 +2,10 @@ import React, { useState, useContext } from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { BattleContext } from '../../contexts/BattleContext.js';
+import { GameContext } from '../../contexts/GameContext.js';
+
 const AttackCommands = () => {
+  const { changeLevel, changeScene } = useContext(GameContext)
   const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
   let winner = false;
   const checkInput = (text) => {
@@ -35,6 +38,10 @@ const AttackCommands = () => {
     if(opponentHealth <= 20) {
       winner = true
       changeResult("You won!")
+      setTimeout(() => {
+        changeLevel(5)
+        changeScene('confrontation')
+      }, 3000)
       return;
     } else if(chickenHealth <= 20) {
       winner = true;
