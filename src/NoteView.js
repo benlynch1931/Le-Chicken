@@ -27,7 +27,7 @@ const NoteView = (props) => {
         width: wp("100%")
       }} />
       <Button
-        onPress={() => { continueGame(); changeLevel(3); }}
+        onPress={() => { continueGame(); changeLevel(level + 1); }}
         title="Add to Dictionary"
         color="#841584"
       />
