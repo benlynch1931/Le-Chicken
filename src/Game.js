@@ -24,19 +24,11 @@ const Game = (props) => {
           padding: hp("0.8%")
         }}>
         </View>
-        <SceneController setView={props.setView} view={props.view}/>
-        <Button
-          onPress={() => props.setView('dictionary')}
-          title="Dictionary"
-          color="#841584"
-        />
-        <Button
-          onPress={() => props.setView('menu')}
-          title="Menu"
-          color="#841584"
-        />
+        <SceneController />
         <Chicken />
-        <GameController/>
+        <GameController setView={props.setView} />
+        <SceneController setView={props.setView} view={props.view}/>
+        <Chicken />
       </KeyboardAwareScrollView >
     );
   }

@@ -9,7 +9,7 @@ import NoteView from './src/NoteView.js'
 
 export default function App() {
 
-  const [view, setView] = useState('game')
+  const [view, setView] = useState('menu')
 
   return (
     <View>

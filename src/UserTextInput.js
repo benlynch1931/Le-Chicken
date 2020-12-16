@@ -47,6 +47,7 @@ const UserTextInput = () => {
     if (level === 2 || level === 3 && currentScene == 'maze') {
       for (const [french, english] of directions.entries()) {
         if (text.toLowerCase() == french) {
+          Keyboard.dismiss();
           changeNeedToUpdateChickenGraphic(true);
           changeChickenDirection(english);
           changeChickenToMove(100);

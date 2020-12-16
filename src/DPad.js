@@ -35,30 +35,30 @@ export class DPad extends Component {
     clearTimeout(this.t)
   }
 
+  renderButton(direction, text) {
+    return <TouchableOpacity
+      onPressIn={() => { this.startWalk(direction); }}
+      onPressOut={() => { this.stopWalk(); }}
+      style={styles.button}
+    >
+
+      <Text style={styles.buttonText}>{text}</Text>
+    </TouchableOpacity>
+  }
+
   render() {
     if (this.context.currentScene == 'coop') return null;
     return (
       < View style={styles.container} >
-        <TouchableOpacity
-          onPressIn={() => { this.startWalk('up'); }}
-          onPressOut={() => { this.stopWalk(); }}>
-          <Text>HAUT</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPressIn={() => { this.startWalk('down'); }}
-          onPressOut={() => { this.stopWalk(); }}>
-          <Text>BAS</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPressIn={() => { this.startWalk('right'); }}
-          onPressOut={() => { this.stopWalk(); }}>
-          <Text>DROITE</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPressIn={() => { this.startWalk('left'); }}
-          onPressOut={() => { this.stopWalk(); }}>
-          <Text>GAUCHE</Text>
-        </TouchableOpacity>
+        <View style={styles.spacer} />
+        {this.renderButton('up', 'HAUT')}
+        <View style={styles.spacer} />
+        {this.renderButton('left', 'GAUCHE')}
+        <View style={styles.spacer} />
+        {this.renderButton('right', 'DROITE')}
+        <View style={styles.spacer} />
+        {this.renderButton('down', 'BAS')}
+        <View style={styles.spacer} />
       </View >
     )
   }
@@ -69,6 +69,27 @@ export default DPad;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    width: wp('100%'),
+    marginTop: hp('1%'),
+    width: wp('45%'),
+    alignSelf: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  button: {
+    borderStyle: 'solid',
+    borderRadius: 5,
+    borderWidth: 2,
+    backgroundColor: '#6495ED',
+    height: hp('5%'),
+    width: wp('15%')
+  },
+  buttonText: {
+    fontSize: hp('1.5%'),
+    marginTop: hp('1.5%'),
+    alignSelf: 'center',
+    color: 'white'
+  },
+  spacer: {
+    width: wp('15%')
   }
 });
