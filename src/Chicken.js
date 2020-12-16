@@ -194,7 +194,7 @@ const Chicken = () => {
         left: chickenPosition.x,
         width: chickenWidth,
         height: chickenHeight,
-        zIndex: 4,
+        zIndex: 5,
       }}
       nativeID={`chicken-${chickenGraphic}`}
       source={graphics[chickenGraphic]}

@@ -27,6 +27,8 @@ const Game = (props) => {
         <SceneController />
         <Chicken />
         <GameController setView={props.setView} />
+        <SceneController setView={props.setView} view={props.view}/>
+        <Chicken />
       </KeyboardAwareScrollView >
     );
   }

@@ -6,7 +6,35 @@ import { GameContext } from './../contexts/GameContext.js';
 
 const Confrontation = () => {
 
-  const { changeScene, chickenPosition } = useContext(GameContext)
+  const { changeScene, chickenPosition, level } = useContext(GameContext)
+
+  const chickenOpponent = () => {
+    if (level == 4) {
+      return (
+        <Image 
+        source={require('../../assets/chicken-stand-front.png')}
+        style={{position: "absolute", width: wp("11.73%"), height:  hp("5.42%"), }}
+        />
+      )
+    }
+  }
+
+  const secondNote = () => {
+    if (level == 4) {
+      return (
+        <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') && level == 4 ? 'block' : 'none' }}>
+        <Button color="white" title="Wipe the smug grin from the chicken's beak" onPress={() => {changeScene("battle")}}/>
+        </View>
+      )
+    }
+    else if (level == 5) {
+      return (
+        <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') ? 'block' : 'none' }}>
+        <Button color="white" title="Take note?" onPress={() => {changeScene("noteView")}}/>
+        </View>
+      )
+    }
+  }
 
   return (
     <View style={{
@@ -19,14 +47,9 @@ const Confrontation = () => {
         source={require('../../assets/note.png')}
         style={{width: wp("12%"), height: wp("12%")}}
         />
-        <Image 
-        source={require('../../assets/chicken-stand-front.png')}
-        style={{position: "absolute", width: wp("11.73%"), height:  hp("5.42%"), }}
-        />
+       {chickenOpponent()}
       </View>
-      <View style={{alignSelf: "center", top: hp("1%"), width: wp("70%"), border: "solid #e3e3e3", borderRadius: 12, backgroundColor: "purple", display: chickenPosition.y < hp('20%') ? 'block' : 'none' }}>
-        <Button color="white" title="Wipe the smug grin from the chicken's beak" onPress={() => {changeScene("battle")}}/>
-      </View>
+      {secondNote()}
     </View>
   );
 }
