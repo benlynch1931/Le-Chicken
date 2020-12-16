@@ -56,7 +56,7 @@ const Chicken = () => {
       distance = Math.floor((Math.abs(chickenEdge(direction) - wallPosition)) / stepSize(direction))
     }
     return distance
-   }
+  }
 
   const chickenWillReach = (wallPosition, distance, direction) => {
     let chickenStartsBeforeWall
@@ -132,7 +132,7 @@ const Chicken = () => {
   }
 
   const adjustYCoords = (coord, padding = 0) => {
-    return hp(coord) + hp('5.00%') + hp("1.85%") + hp(padding)
+    return hp(coord) + hp("1.85%") + hp(padding)
   }
 
   const stepSize = (direction) => {
