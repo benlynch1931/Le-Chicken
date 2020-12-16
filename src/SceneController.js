@@ -28,7 +28,7 @@ const SceneController = (props) => {
   }, [chickenPosition])
 
   useEffect(() => {
-    if (chickenPosition.y <= hp("8%") && currentScene == 'confrontation' && level == 6) {
+    if (chickenPosition.y <= hp("15%") && currentScene == 'confrontation' && level == 6) {
       changeScene('battle')
     }
   }, [chickenPosition])
