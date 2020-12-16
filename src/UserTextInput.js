@@ -27,7 +27,7 @@ const UserTextInput = () => {
       changeNeedToUpdateChickenGraphic(true)
       changeLevel(1)
       sendToDictionary('Marcher', 'To walk');
-      changeChickenToMove(76);
+      changeChickenToMove(84);
       changeInputText("")
     }
 
