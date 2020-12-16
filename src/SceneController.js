@@ -72,7 +72,7 @@ const SceneController = (props) => {
   }
 
   const displayButton = () => {
-    if (currentScene == 'maze') {
+    if (currentScene == 'maze' && level === 2) {
       return (
         <View style={{
           zIndex: 10,
