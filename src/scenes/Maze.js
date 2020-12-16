@@ -16,8 +16,9 @@ const Maze = () => {
   const renderNote = () => {
     if(level == '2') {
       return(
-        <View>
+        <View style={{ zIndex: 4 }}>
         <Image style={{
+          position: 'absolute',
           height: hp("3.15%"),
           width: wp("6.79%"),
           top: hp("28%"),
@@ -27,6 +28,8 @@ const Maze = () => {
         />
         
         <View style={{
+          zIndex: 4,
+          position: 'absolute',
           left: 40, 
           top: hp("15%"), 
           width: wp("30%"), 
@@ -51,9 +54,17 @@ const Maze = () => {
       }}
       nativeID='maze'
     >
-    
+    <Image 
+      style={{
+        zIndex: 3,
+        position: 'absolute',
+        width: wp("100%"),
+        height: hp("61.58%")
+      }}
+      source={require('../../assets/styling/maze-styling-final.png')}
+    />
       {/* The walls for the maze */}
-      <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%") }}>
+      <Svg height={hp("49.26%")} width={wp('100%')} style={{ position: "absolute", top: hp("1.85%"), zIndex: 2}}>
         {
           horizWalls.map((wall, index) => (
             <Line key={`h${index}`} x1={wp(`${wall.start}%`)} x2={wp(`${wall.end}%`)} y1={hp(`${wall.position}%`)} y2={hp(`${wall.position}%`)} stroke="#38761D" strokeWidth={hp(`${wall.stroke}%`)} />
