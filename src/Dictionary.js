@@ -14,7 +14,7 @@ const Dictionary = (props) => {
   if (props.view != 'dictionary') return null;
 
   const rendertranslations = () => {
-    return translations.map((word, index) => <View><Text key={index}>{word.french} ~~~~ {word.english}</Text></View>);
+    return translations.map((word, index) => <View><Text style={{fontFamily: 'Pixel'}} key={index}>{word.french} ~~~~ {word.english}</Text></View>);
   }
 
   return (
@@ -30,7 +30,7 @@ const Dictionary = (props) => {
         title="Back"
         color="#841584"
       />
-      <Text style={{ alignSelf: 'center' }}>
+      <Text style={{ alignSelf: 'center', fontFamily: 'Pixel' }}>
         ~* DICTIONARY *~
       </Text>
       { rendertranslations()}

@@ -3,7 +3,6 @@ import { TextInput, View, StyleSheet, Keyboard } from 'react-native';
 import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-
 const UserTextInput = () => {
   const { addToDictionary, currentScene, changeInputText, changeCoopGraphic, changeNeedToUpdateChickenGraphic, inputText, changeLevel, level, changeChickenToMove, changeChickenDirection, chickenDirection } = useContext(GameContext)
 
@@ -75,6 +74,7 @@ const styles = StyleSheet.create({
     width: wp('100%'),
   },
   input: {
+    fontFamily: 'Pixel',
     width: wp("40%"),
     fontSize: 20,
     borderWidth: 2,
