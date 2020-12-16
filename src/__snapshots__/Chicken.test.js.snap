@@ -8,9 +8,10 @@ exports[`renders correctly when the level is 0 1`] = `
       "height": 72.5,
       "left": 0,
       "position": "absolute",
+      "resizeMode": "stretch",
       "top": 0,
       "width": 88,
-      "zIndex": 4,
+      "zIndex": 8,
     }
   }
 />
@@ -24,9 +25,10 @@ exports[`renders correctly when the level is 1 1`] = `
       "height": 72.5,
       "left": 0,
       "position": "absolute",
+      "resizeMode": "stretch",
       "top": 0,
       "width": 88,
-      "zIndex": 4,
+      "zIndex": 8,
     }
   }
 />

@@ -8,16 +8,13 @@ const FenceOpponent = () => {
   const { opponentPosition, battleReport, changeOpponentPosition } = useContext(BattleContext)
   const opponentWidth = wp("101%")
   const opponentHeight = hp("6.16%")
-  let opponentSurge;
   let entrance;
-  let stepSize = "1%"
+  let stepSize = "5%"
   const [sound, setSound] = React.useState()
-  const opponents = {
-  }
 
 
   useEffect(() => {
-    if(opponentPosition[0] > wp("0%")) {
+    if(opponentPosition.x > 2) {
         entrance = setInterval(() => {
             changeOpponentPosition(-wp(stepSize), 0)
         }, 80)
@@ -28,7 +25,6 @@ const FenceOpponent = () => {
   }, [opponentPosition])
 
   useEffect(() => {
-    let counter = 0
     if(battleReport === "La cloture attend…") {
       whistleSoundFX()      
     }
@@ -49,8 +45,8 @@ const FenceOpponent = () => {
     < Image
       style={{
         position: 'absolute',
-        top: hp("20%"),
-        left: wp(opponentPosition),
+        top: opponentPosition.y,
+        left: opponentPosition.x,
         width: opponentWidth,
         height: opponentHeight,
         zIndex: 3

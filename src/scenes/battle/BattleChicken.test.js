@@ -4,7 +4,7 @@ import BattleChicken from './BattleChicken.js';
 import { BattleContext } from '../../contexts/BattleContext.js';
 
 const mockContext = {
-    battleChickenPosition: [20, 0],
+    battleChickenPosition: {x: 20, y: 0},
     changeBattleChickenPosition: jest.fn() 
 }
 
@@ -18,7 +18,7 @@ test('chicken is not moved past wp("20%")', async () => {
 });
 
 test('chicken position is changed on render', async () => {
-    mockContext.battleChickenPosition = [0, 0]
+    mockContext.battleChickenPosition = {x: 0, y: 0}
     jest.useFakeTimers();
     await act(async () => {
       newBattleChicken = create(<BattleContext.Provider value={mockContext}><BattleChicken /></BattleContext.Provider>)

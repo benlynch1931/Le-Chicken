@@ -11,7 +11,8 @@ const mockContext = {
     chickenToMove: 0,
     changeChickenToMove: jest.fn(),
     changeChickenDirection: jest.fn(),
-    addToDictionary: jest.fn()
+    addToDictionary: jest.fn(),
+    changeNeedToUpdateChickenGraphic: jest.fn()
 }
 
 test("Changes input but not level when incorrect input is given", () => {

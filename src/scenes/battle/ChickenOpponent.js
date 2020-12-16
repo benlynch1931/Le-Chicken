@@ -10,14 +10,13 @@ const ChickenOpponent = () => {
   const opponentHeight = hp("6.16%")
   let opponentSurge;
   let entrance;
-  let stepSize = "1%"
+  let stepSize = "2%"
   const [sound, setSound] = React.useState()
-  const opponents = {
-  }
 
 
   useEffect(() => {
-    if(opponentPosition[0] > wp("16%")) {
+    if(opponentPosition.x > 300) {
+      console.log("in if block")
         entrance = setInterval(() => {
             changeOpponentPosition(-wp(stepSize), 0)
         }, 80)
@@ -58,8 +57,8 @@ const ChickenOpponent = () => {
     < Image
       style={{
         position: 'absolute',
-        top: hp("20%"),
-        left: wp(opponentPosition),
+        top: opponentPosition.y,
+        left: opponentPosition.x,
         width: opponentWidth,
         height: opponentHeight,
         zIndex: 4,
