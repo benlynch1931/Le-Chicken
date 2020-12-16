@@ -16,7 +16,6 @@ const ChickenOpponent = () => {
 
   useEffect(() => {
     if(opponentPosition.x > 300) {
-      console.log("in if block")
         entrance = setInterval(() => {
             changeOpponentPosition(-wp(stepSize), 0)
         }, 80)
