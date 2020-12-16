@@ -24,11 +24,9 @@ const Game = (props) => {
           padding: hp("0.8%")
         }}>
         </View>
-        <SceneController />
-        <Chicken />
-        <GameController setView={props.setView} />
         <SceneController setView={props.setView} view={props.view}/>
         <Chicken />
+        <GameController setView={props.setView} />
       </KeyboardAwareScrollView >
     );
   }
