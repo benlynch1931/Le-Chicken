@@ -6,7 +6,7 @@ import { GameContext } from '../contexts/GameContext.js';
 import NoteView from '../NoteView.js'
 
 const Maze = (props) => {
-  const { walls, level, notePosition, changeScene, chickenPosition } = useContext(GameContext)
+  const { walls, level, notePosition, changeScene, chickenPosition, addToDictionary } = useContext(GameContext)
   const horizWalls = walls.filter(wall => wall.type == 'horizontal')
   const vertiWalls = walls.filter(wall => wall.type == 'vertical')
 
