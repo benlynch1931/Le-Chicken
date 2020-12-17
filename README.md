@@ -30,7 +30,8 @@ $ npm start
 
 Press New Game to begin and then check the hints above the text box for clues on what to do to get started.
 
-![startScreen](https://imgur.com/LvTVyCi)
+<img src="https://i.imgur.com/zYwCEaw.gif"/>
+
 
 ## Testing
 
