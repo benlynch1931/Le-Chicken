@@ -15,7 +15,7 @@ const SceneController = (props) => {
 
   let scene;
 
-  const sceneTransition = () => {
+  const sceneTransition = (newScene) => {
     let counter = 1
     let interval = setInterval(() => {
       if (counter < 10) {
@@ -23,7 +23,7 @@ const SceneController = (props) => {
         counter++
       } else if (counter == 10) {
         resetChickenPosition()
-        changeScene('maze')
+        changeScene(newScene)
         setTransitionOpacity(1 - ((counter - 10) * 0.1))
         counter++
       } else if (counter < 20) {
@@ -38,15 +38,13 @@ const SceneController = (props) => {
 
   useEffect(() => {
     if (chickenPosition.y <= hp("15%") && level == 2 && currentScene == 'coop') {
-      sceneTransition()
+      sceneTransition('maze')
     }
   }, [chickenPosition])
 
   useEffect(() => {
-    if (chickenPosition.y <= hp("2%") && chickenPosition.x <= wp("45%") && currentScene == 'maze') {
-      changeScene('confrontation')
-      changeChickenToMove(0)
-      resetChickenPosition()
+    if (chickenPosition.y <= hp("3%") && chickenPosition.x <= wp("45%") && currentScene == 'maze') {
+      sceneTransition('confrontation')
       changeLevel(4)
     }
   }, [chickenPosition])
@@ -83,56 +81,56 @@ const SceneController = (props) => {
           border: "black",
           borderWidth: "3%",
           backgroundColor: '#f0f0d1',
-          // borderRadius: 12,
-          display: isChickenAtNote() ? 'block' : 'none' }}>
+          display: isChickenAtNote() ? 'block' : 'none'
+        }}>
           <TouchableOpacity
-          onPress={() => {props.setView('note'); addToDictionary({french: 'Frapper', english: 'To hit'})}}
-          style={{
-            alignSelf: 'center',
-            marginTop: '1%',
-            width: '90%',
-            height: '100%',
-            zIndex: 1
-          }}
-          nativeID="Note1Button"
+            onPress={() => { props.setView('note'); addToDictionary({ french: 'Frapper', english: 'To hit' }) }}
+            style={{
+              alignSelf: 'center',
+              marginTop: '1%',
+              width: '90%',
+              height: '100%',
+              zIndex: 1
+            }}
+            nativeID="Note1Button"
           >
-          <Text style={{fontFamily: 'Pixel'}}>Press to pick up note!</Text>
+            <Text style={{ fontFamily: 'Pixel' }}>Press to pick up note!</Text>
           </TouchableOpacity>
         </View>
       )
-    } else if ( currentScene == 'confrontation') {
+    } else if (currentScene == 'confrontation') {
       if (level == 4) {
         return (
-          <View style={{ position: 'absolute', zIndex: 10, alignSelf: "center", top: hp("21%"), height: hp('5%'),width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 4 ? 'block' : 'none' }}>        
-          <TouchableOpacity
-            onPress={() => {changeScene("battle")}}
-            style={{
-              alignSelf: 'center',
-              marginTop: '2%',
-              paddingLeft: '1%',
-              width: '100%',
-              height: '100%'
-            }}
+          <View style={{ position: 'absolute', zIndex: 10, alignSelf: "center", top: hp("21%"), height: hp('5%'), width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 4 ? 'block' : 'none' }}>
+            <TouchableOpacity
+              onPress={() => { changeScene("battle") }}
+              style={{
+                alignSelf: 'center',
+                marginTop: '2%',
+                paddingLeft: '1%',
+                width: '100%',
+                height: '100%'
+              }}
             >
-            <Text style={{fontFamily: 'Pixel', fontSize: 12}}>Wipe the smug grin from the chicken's beak</Text>
+              <Text style={{ fontFamily: 'Pixel', fontSize: 12 }}>Wipe the smug grin from the chicken's beak</Text>
             </TouchableOpacity>
           </View>
         )
       }
       else if (level == 5) {
         return (
-          <View style={{position: 'absolute', zIndex: 10, alignSelf: "center", top: hp("21%"), height: hp('5%'),width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 5 ? 'block' : 'none' }}>        
-          <TouchableOpacity
-            onPress={() => {props.setView('note'); addToDictionary({french: 'Sauter', english: 'To jump'})}}
-            style={{
-              alignSelf: 'center',
-              marginTop: '2%',
-              paddingLeft: '1%',
-              width: '100%',
-              height: '100%',
-            }}
+          <View style={{ position: 'absolute', zIndex: 10, alignSelf: "center", top: hp("21%"), height: hp('5%'), width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 5 ? 'block' : 'none' }}>
+            <TouchableOpacity
+              onPress={() => { props.setView('note'); addToDictionary({ french: 'Sauter', english: 'To jump' }) }}
+              style={{
+                alignSelf: 'center',
+                marginTop: '2%',
+                paddingLeft: '1%',
+                width: '100%',
+                height: '100%',
+              }}
             >
-              <Text style={{fontFamily: 'Pixel', fontSize: 12}}>Take note?</Text>
+              <Text style={{ fontFamily: 'Pixel', fontSize: 12 }}>Take note?</Text>
             </TouchableOpacity>
           </View>
         )
@@ -150,7 +148,7 @@ const SceneController = (props) => {
         height: hp('61.58%'),
       }} />
       { scene}
-      { displayButton() }
+      { displayButton()}
       <Chicken />
     </View >
   )
