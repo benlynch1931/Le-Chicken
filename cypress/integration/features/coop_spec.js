@@ -13,7 +13,7 @@ context('Coop Actions', () => {
   })
 
   it("moves the chicken to the top, when user types 'marche'", () => {
-    cy.get('#chicken-idleright').should('have.css', 'top', '446.5px')
+    cy.get('#chicken-idleright').should('have.css', 'top', '447px')
     cy.get('input')
       .type('marcher')
     cy.wait(3000)
@@ -42,6 +42,6 @@ context('Coop Actions', () => {
       .type('marcher')
     cy.get('input')
       .type('ouvrir')
-    cy.get('#chicken-idleup').should('have.css', 'top', '446.5px')
+    cy.get('#chicken-idleup').should('have.css', 'top', '359px')
   })
 })
