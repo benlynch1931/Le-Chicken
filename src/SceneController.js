@@ -72,7 +72,7 @@ const SceneController = (props) => {
   } else if (currentScene === 'confrontation') {
     scene = <Confrontation setView={props.setView} view={props.view} />
   } else if (currentScene == 'credits') {
-    scene = <Credits/>
+    scene = <Credits setView={props.setView} view={props.view}/>
   }
 
   const isChickenAtNote = () => {

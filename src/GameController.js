@@ -48,7 +48,7 @@ export class GameController extends Component {
     const containerStyle = (currentScene == "battle") ? styles.battleContainer : styles.container
 
     const activateDPad = () => {
-      if (currentScene == 'confrontation') {
+      if (currentScene == 'confrontation' || currentScene == 'maze') {
         return (
           <DPad />
         )
