@@ -11,7 +11,7 @@ const chickenPositionDefault = {
 const initialScene = 'confrontation';
 const initialChickenGraphic = 'idleright';
 const initialHint = "Pour marcher: Type ‘marcher’";
-const initialLevel = 6;
+const initialLevel = 4;
 
 class GameContextProvider extends Component {
   state = {
