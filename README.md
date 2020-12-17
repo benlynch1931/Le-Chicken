@@ -51,7 +51,7 @@ $ npm test
 
 ### Music
 
-- [Feeling Good]
+- [Feeling Good](https://www.purple-planet.com/feelin-good)
 - [Porkymon Battle Music by Joth](https://opengameart.org/content/porkymon-battle-theme) (Edited by) [Ben](https://github.com/benlynch1931)
 - [Boing Sound Effect](https://www.zapsplat.com/music/cartoon-boing-ascend-bounce-jaw-harp-12/)
 - [Fence Whistle Sound Effect](https://www.zapsplat.com/music/crickets-summertime-early-morning/)
