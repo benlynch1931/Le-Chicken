@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
-import BattleContextProvider from '../../contexts/BattleContext.js'
 import { GameContext } from '../../contexts/GameContext.js'
 
 import ChickenOpponent from './ChickenOpponent.js'
@@ -26,18 +24,16 @@ const Battle = () => {
         <FenceOpponent></FenceOpponent>
       )
     }
-  } 
+  }
 
   return (
     <View>
-      <BattleContextProvider>
-        <HealthBar character={"Chicken"}/>
-        <BattleChicken></BattleChicken>
-        { opponent() }
-        <HealthBar character={"Opponent"}/>
-        <BattleView></BattleView>
-        <AttackCommands></AttackCommands>
-      </BattleContextProvider>
+      <HealthBar character={"Chicken"} />
+      <BattleChicken></BattleChicken>
+      { opponent()}
+      <HealthBar character={"Opponent"} />
+      <BattleView></BattleView>
+      <AttackCommands></AttackCommands>
     </View>
   )
 

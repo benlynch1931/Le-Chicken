@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import GameContextProvider from './src/contexts/GameContext.js';
+import BattleContextProvider from './src/contexts/BattleContext.js';
 import Game from './src/Game.js'
 import Menu from './src/Menu.js'
 import Dictionary from './src/Dictionary.js'
@@ -13,25 +14,27 @@ export default function App() {
   const [view, setView] = useState('menu')
   const [dataLoaded, setDataLoaded] = useState(false)
 
-  const fetchFonts = async() => {
+  const fetchFonts = async () => {
     await Font.loadAsync({
-    'Pixel': require('./assets/fonts/PressStart2P-Regular.ttf')
+      'Pixel': require('./assets/fonts/PressStart2P-Regular.ttf')
     })
     setDataLoaded(true)
   }
 
-  if(dataLoaded == false) {
+  if (dataLoaded == false) {
     fetchFonts();
-    return <AppLoading/>
+    return <AppLoading />
   } else {
     return (
       <View>
         <GameContextProvider>
-          <Menu setView={setView} view={view} />
-          <Dictionary setView={setView} view={view} />
-          <Game setView={setView} view={view} />
-          <SoundController view={view} />
-          <NoteView view={view} setView={setView}/>
+          <BattleContextProvider>
+            <Menu setView={setView} view={view} />
+            <Dictionary setView={setView} view={view} />
+            <Game setView={setView} view={view} />
+            <SoundController view={view} />
+            <NoteView view={view} setView={setView} />
+          </BattleContextProvider>
         </GameContextProvider>
       </View>
     );
