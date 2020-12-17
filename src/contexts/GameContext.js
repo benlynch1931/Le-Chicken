@@ -9,10 +9,10 @@ const chickenPositionDefault = {
   x: wp("43.34%"),
   y: hp("55%")
 }
-const initialScene = 'battle';
+const initialScene = 'coop';
 const initialChickenGraphic = 'idleright';
 const initialHint = "Pour marcher: Type ‘marcher’";
-const initialLevel = 6;
+const initialLevel = 0;
 
 class GameContextProvider extends Component {
   state = {
