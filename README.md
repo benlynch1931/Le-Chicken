@@ -51,15 +51,15 @@ $ npm test
 
 ### Music
 
-[Feeling Good]
-[Porkymon Battle Music by Joth](https://opengameart.org/content/porkymon-battle-theme) (Edited by) [Ben](https://github.com/benlynch1931)
-[Boing Sound Effect](https://www.zapsplat.com/music/cartoon-boing-ascend-bounce-jaw-harp-12/)
-[Fence Whistle Sound Effect](https://www.zapsplat.com/music/crickets-summertime-early-morning/)
-[Frapper Sound Effect](https://www.zapsplat.com/music/cartoon-punch-1/)
+- [Feeling Good]
+- [Porkymon Battle Music by Joth](https://opengameart.org/content/porkymon-battle-theme) (Edited by) [Ben](https://github.com/benlynch1931)
+- [Boing Sound Effect](https://www.zapsplat.com/music/cartoon-boing-ascend-bounce-jaw-harp-12/)
+- [Fence Whistle Sound Effect](https://www.zapsplat.com/music/crickets-summertime-early-morning/)
+- [Frapper Sound Effect](https://www.zapsplat.com/music/cartoon-punch-1/)
 
 ### Sprites
 
-[Chicken, by Shepardskin](https://opengameart.org/content/chicken-sprites) (Edited by) [KC](https://github.com/kacesera)
-[Generic RPG pack](https://bakudas.itch.io/generic-rpg-pack)
-[Fence, by Daniel Eddeland](https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements) (creator: Daniel Eddeland)
-[Note, by Jetrel](https://opengameart.org/content/rpg-item-set)
+- [Chicken, by Shepardskin](https://opengameart.org/content/chicken-sprites) (Edited by) [KC](https://github.com/kacesera)
+- [Generic RPG pack](https://bakudas.itch.io/generic-rpg-pack)
+- [Fence, by Daniel Eddeland](https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements) (creator: Daniel Eddeland)
+- [Note, by Jetrel](https://opengameart.org/content/rpg-item-set)
