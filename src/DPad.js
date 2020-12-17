@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     borderColor: '#EBEBEB',
     shadowOffset: { width: wp('0.3%'), height: wp("0.3%") },
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.7,
     backgroundColor: '#59c090',
     height: hp('5%'),
     width: wp('15%')
@@ -103,14 +103,14 @@ const styles = StyleSheet.create({
   buttonClicked: {
     borderStyle: 'solid',
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#545454',
-    shadowOffset: { width: 0, height: 0 },
+    borderWidth: 2,
+    borderColor: '#EBEBEB',
+    shadowOffset: { width: wp('0.3%'), height: wp("0.3%") },
     shadowColor: '#000000',
-    shadowOpacity: 1.0,
+    shadowOpacity: 0.5,
     marginTop: wp("0.3%"),
     marginLeft: wp("0.3%"),
-    backgroundColor: '#5D8BBA',
+    backgroundColor: '#59c090',
     height: hp('5%') - wp("0.3%"), // minus the margin offset to keep other buttons in place
     width: wp('14.7%') // minus the margin offset to keep other buttons in place
   },
