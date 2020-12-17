@@ -1,11 +1,11 @@
 # Le Chicken
 
 ## About 
-———
+
 Le Chicken: The Poulet is a language-learning RPG (role-playing game). The player begins as a chicken, dreaming of making it in the big city. The problem? This chicken doesn’t know French! From start to finish, the user is introduced to and given a chance to contextually use new vocabulary in their target language. While this version is only the ‘tutorial’ area, by the end of the full-game, the user will be able to interact with the game entirely in their target language!
 
 ## Set-up Instructions
-——————
+
 Make sure expo -cli is installed globally:
 ```
 $ npm install —global expo-cli
@@ -21,7 +21,6 @@ $ npm install
 ```
 
 ## Usage
-————
 
 1. In the root directory, start the program with npm:
 ```
@@ -31,8 +30,9 @@ $ npm start
 
 Press New Game to begin and then check the hints above the text box for clues on what to do to get started.
 
+[!startScreen](https://imgur.com/LvTVyCi)
+
 ## Testing
-—————
 
 # Feature Tests
 Run cypress from the root directory:
