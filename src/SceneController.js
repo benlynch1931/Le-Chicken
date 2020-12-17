@@ -38,7 +38,9 @@ const SceneController = (props) => {
 
   useEffect(() => {
     if (chickenPosition.y <= hp("15%") && level == 2 && currentScene == 'coop') {
-      sceneTransition('maze')
+      //sceneTransition('maze')
+      resetChickenPosition()
+      changeScene('maze')
     }
   }, [chickenPosition])
 
