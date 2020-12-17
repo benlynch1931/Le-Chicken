@@ -6,10 +6,12 @@ import Maze from './scenes/Maze.js';
 import Battle from './scenes/battle/Battle.js';
 import Confrontation from './scenes/Confrontation.js'
 import { GameContext } from './contexts/GameContext.js';
+import { BattleContext } from './contexts/BattleContext.js';
 import Chicken from './Chicken.js'
 
 const SceneController = (props) => {
   const { currentScene, addToDictionary, chickenPosition, changeScene, resetChickenPosition, changeChickenToMove, changeLevel, level } = useContext(GameContext)
+  const { resetBattleContext } = useContext(BattleContext)
 
   const [transitionOpacity, setTransitionOpacity] = useState(0)
 
@@ -51,6 +53,7 @@ const SceneController = (props) => {
 
   useEffect(() => {
     if (chickenPosition.y <= hp("15%") && currentScene == 'confrontation' && level == 6) {
+      resetBattleContext()
       changeScene('battle')
     }
   }, [chickenPosition])
