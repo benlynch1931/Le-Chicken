@@ -91,12 +91,12 @@ const styles = StyleSheet.create({
   button: {
     borderStyle: 'solid',
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#545454',
+    borderWidth: 2,
+    borderColor: '#EBEBEB',
     shadowOffset: { width: wp('0.3%'), height: wp("0.3%") },
     shadowColor: '#000000',
-    shadowOpacity: 1.0,
-    backgroundColor: '#5D8BBA',
+    shadowOpacity: 0.5,
+    backgroundColor: '#59c090',
     height: hp('5%'),
     width: wp('15%')
   },
