@@ -1,16 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { GameContext } from './contexts/GameContext.js';
 
-const Credits = () => {
-  const [gameStarted, setGameStarted] = useState(false)
-  const { restartGame } = useContext(GameContext)
-  const startNewGame = async () => {
-    restartGame();
-    await setGameStarted(true);
-    props.setView('game');
-  }
+const Credits = (props) => {
 
   return (
     < View
@@ -43,10 +35,10 @@ const Credits = () => {
         <Text style={styles.coloured}>See our README for the</Text>
         <Text style={styles.coloured}>list of attributions!</Text>
         <TouchableOpacity
-          onPress={() => startNewGame()} style={{zIndex: 12}}
+            onPress={() => props.setView('menu')}
         >
-        <Text style={{fontFamily: 'Pixel', backgroundColor: 'white', padding: 5, color: 'black', alignSelf: 'center', marginTop: 30, zIndex: 12}}>New Game</Text>
-      </TouchableOpacity>
+            <Text style={{fontFamily: 'Pixel', backgroundColor: 'white', padding: 5, color: 'black', alignSelf: 'center', marginTop: 30, zIndex: 12}}>Menu</Text>
+        </TouchableOpacity>
     </View>
   );
 }

@@ -1,8 +1,6 @@
 import React, { useEffect, useContext } from 'react';
-import { View, TouchableOpacity, Text, Image } from 'react-native';
-
+import { Button, View, TouchableOpacity, Text, Image } from 'react-native';
 import { Audio } from 'expo-av';
-
 import { GameContext } from './contexts/GameContext.js';
 
 export default function SoundController(props) {
@@ -29,7 +27,7 @@ export default function SoundController(props) {
   async function startMusic() {
 
     if (currentScene == 'battle') {
-      soundFile = require('../assets/Battle-all.mp3')
+      soundFile = require('../assets/Battle1.mp3')
     } else {
       soundFile = require('../assets/feeling-good.mp3')
     }

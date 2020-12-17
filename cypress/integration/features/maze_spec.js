@@ -6,7 +6,7 @@ context('Maze', () => {
     cy.get('input').type('marcher')
     cy.wait(2000)
     cy.get('input').type('ouvrir')
-    cy.wait(1000)
+    cy.wait(3000)
   })
 
   it('Once chicken has reached top of the sceen, the maze appears', () => {
@@ -14,35 +14,36 @@ context('Maze', () => {
   })
 
   it('places chicken at starting point', () => {
-    cy.get('#chicken-idleup').should('have.css', 'top', '446.5px')
+    cy.get('#chicken-idleup').should('have.css', 'top', '447px')
   })
 
   it("moves the chicken up, when typing 'haut'", () => {
     cy.get('input')
       .type('haut')
+    cy.wait(500)
     cy.get('#chicken-walkup')
   })
 
   it("doesn't intersect chicken with a wall", () => {
     cy.get('input')
       .type('haut')
-    cy.wait(1000)
+    cy.wait(3000)
     cy.get('input')
       .type('haut')
-    cy.get('#chicken-idleup').should('have.css', 'top', '350.5px')
+    cy.get('#chicken-idleup').should('have.css', 'top', '351px')
   })
 
   it("can pick up the note and complete the maze", () => {
     cy.get('input').type('haut')
-    cy.wait(1000)
+    cy.wait(2000)
     cy.get('input').type('droite')
     cy.wait(2000)
     cy.get('input').type('haut')
-    cy.wait(3000)
+    cy.wait(5000)
     cy.get('input').type('gauche')
-    cy.wait(2000)
+    cy.wait(3000)
     cy.get('input').type('bas')
-    cy.wait(2000)
+    cy.wait(3000)
     cy.get('input').type('droite')
     cy.wait(2000)
     cy.get('input').type('bas')
@@ -52,7 +53,7 @@ context('Maze', () => {
     cy.get('input').type('bas')
     cy.wait(2000)
     cy.get('input').type('gauche')
-    cy.wait(2000)
+    cy.wait(3000)
     cy.get('input').type('haut')
     cy.wait(2000)
     cy.get('input').type('droite')
@@ -62,7 +63,7 @@ context('Maze', () => {
     cy.contains("Add to Dictionary").click()
     cy.get('#Note1').should('not.exist')
     cy.get('input').type('haut')
-    cy.wait(4000)
+    cy.wait(5000)
     cy.get('#chicken-walkup').should('not.be.visible')
   })
 })
