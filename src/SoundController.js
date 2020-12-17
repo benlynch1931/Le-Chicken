@@ -27,7 +27,7 @@ export default function SoundController(props) {
   async function startMusic() {
 
     if (currentScene == 'battle') {
-      soundFile = require('../assets/Battle1.mp3')
+      soundFile = require('../assets/Battle-all.mp3')
     } else {
       soundFile = require('../assets/feeling-good.mp3')
     }
