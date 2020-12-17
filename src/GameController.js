@@ -28,7 +28,6 @@ export class GameController extends Component {
       },
       menuBar: {
         width: wp('100%'),
-        // height: hp('4%'),
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -36,12 +35,6 @@ export class GameController extends Component {
         paddingBottom: hp("1%"),
         alignSelf: 'center',
         backgroundColor: "#59c090",
-      },
-      menuButton: {
-        // borderWidth: 1.5,
-        // borderRadius: 12,
-        // padding: 4
-        // paddingLeft: 4
       },
       menuButtonText: {
         fontFamily: 'Pixel',
@@ -53,7 +46,7 @@ export class GameController extends Component {
     const containerStyle = (currentScene == "battle") ? styles.battleContainer : styles.container
 
     const activateDPad = () => {
-      if (currentScene == 'confrontation') {
+      if (level >= 3) {
         return (
           <DPad />
         )
@@ -80,12 +73,12 @@ export class GameController extends Component {
       < View style={containerStyle} >
         <View style={styles.menuBar}>
 
-        <TouchableOpacity
-          style={styles.menuButton}
-          onPress={() => this.props.setView('dictionary')}
-        >
-          <Text style={styles.menuButtonText}>Dictionary</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.menuButton}
+            onPress={() => this.props.setView('dictionary')}
+          >
+            <Text style={styles.menuButtonText}>Dictionary</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.menuButton}
             onPress={() => this.props.setView('menu')}

@@ -43,7 +43,7 @@ const UserTextInput = () => {
       changeInputText("");
     }
 
-    if (level === 2 || level === 3 && currentScene == 'maze') {
+    if (level === 2 && currentScene == 'maze') {
       for (const [french, english] of directions.entries()) {
         if (text.toLowerCase() == french) {
           Keyboard.dismiss();
@@ -63,6 +63,7 @@ const UserTextInput = () => {
         testID="textInput"
         onChangeText={checkInput}
         value={inputText}
+        autoCorrect={false}
       />
     </View >
   )
@@ -80,7 +81,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey',
-    // padding: 10,
     borderRadius: 5,
     textAlign: "center",
     alignSelf: "center"

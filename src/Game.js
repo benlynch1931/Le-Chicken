@@ -21,7 +21,9 @@ const Game = (props) => {
           height: hp("5%"),
           alignItems: 'flex-start',
           width: wp("100%"),
-          padding: hp("0.8%")
+          padding: hp("0.8%"),
+          backgroundColor: 'white',
+          zIndex: 10
         }}>
         </View>
         <SceneController setView={props.setView} view={props.view} />

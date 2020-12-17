@@ -6,27 +6,27 @@ import { Audio } from 'expo-av';
 
 const FenceOpponent = () => {
   const { opponentPosition, battleReport, changeOpponentPosition } = useContext(BattleContext)
-  const opponentWidth = wp("101%")
+  const opponentWidth = wp("102%")
   const opponentHeight = hp("6.16%")
   let entrance;
-  let stepSize = "5%"
+  let stepSize = "5.3%"
   const [sound, setSound] = React.useState()
 
 
   useEffect(() => {
-    if(opponentPosition.x > 2) {
-        entrance = setInterval(() => {
-            changeOpponentPosition(-wp(stepSize), 0)
-        }, 80)
-        return () => {
-            clearInterval(entrance)
-        }
+    if (opponentPosition.x > 2) {
+      entrance = setInterval(() => {
+        changeOpponentPosition(-wp(stepSize), 0)
+      }, 80)
+      return () => {
+        clearInterval(entrance)
+      }
     }
   }, [opponentPosition])
 
   useEffect(() => {
-    if(battleReport === "La cloture attend…") {
-      whistleSoundFX()      
+    if (battleReport === "La cloture attend…") {
+      whistleSoundFX()
     }
 
   }, [battleReport])

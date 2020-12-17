@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet, Keyboard } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { BattleContext } from '../../contexts/BattleContext.js';
 import { GameContext } from '../../contexts/GameContext.js';
@@ -9,22 +9,24 @@ const AttackCommands = () => {
   const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
   let winner = false;
   const checkInput = (text) => {
-    if (winner) {return}
+    if (winner) { return }
     changeInputText(text)
-    if(chickenTurn == true) {
-        if (text.toLowerCase() == "frapper") {
-          changeInputText("")
-          chickenFrapper()
-        }
-        if (text.toLowerCase() == "sauter") {
-          changeInputText("")
-          chickenSauter()
-        }
+    if (chickenTurn == true) {
+      if (text.toLowerCase() == "frapper") {
+        Keyboard.dismiss
+        changeInputText("")
+        chickenFrapper()
+      }
+      if (text.toLowerCase() == "sauter") {
+        Keyboard.dismiss
+        changeInputText("")
+        chickenSauter()
+      }
     }
   }
   const chickenFrapper = () => {
     // level switched for testing 5 = chicken Opponent
-    if(level === 4) {
+    if (level === 4) {
       changeOpponentHealth(Math.floor(Math.random() * 6) + 30)
       changeBattleReport("Le chicken a frappé l’adversaire")
       checkHealth()
@@ -40,7 +42,7 @@ const AttackCommands = () => {
   }
 
   const chickenSauter = () => {
-    if(level === 6) {
+    if (level === 6) {
       changeBattleReport("Le chicken a sauté l’adversaire")
     }
   }
@@ -63,7 +65,7 @@ const AttackCommands = () => {
   }
 
   const checkHealth = () => {
-    if(opponentHealth <= 20) {
+    if (opponentHealth <= 20) {
       winner = true
       changeResult("You won!")
       setTimeout(() => {
@@ -71,24 +73,25 @@ const AttackCommands = () => {
         changeScene('confrontation')
       }, 3000)
       return;
-    } else if(chickenHealth <= 20) {
+    } else if (chickenHealth <= 20) {
       winner = true;
       changeResult("You lost")
       setTimeout(() => {
         changeScene('confrontation')
       }, 3000)
       return;
-      }
+    }
   }
   return (
     <View style={styles.container}>
       <Text style={styles.hintText}>{`${battleReport}`}</Text>
       <Text style={styles.hintText}>{`${result}`}</Text>
       <TextInput style={styles.input}
-      placeholderTextColor="black"
-      testID="textInput"
-      onChangeText={checkInput}
-      value={inputText}
+        placeholderTextColor="black"
+        testID="textInput"
+        onChangeText={checkInput}
+        value={inputText}
+        autoCorrect={false}
       ></TextInput>
     </View>
   )
