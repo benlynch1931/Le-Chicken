@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { TextInput, View, StyleSheet, Keyboard } from 'react-native';
-import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+import { GameContext } from './contexts/GameContext.js';
 
 const UserTextInput = () => {
   const { addToDictionary, currentScene, changeInputText, changeCoopGraphic, changeNeedToUpdateChickenGraphic, inputText, changeLevel, level, changeChickenToMove, changeChickenDirection, chickenDirection } = useContext(GameContext)

@@ -1,5 +1,6 @@
 import React, { createContext, Component } from 'react';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 import { walls } from '../Walls.js';
 
 export const GameContext = createContext();

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { Image } from 'react-native';
-import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
+import { GameContext } from './contexts/GameContext.js';
 
 const Chicken = () => {
   const { chickenPosition, dPadPressed, level, chickenGraphic, changeChickenGraphic, increaseChickenPosition, chickenDirection, changeChickenToMove, chickenToMove, walls, currentScene, needToUpdateChickenGraphic, changeNeedToUpdateChickenGraphic } = useContext(GameContext)

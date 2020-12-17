@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { GameContext } from './contexts/GameContext.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
+import { GameContext } from './contexts/GameContext.js';
 
 const Hint = () => {
   const { level } = useContext(GameContext)

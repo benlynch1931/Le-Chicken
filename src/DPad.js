@@ -1,7 +1,8 @@
 import React, { useContext, useState, Component } from 'react';
-import { TextInput, Text, View, TouchableOpacity, Button, StyleSheet, Keyboard } from 'react-native';
-import { GameContext } from './contexts/GameContext.js';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+import { GameContext } from './contexts/GameContext.js';
 
 export class DPad extends Component {
   constructor(props) {
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     marginTop: hp('1%'),
+    paddingBottom: hp("2%"),
     width: wp('47%'),
     alignSelf: 'center',
     flexDirection: 'row',
@@ -90,26 +92,26 @@ const styles = StyleSheet.create({
   button: {
     borderStyle: 'solid',
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#545454',
+    borderWidth: 2,
+    borderColor: '#EBEBEB',
     shadowOffset: { width: wp('0.3%'), height: wp("0.3%") },
     shadowColor: '#000000',
-    shadowOpacity: 1.0,
-    backgroundColor: '#5D8BBA',
+    shadowOpacity: 0.7,
+    backgroundColor: '#59c090',
     height: hp('5%'),
     width: wp('15%')
   },
   buttonClicked: {
     borderStyle: 'solid',
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#545454',
-    shadowOffset: { width: 0, height: 0 },
+    borderWidth: 2,
+    borderColor: '#EBEBEB',
+    shadowOffset: { width: wp('0.3%'), height: wp("0.3%") },
     shadowColor: '#000000',
-    shadowOpacity: 1.0,
+    shadowOpacity: 0.5,
     marginTop: wp("0.3%"),
     marginLeft: wp("0.3%"),
-    backgroundColor: '#5D8BBA',
+    backgroundColor: '#59c090',
     height: hp('5%') - wp("0.3%"), // minus the margin offset to keep other buttons in place
     width: wp('14.7%') // minus the margin offset to keep other buttons in place
   },

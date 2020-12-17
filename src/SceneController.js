@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { View, TouchableOpacity, Text } from 'react-native';
+
 import Coop from './scenes/Coop.js';
 import Maze from './scenes/Maze.js';
 import Battle from './scenes/battle/Battle.js';
@@ -8,6 +9,7 @@ import Confrontation from './scenes/Confrontation.js'
 import { GameContext } from './contexts/GameContext.js';
 import { BattleContext } from './contexts/BattleContext.js';
 import Chicken from './Chicken.js'
+import Credits from './Credits.js'
 
 const SceneController = (props) => {
   const { currentScene, addToDictionary, chickenPosition, changeScene, resetChickenPosition, changeChickenToMove, changeLevel, level } = useContext(GameContext)
@@ -58,6 +60,12 @@ const SceneController = (props) => {
     }
   }, [chickenPosition])
 
+  useEffect(() => {
+    if (level === 7 && currentScene === 'battle') {
+      sceneTransition('credits')
+    }
+  })
+
   if (currentScene === 'coop') {
     scene = <Coop />
   } else if (currentScene === 'maze') {
@@ -66,6 +74,8 @@ const SceneController = (props) => {
     scene = <Battle />
   } else if (currentScene === 'confrontation') {
     scene = <Confrontation setView={props.setView} view={props.view} />
+  } else if (currentScene == 'credits') {
+    scene = <Credits setView={props.setView} view={props.view}/>
   }
 
   const isChickenAtNote = () => {

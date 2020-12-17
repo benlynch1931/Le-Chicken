@@ -1,5 +1,6 @@
 import React from 'react';
-import TestRenderer, { create, act } from 'react-test-renderer';
+import TestRenderer, { create } from 'react-test-renderer';
+
 import BattleView from './BattleView.js';
 
 

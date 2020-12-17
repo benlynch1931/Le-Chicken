@@ -1,11 +1,12 @@
 import React from 'react';
-import AttackCommands from './AttackCommands.js';
 import { render, fireEvent } from '@testing-library/react-native'
+
 import { BattleContext } from '../../contexts/BattleContext.js';
 import { GameContext } from '../../contexts/GameContext.js';
+import AttackCommands from './AttackCommands.js';
 
 const mockContext = {
-    chickenHealth: 100, 
+    chickenHealth: 100,
     changeResult: jest.fn(),
     opponentHealth: 50,
     inputText: "",
@@ -35,7 +36,7 @@ afterEach(() => {
 })
 
 test("Changes input but not level when incorrect input is given", () => {
-    
+
     const { getByTestId } = render(<GameContext.Provider value={mockGameContext}><BattleContext.Provider value={mockContext}><AttackCommands/></BattleContext.Provider></GameContext.Provider>)
     const input = getByTestId('textInput')
     fireEvent.changeText(input, "incorrect string")

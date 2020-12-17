@@ -1,13 +1,13 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { BattleContext } from '../../contexts/BattleContext.js'
 
 import { Audio } from 'expo-av';
 
-
+import { BattleContext } from '../../contexts/BattleContext.js'
 
 const BattleChicken = () => {
+  const [chickenGraphic, setChickenGraphic] = useState(require('../../../assets/chicken-right.png'))
   const { battleChickenPosition, changeBattleChickenPosition, battleReport, chickenWidth, chickenHeight, changeChickenWidth, changeChickenHeight } = useContext(BattleContext)
   let entrance;
   let exit;
@@ -37,22 +37,22 @@ const BattleChicken = () => {
 
   useEffect(() => {
     let counter1 = 0
-    if(battleReport === "Le chicken a sauté l’adversaire") {   
+    if(battleReport === "Le chicken a sauté l’adversaire") {
       const exit = setInterval(() => {
         counter1 = counter1 + 1
         if(counter1 < 61) {
           changeBattleChickenPosition(0, -hp(stepSize))
           if(counter1 == 1) {
-            boingSoundFX() 
+            boingSoundFX()
           }
         } else {
           chickenDescend()
           clearInterval(exit)
         }
       }, 10)
-   
+
     }
-  }, [battleReport, changeBattleChickenPosition])
+  }, [battleReport, changeBattleChickenPosition, setChickenGraphic])
 
   const chickenDescend = () => {
     changeChickenWidth(wp("15%"))
@@ -64,9 +64,22 @@ const BattleChicken = () => {
       if(counter2 < 31) {
         changeBattleChickenPosition(0, hp(stepSize))
       } else {
+        chickenExit()
         clearInterval(descent)
       }
     }, 10)
+  }
+
+  const chickenExit = () => {
+    if(battleChickenPosition.x < 110) {
+      setChickenGraphic(require('../../../assets/chicken-run-right.gif'))
+      const exit = setInterval(() => {
+          changeBattleChickenPosition(wp(stepSize), 0)
+      }, 80)
+      return () => {
+          clearInterval(exit)
+      }
+  }
   }
 
   useEffect(() => {
@@ -108,7 +121,7 @@ const BattleChicken = () => {
         resizeMode: "stretch"
       }}
       nativeID={`battleChicken`}
-      source={require('../../../assets/chicken-right.png')}
+      source={chickenGraphic}
     />
   );
 }

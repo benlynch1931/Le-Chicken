@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { View, TextInput, Text, StyleSheet, Keyboard } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 import { BattleContext } from '../../contexts/BattleContext.js';
 import { GameContext } from '../../contexts/GameContext.js';
 
@@ -45,6 +46,9 @@ const AttackCommands = () => {
     if (level === 6) {
       changeBattleReport("Le chicken a sauté l’adversaire")
     }
+    setTimeout(()=> {
+      changeLevel(7)
+    }, 3000)
   }
 
   const chickenOpponentTurn = () => {

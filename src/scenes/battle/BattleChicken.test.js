@@ -1,11 +1,12 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
+
 import BattleChicken from './BattleChicken.js';
 import { BattleContext } from '../../contexts/BattleContext.js';
 
 const mockContext = {
     battleChickenPosition: {x: 20, y: 0},
-    changeBattleChickenPosition: jest.fn() 
+    changeBattleChickenPosition: jest.fn()
 }
 
 test('chicken is not moved past wp("20%")', async () => {

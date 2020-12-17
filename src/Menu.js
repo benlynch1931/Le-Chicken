@@ -1,6 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity, Image } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+
 import { GameContext } from './contexts/GameContext.js';
 import { BattleContext } from './contexts/BattleContext.js';
 import { useFonts } from 'expo-font';
@@ -25,9 +27,8 @@ const Menu = (props) => {
 
   const continueGameButton = () => {
     if (gameStarted) {
-      return (
-        <TouchableOpacity
-          // style={styles.menuButton}
+      return(
+      <TouchableOpacity
           onPress={() => continueGame()}
         >
           <Text style={{ fontFamily: 'Pixel', alignSelf: 'center', marginTop: 30 }}>Continue Game</Text>

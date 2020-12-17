@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+
+import * as Font from 'expo-font'
+import { AppLoading } from 'expo'
+
 import GameContextProvider from './src/contexts/GameContext.js';
 import BattleContextProvider from './src/contexts/BattleContext.js';
 import Game from './src/Game.js'
@@ -7,8 +11,7 @@ import Menu from './src/Menu.js'
 import Dictionary from './src/Dictionary.js'
 import SoundController from './src/SoundController.js'
 import NoteView from './src/NoteView.js'
-import * as Font from 'expo-font'
-import { AppLoading } from 'expo'
+
 
 export default function App() {
   const [view, setView] = useState('menu')
