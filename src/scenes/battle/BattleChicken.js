@@ -74,7 +74,7 @@ const BattleChicken = () => {
     if(battleChickenPosition.x < 110) {
       setChickenGraphic(require('../../../assets/chicken-run-right.gif'))
       const exit = setInterval(() => {
-          changeBattleChickenPosition(wp(stepSize), 0)
+          changeBattleChickenPosition(10, 0)
       }, 80)
       return () => {
           clearInterval(exit)

@@ -62,7 +62,7 @@ const SceneController = (props) => {
 
   useEffect(() => {
     if (level === 7 && currentScene === 'battle') {
-      sceneTransition('credits')
+      changeScene('credits')
     }
   })
 

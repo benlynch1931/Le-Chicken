@@ -23,7 +23,7 @@ const Game = (props) => {
           alignItems: 'flex-start',
           width: wp("100%"),
           padding: hp("0.8%"),
-          backgroundColor: 'white',
+          backgroundColor: 'black',
           zIndex: 10
         }}>
         </View>
