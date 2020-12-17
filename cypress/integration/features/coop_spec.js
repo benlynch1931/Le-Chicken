@@ -17,7 +17,7 @@ context('Coop Actions', () => {
     cy.get('input')
       .type('marcher')
     cy.wait(3000)
-    cy.get('#chicken-idleup').should('have.css', 'top', '110.5px')
+    cy.get('#chicken-idleup').should('have.css', 'top', '111px')
   })
 
   it("animates the chicken, when walking up", () => {

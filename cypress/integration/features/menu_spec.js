@@ -26,16 +26,16 @@ context('Menu', () => {
     cy.wait(3000)
     cy.contains('Menu').click()
     cy.contains('Continue Game').click()
-    cy.get('#chicken-idleup').should('have.css', 'top', '127px')
+    cy.get('#chicken-idleup').should('have.css', 'top', '111px')
   })
-  it("Allows youy to start a new game", () => {
+  it("Allows you to start a new game", () => {
     cy.contains('New Game').click()
     cy.get('input')
       .type('marcher')
     cy.wait(3000)
     cy.contains('Menu').click()
     cy.contains('New Game').click()
-    cy.get('#chicken-idleright').should('have.css', 'top', '487px')
+    cy.get('#chicken-idleright').should('have.css', 'top', '447px')
   })
   it("has a button to turn music on", () => {
     cy.contains('Music: Off').should('be.visible')
