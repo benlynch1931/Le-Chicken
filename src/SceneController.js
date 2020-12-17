@@ -73,6 +73,7 @@ const SceneController = (props) => {
 
   const displayButton = () => {
     if (currentScene == 'maze' && level === 2) {
+      if (!isChickenAtNote()) return null
       return (
         <View style={{
           zIndex: 10,
@@ -81,9 +82,8 @@ const SceneController = (props) => {
           top: hp("15%"),
           width: wp("30%"),
           border: "black",
-          borderWidth: "3%",
+          borderWidth: 3,
           backgroundColor: '#f0f0d1',
-          display: isChickenAtNote() ? 'block' : 'none'
         }}>
           <TouchableOpacity
             onPress={() => { props.setView('note'); addToDictionary({ french: 'Frapper', english: 'To hit' }) }}
@@ -102,8 +102,9 @@ const SceneController = (props) => {
       )
     } else if (currentScene == 'confrontation') {
       if (level == 4) {
+        if (!(chickenPosition.y < hp('40%'))) return null
         return (
-          <View style={{ position: 'absolute', zIndex: 10, alignSelf: "center", top: hp("21%"), height: hp('5%'), width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 4 ? 'block' : 'none' }}>
+          <View style={{ position: 'absolute', zIndex: 10, alignSelf: "center", top: hp("21%"), height: hp('5%'), width: wp("70%"), border: "black", borderWidth: 3, backgroundColor: '#f0f0d1' }}>
             <TouchableOpacity
               onPress={() => { changeScene("battle") }}
               style={{
@@ -120,8 +121,19 @@ const SceneController = (props) => {
         )
       }
       else if (level == 5) {
+        if (!(chickenPosition.y < hp('40%') && level == 5)) return null
         return (
-          <View style={{ position: 'absolute', zIndex: 10, alignSelf: "center", top: hp("21%"), height: hp('5%'), width: wp("70%"), border: "black", borderWidth: "3%", backgroundColor: '#f0f0d1', display: chickenPosition.y < hp('40%') && level == 5 ? 'block' : 'none' }}>
+          <View style={{
+            position: 'absolute',
+            zIndex: 10,
+            alignSelf: "center",
+            top: hp("21%"),
+            height: hp('5%'),
+            width: wp("70%"),
+            border: "black",
+            borderWidth: 3,
+            backgroundColor: '#f0f0d1',
+          }}>
             <TouchableOpacity
               onPress={() => { props.setView('note'); addToDictionary({ french: 'Sauter', english: 'To jump' }) }}
               style={{
