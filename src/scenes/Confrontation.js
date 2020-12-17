@@ -40,7 +40,6 @@ const Confrontation = (props) => {
       style={{
         position: 'absolute',
         width: wp("100%"),
-        // top: hp("2.5%"),
         height: hp("61.58%"),
         resizeMode: "stretch"
       }}

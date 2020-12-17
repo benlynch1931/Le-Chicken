@@ -27,7 +27,6 @@ const Menu = (props) => {
     if (gameStarted) {
       return(
       <TouchableOpacity
-          // style={styles.menuButton}
           onPress={() => continueGame()}
       >
         <Text style={{fontFamily: 'Pixel', alignSelf: 'center', marginTop: 30}}>Continue Game</Text>
