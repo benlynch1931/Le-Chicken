@@ -6,12 +6,12 @@ import { BattleContext } from '../../contexts/BattleContext.js'
 const HealthBar = (props) => {
   const { chickenHealth, opponentHealth } = useContext(BattleContext)
   let position;
-  position = (props.character == "Opponent") ? {left: wp("55%"), top: hp("8%")}  : {left: wp("17%"), top: hp("35%")}
+  position = (props.character == "Opponent") ? { left: wp("55%"), top: hp("8%") } : { left: wp("17%"), top: hp("35%") }
   let health = (props.character == "Opponent") ? opponentHealth : chickenHealth
 
   let lifeBarColor;
   if (health >= 25) {
-      lifeBarColor = 'rgb(97, 232, 39)'
+    lifeBarColor = 'rgb(97, 232, 39)'
   } else {
     lifeBarColor = 'rgb(227, 16, 16)'
   }
@@ -26,17 +26,18 @@ const HealthBar = (props) => {
         backgroundColor: '#FFFFFF',
         zIndex: '6',
         left: position.left,
-        top: position.top
+        top: position.top,
+        borderRadius: 5
       }}>
-        <View  testID='healthLevel' style={{
-          display: health <= 0 ? 'none' : 'block',
-          width: `${health}%`,
-          height: '100%',
-          backgroundColor: `${lifeBarColor}`,
-          zIndex: '5'
-        }}>
+      <View testID='healthLevel' style={{
+        display: health <= 0 ? 'none' : 'block',
+        width: `${health}%`,
+        height: '100%',
+        backgroundColor: `${lifeBarColor}`,
+        zIndex: '5'
+      }}>
 
-        </View>
+      </View>
 
     </View>
   )
