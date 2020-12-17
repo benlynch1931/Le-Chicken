@@ -38,9 +38,7 @@ const SceneController = (props) => {
 
   useEffect(() => {
     if (chickenPosition.y <= hp("15%") && level == 2 && currentScene == 'coop') {
-      //sceneTransition('maze')
-      resetChickenPosition()
-      changeScene('maze')
+      sceneTransition('maze')
     }
   }, [chickenPosition])
 
@@ -104,7 +102,7 @@ const SceneController = (props) => {
       if (level == 4) {
         if (!(chickenPosition.y < hp('40%'))) return null
         return (
-          <View style={{ position: 'absolute', zIndex: 10, alignSelf: "center", top: hp("21%"), height: hp('5%'), width: wp("70%"), border: "black", borderWidth: 3, backgroundColor: '#f0f0d1' }}>
+          <View style={{ position: 'absolute', zIndex: 10, alignSelf: "center", top: hp("21%"), height: hp('7%'), width: wp("70%"), border: "black", borderWidth: 3, backgroundColor: '#f0f0d1' }}>
             <TouchableOpacity
               onPress={() => { changeScene("battle") }}
               style={{

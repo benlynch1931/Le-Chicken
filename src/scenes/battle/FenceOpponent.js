@@ -9,7 +9,7 @@ const FenceOpponent = () => {
   const opponentWidth = wp("102%")
   const opponentHeight = hp("6.16%")
   let entrance;
-  let stepSize = "5.3%"
+  let stepSize = 4.8
   const [sound, setSound] = React.useState()
 
 
