@@ -6,7 +6,7 @@ Le Chicken: The Poulet is a language-learning RPG (role-playing game). The playe
 
 ## Set-up Instructions
 
-Make sure expo -cli is installed globally:
+1. Make sure expo -cli is installed globally:
 ```
 $ npm install —global expo-cli
 ```
@@ -35,13 +35,13 @@ Press New Game to begin and then check the hints above the text box for clues on
 
 ## Testing
 
-# Feature Tests
+### Feature Tests
 Run cypress from the root directory:
 ```
 $ nix cypress open
 ```
 
-# Unit Tests
+### Unit Tests
 Use npm to run jest from the root directory:
 ```
 $ npm test
