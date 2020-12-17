@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { View, TouchableOpacity, Text } from 'react-native';
+
 import Coop from './scenes/Coop.js';
 import Maze from './scenes/Maze.js';
 import Battle from './scenes/battle/Battle.js';

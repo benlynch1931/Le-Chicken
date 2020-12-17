@@ -1,7 +1,8 @@
 import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native'
+
 import UserTextInput from './UserTextInput.js';
 import { GameContext } from './contexts/GameContext.js';
-import { render, fireEvent } from '@testing-library/react-native'
 
 const mockContext = {
     changeInputText: jest.fn(),

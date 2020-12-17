@@ -1,7 +1,8 @@
 import React, { useContext, useState, Component } from 'react';
-import { TextInput, Text, View, TouchableOpacity, Button, StyleSheet, Keyboard } from 'react-native';
-import { GameContext } from './contexts/GameContext.js';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+import { GameContext } from './contexts/GameContext.js';
 
 export class DPad extends Component {
   constructor(props) {

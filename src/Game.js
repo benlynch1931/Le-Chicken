@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 import Chicken from './Chicken.js'
 import GameController from './GameController.js'
 import SceneController from './SceneController.js';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Game = (props) => {
   if (props.view != 'game') return null;

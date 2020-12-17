@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react';
-import { Image, View, Button, TouchableOpacity, Text } from 'react-native';
+import React, { useContext } from 'react';
+import { Image, View } from 'react-native';
 import { Svg, Line } from 'react-native-svg';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 import { GameContext } from '../contexts/GameContext.js';
 import NoteView from '../NoteView.js'
 
