@@ -46,6 +46,9 @@ const AttackCommands = () => {
     if (level === 6) {
       changeBattleReport("Le chicken a sauté l’adversaire")
     }
+    setTimeout(()=> {
+      changeLevel(7)
+    }, 3000)
   }
 
   const chickenOpponentTurn = () => {

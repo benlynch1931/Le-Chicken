@@ -8,6 +8,7 @@ import Battle from './scenes/battle/Battle.js';
 import Confrontation from './scenes/Confrontation.js'
 import { GameContext } from './contexts/GameContext.js';
 import Chicken from './Chicken.js'
+import Credits from './Credits.js'
 
 const SceneController = (props) => {
   const { currentScene, addToDictionary, chickenPosition, changeScene, resetChickenPosition, changeChickenToMove, changeLevel, level } = useContext(GameContext)
@@ -56,6 +57,12 @@ const SceneController = (props) => {
     }
   }, [chickenPosition])
 
+  useEffect(() => {
+    if (level === 7 && currentScene === 'battle') {
+      sceneTransition('credits')
+    }
+  })
+
   if (currentScene === 'coop') {
     scene = <Coop />
   } else if (currentScene === 'maze') {
@@ -64,6 +71,8 @@ const SceneController = (props) => {
     scene = <Battle />
   } else if (currentScene === 'confrontation') {
     scene = <Confrontation setView={props.setView} view={props.view} />
+  } else if (currentScene == 'credits') {
+    scene = <Credits/>
   }
 
   const isChickenAtNote = () => {
