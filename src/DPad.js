@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     marginTop: hp('1%'),
+    paddingBottom: hp("2%"),
     width: wp('47%'),
     alignSelf: 'center',
     flexDirection: 'row',
