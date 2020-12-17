@@ -22,7 +22,7 @@ const BattleView = () => {
         width: wp("100%"),
         height: hp("61.58%"),
         backgroundColor: 'rgb(199, 252, 177)',
-        zIndex: '1'
+        zIndex: 1
       }}>
       {background()}
     </View>

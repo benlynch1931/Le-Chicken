@@ -4,14 +4,16 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 import { GameContext } from './contexts/GameContext.js';
-
+import { BattleContext } from './contexts/BattleContext.js';
+import { useFonts } from 'expo-font';
 
 const Menu = (props) => {
 
   const { restartGame } = useContext(GameContext)
+  const { resetBattleContext } = useContext(BattleContext)
 
   const [gameStarted, setGameStarted] = useState(false)
-  if(props.view != 'menu'){ return null}
+  if (props.view != 'menu') { return null }
   const startNewGame = async () => {
     restartGame();
     await setGameStarted(true);
@@ -28,9 +30,9 @@ const Menu = (props) => {
       return(
       <TouchableOpacity
           onPress={() => continueGame()}
-      >
-        <Text style={{fontFamily: 'Pixel', alignSelf: 'center', marginTop: 30}}>Continue Game</Text>
-      </TouchableOpacity>
+        >
+          <Text style={{ fontFamily: 'Pixel', alignSelf: 'center', marginTop: 30 }}>Continue Game</Text>
+        </TouchableOpacity>
       )
     }
   }
@@ -45,12 +47,12 @@ const Menu = (props) => {
         width: wp("100%")
       }} />
       <TouchableOpacity
-          onPress={() => startNewGame()}
+        onPress={() => startNewGame()}
       >
-        <Text style={{fontFamily: 'Pixel', fontSize: 30, alignSelf: 'center'}}>Le Chicken:</Text>
-        <Text style={{fontFamily: 'Pixel', fontSize: 30, alignSelf: 'center'}}>The Poulet</Text>
+        <Text style={{ fontFamily: 'Pixel', fontSize: 30, alignSelf: 'center' }}>Le Chicken:</Text>
+        <Text style={{ fontFamily: 'Pixel', fontSize: 30, alignSelf: 'center' }}>The Poulet</Text>
 
-        <Text style={{fontFamily: 'Pixel', alignSelf: 'center', marginTop: 30}}>New Game</Text>
+        <Text style={{ fontFamily: 'Pixel', alignSelf: 'center', marginTop: 30 }}>New Game</Text>
       </TouchableOpacity>
       { continueGameButton()}
     </View>

@@ -44,7 +44,7 @@ const UserTextInput = () => {
       changeInputText("");
     }
 
-    if (level === 2 && currentScene == 'maze') {
+    if (currentScene == 'maze') {
       for (const [french, english] of directions.entries()) {
         if (text.toLowerCase() == french) {
           Keyboard.dismiss();

@@ -7,19 +7,19 @@ import { GameContext } from '../../contexts/GameContext.js';
 
 const AttackCommands = () => {
   const { changeLevel, changeScene, level } = useContext(GameContext)
-  const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText } = useContext(BattleContext)
+  const { chickenHealth, changeResult, opponentHealth, inputText, battleReport, changeBattleReport, chickenTurn, result, changeChickenTurn, changeOpponentHealth, changeChickenHealth, changeInputText, resetBattleContext } = useContext(BattleContext)
   let winner = false;
   const checkInput = (text) => {
     if (winner) { return }
     changeInputText(text)
     if (chickenTurn == true) {
       if (text.toLowerCase() == "frapper") {
-        Keyboard.dismiss
+        Keyboard.dismiss()
         changeInputText("")
         chickenFrapper()
       }
       if (text.toLowerCase() == "sauter") {
-        Keyboard.dismiss
+        Keyboard.dismiss()
         changeInputText("")
         chickenSauter()
       }

@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { View } from 'react-native';
-
-import BattleContextProvider from '../../contexts/BattleContext.js'
 import { GameContext } from '../../contexts/GameContext.js'
 
 import ChickenOpponent from './ChickenOpponent.js'
@@ -29,14 +27,12 @@ const Battle = () => {
 
   return (
     <View>
-      <BattleContextProvider>
-        <HealthBar character={"Chicken"}/>
-        <BattleChicken></BattleChicken>
-        { opponent() }
-        <HealthBar character={"Opponent"}/>
-        <BattleView></BattleView>
-        <AttackCommands></AttackCommands>
-      </BattleContextProvider>
+      <HealthBar character={"Chicken"} />
+      <BattleChicken></BattleChicken>
+      { opponent()}
+      <HealthBar character={"Opponent"} />
+      <BattleView></BattleView>
+      <AttackCommands></AttackCommands>
     </View>
   )
 

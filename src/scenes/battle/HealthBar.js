@@ -16,6 +16,20 @@ const HealthBar = (props) => {
   } else {
     lifeBarColor = 'rgb(227, 16, 16)'
   }
+
+  const healthLevel = () => {
+    if (health <= 0) return null
+    return (
+      <View testID='healthLevel' style={{
+        width: `${health}%`,
+        height: '100%',
+        backgroundColor: `${lifeBarColor}`,
+        zIndex: 5
+      }} />
+    )
+  }
+
+
   return (
     < View
       style={{
@@ -25,20 +39,12 @@ const HealthBar = (props) => {
         borderWidth: 2,
         borderColor: '#000000',
         backgroundColor: '#FFFFFF',
-        zIndex: '6',
+        zIndex: 6,
         left: position.left,
         top: position.top,
         borderRadius: 5
       }}>
-      <View testID='healthLevel' style={{
-        display: health <= 0 ? 'none' : 'block',
-        width: `${health}%`,
-        height: '100%',
-        backgroundColor: `${lifeBarColor}`,
-        zIndex: '5'
-      }}>
-
-      </View>
+      { healthLevel()}
 
     </View>
   )

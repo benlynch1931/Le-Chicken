@@ -154,7 +154,6 @@ const Chicken = () => {
   }
 
   useEffect(() => {
-    console.log(level)
     if (chickenToMove == 0) {
       return;
     }
