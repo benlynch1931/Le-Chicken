@@ -1,11 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import { Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { BattleContext } from '../../contexts/BattleContext.js'
 
 import { Audio } from 'expo-av';
 
-
+import { BattleContext } from '../../contexts/BattleContext.js'
 
 const BattleChicken = () => {
   const { battleChickenPosition, changeBattleChickenPosition, battleReport, chickenWidth, chickenHeight, changeChickenWidth, changeChickenHeight } = useContext(BattleContext)
@@ -37,20 +36,20 @@ const BattleChicken = () => {
 
   useEffect(() => {
     let counter1 = 0
-    if(battleReport === "Le chicken a sauté l’adversaire") {   
+    if(battleReport === "Le chicken a sauté l’adversaire") {
       const exit = setInterval(() => {
         counter1 = counter1 + 1
         if(counter1 < 61) {
           changeBattleChickenPosition(0, -hp(stepSize))
           if(counter1 == 1) {
-            boingSoundFX() 
+            boingSoundFX()
           }
         } else {
           chickenDescend()
           clearInterval(exit)
         }
       }, 10)
-   
+
     }
   }, [battleReport, changeBattleChickenPosition])
 

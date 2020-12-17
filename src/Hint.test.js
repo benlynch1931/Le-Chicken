@@ -1,5 +1,6 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
+
 import Hint from './Hint.js';
 import { GameContext } from './contexts/GameContext.js';
 

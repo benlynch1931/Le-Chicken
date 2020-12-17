@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
-import { GameContext } from './contexts/GameContext.js';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 import UserTextInput from './UserTextInput.js'
 import DPad from './DPad.js'
 import Hint from './Hint.js'
+import { GameContext } from './contexts/GameContext.js';
+
 export class GameController extends Component {
   constructor(props) {
     super(props);

@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import { Button, View, TouchableOpacity, Text, Image } from 'react-native';
+import { View, TouchableOpacity, Text, Image } from 'react-native';
+
 import { Audio } from 'expo-av';
+
 import { GameContext } from './contexts/GameContext.js';
 
 export default function SoundController(props) {

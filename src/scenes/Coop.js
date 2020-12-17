@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Image, View } from 'react-native';
+import { Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Coop = () => {

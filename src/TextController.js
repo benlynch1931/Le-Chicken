@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, StyleSheet, Keyboard } from 'react-native';
-import { GameContext } from './contexts/GameContext.js';
+import { View, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 import UserTextInput from './UserTextInput.js'
 import Hint from './Hint.js'
+import { GameContext } from './contexts/GameContext.js';
+
 export class TextController extends Component {
   constructor() {
     super();

@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { BattleContext } from '../../contexts/BattleContext.js'
+
 import { Audio } from 'expo-av';
+
+import { BattleContext } from '../../contexts/BattleContext.js'
 
 const ChickenOpponent = () => {
   const { opponentPosition, battleReport, changeOpponentPosition } = useContext(BattleContext)
