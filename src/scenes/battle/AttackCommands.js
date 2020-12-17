@@ -13,12 +13,12 @@ const AttackCommands = () => {
     changeInputText(text)
     if (chickenTurn == true) {
       if (text.toLowerCase() == "frapper") {
-        Keyboard.dismiss
+        Keyboard.dismiss()
         changeInputText("")
         chickenFrapper()
       }
       if (text.toLowerCase() == "sauter") {
-        Keyboard.dismiss
+        Keyboard.dismiss()
         changeInputText("")
         chickenSauter()
       }
