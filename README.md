@@ -4,7 +4,12 @@
 
 Le Chicken: The Poulet is a language-learning RPG (role-playing game). The player begins as a chicken, dreaming of making it in the big city. The problem? This chicken doesn’t know French! From start to finish, the user is introduced to and given a chance to contextually use new vocabulary in their target language. While this version is only the ‘tutorial’ area, by the end of the full-game, the user will be able to interact with the game entirely in their target language!
 
-## Set-up Instructions
+## Quick Start (Android Only)
+
+1. Download the Expo app.
+2. Visit ``https://expo.io/@kacesera/projects/le-chicken`` and scan the QR code.
+
+## Full Set-up
 
 1. Make sure expo -cli is installed globally:
 ```
@@ -38,7 +43,7 @@ Press New Game to begin and then check the hints above the text box for clues on
 ### Feature Tests
 Run cypress from the root directory:
 ```
-$ nix cypress open
+$ npx cypress open
 ```
 
 ### Unit Tests
